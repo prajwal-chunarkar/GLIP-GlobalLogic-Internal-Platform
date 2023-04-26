@@ -1,0 +1,118 @@
+body {
+    font-family: 'Lucida Sans Unicode';
+    background-image: url('../../public/bg-image.png');
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+.links {
+    color: black;
+  }
+
+  .links:hover {
+    color: blueviolet;
+  }
+  .already-registered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.register-container .container {
+    background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+    position: fixed;
+    max-width: 35vw;
+    height: 80vh;
+    border: 1px solid rgb(227, 224, 229);
+    margin: 10vh 60vw;
+    padding: 0.8rem;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    overflow: auto;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.register-container .container .heading {
+    margin-bottom: 1.3rem;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: blueviolet;
+}
+
+.required-astric {
+    color: red;
+}
+
+.register-container .container input {
+    border: none;
+    border-bottom: 3px solid rgb(175, 145, 202);
+    margin-bottom: 0.1rem;
+    height: 3rem;
+    padding-left: 0.4rem;
+    width: 17vw;
+    width: 94%;
+    background-color: rgba(255, 255, 255, 0.01);
+    border-radius: 5px;
+    
+}
+
+.error-line {
+    border-bottom: 3px solid red;
+}
+
+.register-label {
+    font-size: 1.1rem;
+}
+
+.register-container .container input:focus {
+    outline: none;
+    /* border: 1px solid black;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 10px; */
+}
+
+.submit-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-container .container button {
+    background-color: rgba(207, 180, 234);
+    border: 1px solid blueviolet;
+    border-radius: 10px;
+    box-shadow: 0 0 10px blueviolet;
+}
+
+.register-container .container button:hover {
+    background-color: rgba(193, 154, 229, 0.4);
+    background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+    ;
+    box-shadow: rgb(53, 3, 99);
+}
+
+.error-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-container .container .errorMessage {
+    color: rgb(95, 3, 3);
+    background-color: rgba(246, 86, 86, 0.6);
+    padding: 0.2rem 0.7rem;
+    border-radius: 5px;
+    width: 20vw;
+}
+
+.register-container .container::-webkit-scrollbar {
+    /* visibility: hidden; */
+    background: transparent;
+    width: 10px;
+
+}
+
+.register-container .container::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+}

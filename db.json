@@ -1,0 +1,45 @@
+{
+  "users": [
+    {
+      "fname": "Prajwal",
+      "mname": "Prabhakar",
+      "lname": "Chunarkar",
+      "email": "prajwal@gmail.com",
+      "phone": "9545557083",
+      "address": "Plot No.10, Shivaji Colony,Hudkeshwar Road, Nagpur-440034",
+      "gender": "male",
+      "dob": "09/2001",
+      "password": "prajwal@2001",
+      "id": 1
+    },
+    {
+      "fname": "Rajat",
+      "mname": "Vijay",
+      "lname": "Gaikwad",
+      "email": "rajat@gmail.com",
+      "phone": "8888535155",
+      "address": "",
+      "gender": "male",
+      "dob": "05/2001",
+      "password": "rajat",
+      "id": 2
+    },
+    {
+      "fname": "Gaurang",
+      "mname": "",
+      "lname": "Kumar",
+      "email": "gaurang@gmail.com",
+      "phone": "8476453420",
+      "address": "nagpur",
+      "gender": "male",
+      "dob": "08/2001",
+      "password": "gaurang",
+      "id": 3
+    }
+  ],
+  "registration": [
+    {
+      "isRegister": "true"
+    }
+  ]
+}

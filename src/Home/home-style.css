@@ -1,0 +1,44 @@
+.Navbar {
+    width: 100vw;
+    height: 7vh;
+    border: 1px solid rgb(168, 133, 201);
+    background:rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 10px blueviolet;
+  }
+
+  .container button, .Navbar button {
+    background-color: rgba(207, 180, 234);
+    border: 1px solid rgb(211, 177, 242);
+    border-radius: 10px;
+    box-shadow: 0 0 10px blueviolet;
+  }
+  .container button:hover ,.Navbar button:hover {
+    background-color: rgba(193, 154, 229, 0.4);
+    background-image: url("https://www.transparenttextures.com/patterns/cubes.png");;
+    box-shadow: rgb(53, 3, 99);
+  }
+  
+  .Navbar:hover {
+    /* height: 7.5vh; */
+    background: rgba(0, 0, 0, 0.4);
+    border: none;
+    box-shadow: 0 0 10px rgb(3, 0, 6);
+  }
+  
+  .Navbar .topNav_right {
+    float: right;
+  }
+  
+  .topNav_right button{
+    margin: 5px;
+    padding: 5px;
+    border-top-right-radius: 0px;
+  }
+  
+  .Navbar .navHeading h1{
+    float: left;
+    font-size: 20px;
+    padding-top: 12px;
+    padding-left: 10px;
+    color: rgb(35, 3, 64);
+  } 
