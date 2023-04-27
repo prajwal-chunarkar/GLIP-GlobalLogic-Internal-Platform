@@ -1,18 +1,22 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css'
 
-import InitialName from './InitialName'
-import Practice from './Practice';
-import DashboardBody from './Dashboard/dashboard-body';
-import FileUploadComponent from './File-Upload-Component';
-import AdminUpload from './File-Upload-Component';
-import UserFiles from './user-view-upload';
-import Register from './Register/register';
-import Login from './Login/login';
-import Home from './Home/home';
-import ForgotPass from './Forgot_Password/forgotPass';
-import NotFound from './NotFound/NotFound'
-import Deactivate from './Deactivate/deactivate';
+import DashboardBody from './Components/Dashboard/dashboard-body'
+//GK-----------------------------------------------
+import InitialName from './Components/GK/InitialName'
+// import Practice from './Components/GK/Practice';
+// import FileUploadComponent from './Components/GK/File-Upload-Component';
+// import AdminUpload from './Components/GK/File-Upload-Component';
+// import UserFiles from './Components/GK/user-view-upload';
+
+//-----------------------------------------------
+
+import Register from './Components/Authentication/Register/register';
+import Login from './Components/Authentication/Login/login';
+import ForgotPass from './Components/Authentication/Forgot_Password/forgotPass';
+import Deactivate from './Components/Authentication/Deactivate/deactivate';
+import Home from './Components/Home/home'
+import NotFound from './Components/NotFound/NotFound'
 
 function App() {
 
