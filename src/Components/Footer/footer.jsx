@@ -125,7 +125,7 @@ const Footer = () => {
             {modalval && (
                 <div className="position-absolute top-50 start-50 translate-middle col-sm-5 footer-home">
                     <TermsAndConditions className="row">
-                        <div className="card">
+                        <div className="">
                             <DivCloseButton>
                                 <CloseButton
                                     className="mt-3"
@@ -182,7 +182,7 @@ const Footer = () => {
                                 voluptatem quae aliquid ipsum illo a cupiditate
                                 assumenda? Alias!
                             </TermsAndConditionsText>
-                            <div className="mt-5">
+                            <div className="mt-5" style={{position: "relative"}}>
                                 <ButtonCloseTnC
                                     onClick={showTnC}
                                     className="position-absolute bottom-0 start-50 translate-middle mt-5 me-5"

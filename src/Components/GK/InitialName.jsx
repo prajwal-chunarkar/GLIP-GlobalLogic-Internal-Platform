@@ -62,7 +62,7 @@ const InitialName = () => {
 
   return (
     <div>
-      <h1>Total Registrations : {usersLength}</h1>
+      {/* <h1>Total Registrations : {usersLength}</h1> */}
     </div>
   );
 };

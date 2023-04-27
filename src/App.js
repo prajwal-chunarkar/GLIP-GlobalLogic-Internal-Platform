@@ -8,7 +8,6 @@ import InitialName from './Components/GK/InitialName'
 // import FileUploadComponent from './Components/GK/File-Upload-Component';
 // import AdminUpload from './Components/GK/File-Upload-Component';
 // import UserFiles from './Components/GK/user-view-upload';
-
 //-----------------------------------------------
 
 import Register from './Components/Authentication/Register/register';

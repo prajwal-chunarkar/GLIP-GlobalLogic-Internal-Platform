@@ -21,18 +21,20 @@ export const TermsAndConditions = styled.div`
     height: 83vh;
     border: "solid black 1px";
     z-index: 1;
-
+    background-color: #fff;
     &::-webkit-scrollbar {
     /* visibility: hidden; */
-    background: transparent;
+    /* background: transparent; */
+
     width: 10px;
     };
 
     &::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0,0.8);
     border-radius: 5px;
     }
 `;
+
 
 export const TermsAndConditionsText = styled.div`
     font-family: Calibri, Arial, sans-serif;
@@ -68,6 +70,8 @@ export const ButtonTnC = styled.p`
 `;
 export const ButtonCloseTnC = styled.button`
     color: white;
+    position: absolute;
+    bottom: 0;
     background-color: rgb(109, 110, 113);
     align-items: center;
     text-align: center;
@@ -100,11 +104,11 @@ export const Flex = styled.div`
     /* display: flex; */
     padding-top: 1rem;
     background-color: #424142;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
     margin-right: 0;
-    position: relative;
+    /* position: relative; */
 `;
 
 export const BottomDiv = styled.div`
