@@ -113,7 +113,7 @@ export const ErrorMessage = styled.span`
     background-color: rgba(246, 86, 86, 0.6);
     padding: 0.2rem 0.7rem;
     border-radius: 5px;
-    width: 40vw;
+    max-width: 40vw;
 `;
 
 export const LinksDiv = styled.div`
