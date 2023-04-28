@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import CloseButton from "react-bootstrap/CloseButton";
 import { useRef } from "react";
 import { useSelector } from "react-redux";
+
 import{
     Para,
     TermsAndConditions,
@@ -27,77 +28,42 @@ const Footer = () => {
     const [modalval, setmodalval] = useState(false);
     const showTnC = () => {
         modalval ? setmodalval(false) : setmodalval(true);
+            window.scrollTo({
+              top: 0, 
+              behavior: 'smooth'
+             
+            });
     };
 
     const employeeLength = useSelector((state) => state.employeeLength);
 
-
-    // let loginRef = useRef();
-    // var navigateToAboutUs = useNavigate();
-    // const goAboutUs = (e)=>{
-    //     // navigateToAboutUs('/login')
-    //     e.preventDefault();
-    // }
     return (
         <>
             <div>
                 <Flex className="row">
                     <div className="col-md-3">
                         <UL>
-                            {/* <Li>
-                                <Button as="a" href="/login" onClick={goAboutUs}>
-                                    Login
-                                </Button>
-                            </Li> */}
-                            {/* <Li>
-                            <Link to={location => ({ ...location, pathname: "/login" })} >Login</Link>
-
-                            </Li> */}
-
                             <Li>
-                                <FooterA>
-                                    <Link to="/login">Login</Link>
-                                </FooterA>
+                                    <Link to="/login" style={{ textDecoration: "none" }}><FooterA>Login</FooterA></Link>
                             </Li>
 
                             <Li>
-                                <FooterA>
-                                    <Link to="/aboutus">About Us</Link>
-                                </FooterA>
+                                    <Link to="/aboutus" style={{ textDecoration: "none" }}><FooterA>About Us</FooterA></Link>
                             </Li>
 
                             <Li>
-                                <FooterA>
-                                    <Link
-                                        to="/careers"
-                                        style={{ textDecoration: "none" }}
-                                    >
-                                        Careers
+                                    <Link to="/careers" style={{ textDecoration: "none" }}>
+                                        <FooterA>Careers</FooterA>
                                     </Link>
-                                </FooterA>
                             </Li>
-                            {/* <Li>
-                                <button  onClick={goAboutUs}>
-                                    Login
-                                </button>
-                            </Li> */}
-                            {/* <Li>
-                                <Button as="a" href="/aboutus">
-                                    About Us
-                                </Button>
-                            </Li> */}
-                            {/* <Li>
-                                <Button as="a" href="/careers">
-                                    Careers
-                                </Button>
-                            </Li> */}
+                            
                         </UL>
                     </div>
 
                     <div className="col-md-9">
-                            <div className="">
+                            <div>
                         <BottomDiv>
-                                <div className="">
+                                <div>
                                     <DivTnC>
                                         <ButtonTnC onClick={showTnC}>
                                             Terms & Conditions
@@ -109,10 +75,10 @@ const Footer = () => {
                                     </DivTnC>
                                 </div>
 
-                                <div className="">
+                                <div>
                                     <DivNoE>Number of Employees:                                     
                                     <ParaNoOfEmployee>
-                                        "{employeeLength}"
+                                        {employeeLength}
                                     </ParaNoOfEmployee>
                                     </DivNoE>
                                 </div>
@@ -124,15 +90,14 @@ const Footer = () => {
 
             {modalval && (
                 <div className="position-absolute top-50 start-50 translate-middle col-sm-5 footer-home">
-                    <TermsAndConditions className="row">
-                        <div className="">
+                    <TermsAndConditions>
+                        <div>
                             <DivCloseButton>
                                 <CloseButton
-                                    className="mt-3"
                                     onClick={showTnC}
                                 />
                             </DivCloseButton>
-                            <TermsAndConditionsText className="card-body p-2 ">
+                            <TermsAndConditionsText>
                                 Lorem ipsum dolor sit amet consectetur
                                 adipisicing elit. Voluptatibus mollitia, quidem
                                 quae assumenda dolore omnis excepturi dicta?
@@ -182,14 +147,14 @@ const Footer = () => {
                                 voluptatem quae aliquid ipsum illo a cupiditate
                                 assumenda? Alias!
                             </TermsAndConditionsText>
-                            <div className="mt-5" style={{position: "relative"}}>
+                            {/* <div>
                                 <ButtonCloseTnC
                                     onClick={showTnC}
                                     className="position-absolute bottom-0 start-50 translate-middle mt-5 me-5"
                                 >
                                     OK
                                 </ButtonCloseTnC>
-                            </div>
+                            </div> */}
                         </div>
                     </TermsAndConditions>
                 </div>

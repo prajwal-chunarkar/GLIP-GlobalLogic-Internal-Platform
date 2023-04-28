@@ -18,37 +18,47 @@ export const UL = styled.ul`
 export const TermsAndConditions = styled.div`
     /* background-color: #424142; */
     overflow: auto;
+    position: sticky;
+    bottom: 0;
     height: 83vh;
     border: "solid black 1px";
-    z-index: 1;
-    background-color: #fff;
-    &::-webkit-scrollbar {
-    /* visibility: hidden; */
-    /* background: transparent; */
+    margin-top: 5rem;
+    background-color: rgba(255,255,255, 0.92);
+    padding: 1rem;
 
+    &::-webkit-scrollbar {
+    background: transparent;
     width: 10px;
     };
 
     &::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0,0.8);
+    background: rgba(0, 0, 0, 0.4);
     border-radius: 5px;
     }
 `;
-
 
 export const TermsAndConditionsText = styled.div`
     font-family: Calibri, Arial, sans-serif;
     word-wrap: break-word;
     display: flex;
     text-align: start;
+    
+  
 `;
 export const Li = styled.li`
     color: #fff;
 `;
-export const FooterA = styled.div`
+export const FooterA = styled.p`
     font-family: Calibri, Arial, sans-serif;
     text-decoration: none;
     margin-bottom: 1rem;
+    color: #fff;
+    font-size: 1.1rem;
+
+    &:hover {
+        color: #F37037;
+    }
+
 `;
 export const Button = styled.button`
     color: white;
@@ -70,14 +80,14 @@ export const ButtonTnC = styled.p`
 `;
 export const ButtonCloseTnC = styled.button`
     color: white;
-    position: absolute;
-    bottom: 0;
     background-color: rgb(109, 110, 113);
     align-items: center;
     text-align: center;
     width: 5rem;
     border: none;
     border-radius: 10%;
+    /* position: absolute; */
+    bottom: 0;
     padding: 0.25rem 1rem 0.25rem 1rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
         rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
@@ -93,6 +103,7 @@ export const DivTnC = styled.div`
     vertical-align: bottom;
     box-sizing: border-box;
     margin-left: 12rem;
+    margin-top: 3rem;
     @media (max-width: 767px) {
         flex-direction: column-reverse;
         margin-left: 4rem;
@@ -104,11 +115,11 @@ export const Flex = styled.div`
     /* display: flex; */
     padding-top: 1rem;
     background-color: #424142;
-    position: absolute;
-    bottom: 0;
+    position: fixed;
+    bottom: 0px;
     width: 100%;
-    margin-right: 0;
-    /* position: relative; */
+    margin-left: 0;
+    position: relative;
 `;
 
 export const BottomDiv = styled.div`
@@ -127,9 +138,8 @@ export const DivNoE = styled.div`
     text-align: center;
     color: white;
     margin-left: 10rem;
+    padding-top: 1.5rem;
     @media (max-width: 767px) {
         margin-left: 5rem;
-
-       
     }
 `;

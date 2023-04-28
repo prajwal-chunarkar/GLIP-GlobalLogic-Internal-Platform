@@ -4,7 +4,10 @@ import Swal from "sweetalert2";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import validationDeactivate from './validationDeactivate';
+import { Link } from 'react-router-dom';
 import {
+  FormBackground,
+  FormLogo,
   FormContainer,
   FormHeading,
   FormLabel,
@@ -16,6 +19,7 @@ import {
   LinksDiv,
   FormLinks
 } from '../Register/forms.style.js';
+import GLlogo from '../../../Utils/Images/GL-logo.jpg'
 
 const Deactivate = () => {
   var status = false;
@@ -51,12 +55,12 @@ const Deactivate = () => {
     for (let i = 0; i < n; i++) {
       if (arrUservalues[i] === '') {
         (document.getElementsByName(arrUserKeys[i]))[0].style.color = "red";
-        (document.getElementsByName(arrUserKeys[i]))[1].style.borderBottom = "3px solid red";
+        (document.getElementsByName(arrUserKeys[i]))[1].style.borderBottom = "2px solid red";
       }
     }
 
     if (e.target.value === '') {
-      e.target.style.borderBottom = "3px solid red";
+      e.target.style.borderBottom = "2px solid red";
       (document.getElementsByName(arrUserKeys[n]))[0].style.color = "red";
     }
     else {
@@ -86,7 +90,7 @@ const Deactivate = () => {
             Swal.fire("Congrats", "You have Deactivate Your Account Successfully.", "success");
             // navigate("/");
           }
-          else{
+          else {
             setError("Incorrect Password!");
             Swal.fire("Oops!", "Incorrect Password!", "error");
             return;
@@ -131,35 +135,41 @@ const Deactivate = () => {
   ]
 
   return (
-    <FormContainer>
-      <FormHeading> Deactivate </FormHeading>
-      {formProp.map((obj, index) => (
-        <>
-          <FormLabel name={obj.name}>{obj.label}</FormLabel><FormAstric>*</FormAstric>
-          <FormInput type="text" {...obj} />
-        </>
-      )
-      )}
+    <FormBackground>
+      <Link to='/'>
+        <FormLogo src={GLlogo} />
+        </Link>
+      <FormContainer>
+        <FormHeading> Deactivate </FormHeading>
+        {formProp.map((obj, index) => (
+          <>
+            <FormLabel name={obj.name}>{obj.label}</FormLabel><FormAstric>*</FormAstric>
+            <FormInput type="text" {...obj} />
+          </>
+        )
+        )}
 
-      {formPass.map((obj) => (
-        <>
-          <FormLabel name={obj.name}>{obj.label}</FormLabel> <FormAstric>*</FormAstric>
-          <FormInput type={obj.showStatus ? "text" : "password"} {...obj}
-          />
-          {obj.showStatus ? <VisibilityOffIcon onClick={obj.visibilityFunc} /> : <VisibilityIcon onClick={obj.visibilityFunc} />}
-        </>
-      )
-      )}
+        {formPass.map((obj) => (
+          <>
+            <FormLabel name={obj.name}>{obj.label}</FormLabel> <FormAstric>*</FormAstric>
+            <FormInput type={obj.showStatus ? "text" : "password"} {...obj}
+            />
+            {obj.showStatus ? <VisibilityOffIcon onClick={obj.visibilityFunc} /> : <VisibilityIcon onClick={obj.visibilityFunc} />}
+          </>
+        )
+        )}
 
-      <FlexDiv>
-        {error && <ErrorMessage className="errorMessage">{error}</ErrorMessage>}
-      </FlexDiv>
+        <FlexDiv>
+          {error && <ErrorMessage className="errorMessage">{error}</ErrorMessage>}
+        </FlexDiv>
 
-      <FlexDiv>
-        <SubmitButton onClick={e => onSubmit(e)}>Deactivate</SubmitButton>
-      </FlexDiv>
+        <FlexDiv>
+          <SubmitButton onClick={e => onSubmit(e)}>Deactivate</SubmitButton>
+        </FlexDiv>
 
-    </FormContainer>
+      </FormContainer>
+    </FormBackground>
+
   );
 }
 

@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import Swal from "sweetalert2";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import validationForgotPass from './validationForgotPass';
 import {
+  FormBackground,
+  FormLogo,
   FormContainer,
   FormHeading, 
   FormLabel,
@@ -14,6 +17,7 @@ import {
   SubmitButton, 
   ErrorMessage
 } from '../Register/forms.style.js';
+import GLlogo from '../../../Utils/Images/GL-logo.jpg'
 
 const ForgotPass = () => {
   var Status = false;
@@ -51,12 +55,12 @@ const ForgotPass = () => {
     for (let i = 0; i < n; i++) {
       if (arrUservalues[i] === '') {
         (document.getElementsByName(arrUserKeys[i]))[0].style.color = "red";
-        (document.getElementsByName(arrUserKeys[i]))[1].style.borderBottom = "3px solid red";
+        (document.getElementsByName(arrUserKeys[i]))[1].style.borderBottom = "2px solid red";
       }
     }
 
     if (e.target.value === '') {
-      e.target.style.borderBottom = "3px solid red";
+      e.target.style.borderBottom = "2px solid red";
       (document.getElementsByName(arrUserKeys[n]))[0].style.color = "red";
     }
     else {
@@ -157,7 +161,11 @@ const ForgotPass = () => {
   ];
 
   return (
-    <FormContainer>
+    <FormBackground>
+      <Link to='/'>
+        <FormLogo src={GLlogo} />
+        </Link>
+      <FormContainer>
           <FormHeading> Forgot password </FormHeading>
           
             {formProp.map((obj, index) => (
@@ -188,6 +196,8 @@ const ForgotPass = () => {
           </FlexDiv>
 
         </FormContainer>
+    </FormBackground>
+    
   );
 }
 

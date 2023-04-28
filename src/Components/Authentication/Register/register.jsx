@@ -5,7 +5,10 @@ import { Link } from 'react-router-dom';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import validationRegister from './validationRegister';
+import { useNavigate } from 'react-router-dom';
 import { 
+  FormBackground,
+  FormLogo,
   FormContainer, 
   FormHeading, 
   FormLabel,
@@ -17,8 +20,10 @@ import {
   LinksDiv, 
   FormLinks 
 } from './forms.style';
+import GLlogo from '../../../Utils/Images/GL-logo.jpg'
 
 const Register = () => {
+  const navigate = useNavigate();
   var status = true;
 
   const [result, setResult] = useState([]);
@@ -53,8 +58,6 @@ const Register = () => {
   }, [user])
 
   const { fname, mname, lname, email, phone, address, gender, dob, password } = user;
-
-
 
   const onInputChange = (e, n) => {
     setUser({ ...user, [e.target.name]: e.target.value });   //arrays of objects
@@ -104,6 +107,7 @@ const Register = () => {
         setError(null);
         axios.post("http://localhost:3003/users", user)
         Swal.fire("Congrats", "You have Successfully Registered.", "success");
+        navigate('/')
       }
     }
   }
@@ -195,7 +199,13 @@ const Register = () => {
   ]
 
   return (
-        <FormContainer>
+    <FormBackground>
+        
+        <Link to='/'>
+        <FormLogo src={GLlogo} />
+        </Link>
+        
+       <FormContainer>
           <FormHeading> Registration </FormHeading>
 
             {formProp.map((obj, index) => (
@@ -228,10 +238,12 @@ const Register = () => {
           <LinksDiv>
             <Link style={{textDecoration: 'none'}}
               to="/login">
-              <FormLinks>Alredy Registered? Login</FormLinks>
+              <FormLinks>Already Registered? Login</FormLinks>
             </Link>
           </LinksDiv>
         </FormContainer>
+    </FormBackground>
+       
   );
 }
 

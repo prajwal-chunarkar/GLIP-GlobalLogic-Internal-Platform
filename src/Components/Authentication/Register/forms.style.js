@@ -1,7 +1,31 @@
 import styled from "styled-components";
+import BgImage from '../../../Utils/Images/bg-image.png';
+
+export const FormBackground = styled.div`
+    height: 100vh;
+    width: 100vw;
+    background-image: url(${BgImage});
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+`
+
+export const FormLogo = styled.img`
+    width: 8rem;
+    height: 8rem;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    border-radius: 2rem;
+
+    :hover {
+        /* width: 9rem;
+        height: 9rem; */
+        box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px;
+    }
+`
 
 export const FormContainer = styled.div`
-    background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+    background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
     position: fixed;
     width: 35vw;
     max-height: 80vh;
@@ -10,9 +34,10 @@ export const FormContainer = styled.div`
     margin-left: 60vw;
     padding: 0.8rem;
     border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     overflow: auto;
-    background-color: rgba(255, 255, 255, 0.7);
+    
 
     &::-webkit-scrollbar {
     /* visibility: hidden; */
@@ -21,7 +46,7 @@ export const FormContainer = styled.div`
     };
 
     &::-webkit-scrollbar-thumb {
-    background: rgba(109, 110, 113,0.4);
+    background: rgba(109, 110, 113, 0.7);
     border-radius: 5px;
     }
 `;
@@ -42,14 +67,16 @@ export const FormAstric = styled.span`
 `;
 
 export const FormInput = styled.input`
+    background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
     border: none;
-    border-bottom: 2px solid rgb(188, 190, 192);
+    border-bottom: 2px solid #6D6E71;
     margin-bottom: 0.1rem;
     height: 3rem;
     padding-left: 0.4rem;
     width: 94%;
     border-radius: 5px;
     margin-bottom: 1.5rem;
+    background: transparent;
 
     &:focus{
         outline: none;
@@ -69,6 +96,9 @@ export const SubmitButton = styled.button`
     border-radius: 10px;
     box-shadow: 0 0 10px #F37037;
     color: #fff;
+    height: 2rem;
+    min-width: 5rem;
+    font-size: large;
 
     &:hover{
     background-color: #efa586;
@@ -78,11 +108,12 @@ export const SubmitButton = styled.button`
 `;
 
 export const ErrorMessage = styled.span`
+    text-align: center;
     color: rgb(95, 3, 3);
     background-color: rgba(246, 86, 86, 0.6);
     padding: 0.2rem 0.7rem;
     border-radius: 5px;
-    width: 20vw;
+    width: 40vw;
 `;
 
 export const LinksDiv = styled.div`

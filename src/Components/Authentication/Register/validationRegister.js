@@ -4,13 +4,17 @@ export default function validationRegister(user,confirmPass){
     const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     const regexPhone = /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/
     const regexDob = /^((0[1-9])|(1[0-2]))\/(\d{4})$/
+
+    if(!fname && !lname && !email && !phone && !address && !gender && !dob && !password && !confirmPass){
+        return 'Enter All Mandatory Details*'
+    }
     
     if(!fname){
-        return 'First Name is Required *'
+        return 'First Name is Required*'
     }
 
     if(!lname){
-        return 'Last Name is Required *'
+        return 'Last Name is Required*'
     }
 
     if(!email){
@@ -26,13 +30,13 @@ export default function validationRegister(user,confirmPass){
     }
 
     if(!address){
-        return 'Address Number is Required*'
+        return 'Address is Required*'
     }
 
     if(!gender){
         return 'Gender is Required'
     } else if(gender !== "male" && gender !== "female"){
-        return 'Please enter valide gender'
+        return 'Please enter valid gender'
     }
 
     if(!dob){

@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "fname": "Prajwal",
+      "mname": "Prabhakar",
+      "lname": "Chunarkar",
+      "email": "prajwal@gmail.com",
+      "phone": "9545557083",
+      "address": "Plot No.10, Shivaji Colony,Hudkeshwar Road, Nagpur-440034",
+      "gender": "male",
+      "dob": "09/2001",
+      "password": "prajwal@2001",
+      "id": 1
+    }
+  ]
+}
