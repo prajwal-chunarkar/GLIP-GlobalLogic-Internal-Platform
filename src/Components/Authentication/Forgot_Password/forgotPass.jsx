@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
@@ -21,7 +21,7 @@ import GLlogo from '../../../Utils/Images/GL-logo.jpg'
 
 const ForgotPass = () => {
   var Status = false;
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [result, setResult] = useState([]);         //imp
 
   useEffect(() => {
@@ -99,11 +99,13 @@ const ForgotPass = () => {
               address: obj.address,
               gender: obj.gender,
               dob: obj.dob,
-              password: password          //new Password rest are old
+              designation: obj.designation,
+              password: password,          //new Password rest are old
+              user_type: obj.user_type
             }
             axios.put(`http://localhost:3003/users/${obj.id}`, upObj);  //updated user data
             Swal.fire("Congrats", "You have Successfully changed Password!", "success");
-            // navigate("/login");
+            navigate("/login");
             return;
           }
         }
@@ -142,7 +144,7 @@ const ForgotPass = () => {
   const formPass = [
     {
       name: 'password',
-      label: 'Password',
+      label: 'New Password',
       placeholder: 'Enter your New Password',
       value: password,
       onChange: (e) => onInputChange(e, 1),
@@ -151,7 +153,7 @@ const ForgotPass = () => {
     },
     {
       name: 'confirmPass',
-      label: 'Confirm Password',
+      label: 'Confirm New Password',
       placeholder: 'Enter your Confirm New Password',
       value: confirmPass,
       onChange: (e) => onInputChange(e, 2),

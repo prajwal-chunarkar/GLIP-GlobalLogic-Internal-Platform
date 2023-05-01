@@ -17,7 +17,7 @@ const Dashboard = () => {
     const empid = useSelector((state) => state.empid);
 
     var tileItemObj1 = ["Access Previleges", "Transport", "Payslips"];
-    var tileItemObj2 = ["Show Employees List", "Expenses", "Exit"];
+    var tileItemObj2 = ["Employees List", "Expenses", "Exit"];
 
     return (
         <>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import GLlogo from '../../Utils/Images/GL-logo.jpg'
@@ -29,7 +28,6 @@ const Navbar = () => {
     const fullName = useSelector((state) => state.fullName);
     const empEmail = useSelector((state) => state.empEmail);
 
-    const navigate = useNavigate();
     const handleIconClick = (e) => {
         setIsOpen((prev)=> !prev);
         // console.log(isOpen);
@@ -66,9 +64,7 @@ const Navbar = () => {
                 {isloggedin ?
 
                     // <NavButton style={{ backgroundColor: "red" }} onClick={loggedOut}>Logout</NavButton> 
-
                     <>
-
                         <IconButton
                             onClick={(e) => handleIconClick(e)}>
                             {nameInit}

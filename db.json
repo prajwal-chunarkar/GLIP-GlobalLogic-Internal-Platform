@@ -1,6 +1,7 @@
 {
   "users": [
     {
+      "id": 1,
       "fname": "Prajwal",
       "mname": "Prabhakar",
       "lname": "Chunarkar",
@@ -9,8 +10,23 @@
       "address": "Plot No.10, Shivaji Colony,Hudkeshwar Road, Nagpur-440034",
       "gender": "male",
       "dob": "09/2001",
+      "designation": "Intern",
       "password": "prajwal@2001",
-      "id": 1
+      "user_type": "admin"
+    },
+    {
+      "fname": "Rajat",
+      "mname": "",
+      "lname": "Gaikwad",
+      "email": "rajat@gmail.com",
+      "phone": "1234567891",
+      "address": "Nagpur, Maharashtra",
+      "gender": "male",
+      "dob": "12/2001",
+      "designation": "Intern",
+      "password": "rajat@123",
+      "user_type": "employee",
+      "id": 2
     }
   ]
 }

@@ -47,7 +47,9 @@ const Register = () => {
     address: '',
     gender: '',
     dob: '',
-    password: ''
+    designation: '',
+    password: '',
+    user_type: 'employee'
   })
 
   var arrUserKeys = Object.keys(user);
@@ -57,7 +59,7 @@ const Register = () => {
     arrUservalues = Object.values(user)
   }, [user])
 
-  const { fname, mname, lname, email, phone, address, gender, dob, password } = user;
+  const { fname, mname, lname, email, phone, address, gender, dob, designation, password } = user;
 
   const onInputChange = (e, n) => {
     setUser({ ...user, [e.target.name]: e.target.value });   //arrays of objects
@@ -174,6 +176,12 @@ const Register = () => {
       label: 'Date of Birth',
       placeholder: 'MM/YYYY',
       value: dob
+    },
+    {
+      name: 'designation',
+      label: 'Designation',
+      placeholder: 'Enter Your Designation',
+      value: designation
     }
   ]
 

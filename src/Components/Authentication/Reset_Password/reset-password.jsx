@@ -95,7 +95,9 @@ const ResetPassword = () => {
             address: obj.address,
             gender: obj.gender,
             dob: obj.dob,
-            password: password          //new Password rest are old
+            designation: obj.designation,
+            password: password,          //new Password rest are old
+            user_type: obj.user_type
           }
           axios.put(`http://localhost:3003/users/${obj.id}`, upObj)
             .then((res) => {

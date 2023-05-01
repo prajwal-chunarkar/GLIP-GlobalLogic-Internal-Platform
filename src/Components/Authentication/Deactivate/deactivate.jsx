@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import Swal from "sweetalert2";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import validationDeactivate from './validationDeactivate';
-import { Link } from 'react-router-dom';
 import {
   FormBackground,
   FormLogo,
@@ -23,7 +23,7 @@ import GLlogo from '../../../Utils/Images/GL-logo.jpg'
 
 const Deactivate = () => {
   var status = false;
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [result, setResult] = useState([]);         //imp
 
   useEffect(() => {
@@ -88,7 +88,7 @@ const Deactivate = () => {
             // console.log(obj.id);
             await axios.delete(`http://localhost:3003/users/${obj.id}`);
             Swal.fire("Congrats", "You have Deactivate Your Account Successfully.", "success");
-            // navigate("/");
+            navigate("/");
           }
           else {
             setError("Incorrect Password!");

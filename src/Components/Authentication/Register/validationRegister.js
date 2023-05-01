@@ -1,9 +1,19 @@
 export default function validationRegister(user,confirmPass){
-    const { fname, mname, lname, email, phone, address, gender, dob, password } = user;
+    const { fname, mname, lname, email, phone, address, gender, dob, designation, password } = user;
 
     const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     const regexPhone = /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/
     const regexDob = /^((0[1-9])|(1[0-2]))\/(\d{4})$/
+
+    //Designation validation Logic
+    const positions = ['Intern','Trainee Software Engineer','Associate Software Engineer','Software Engineer','Senior Software Engineer','Tester','Manager','HR']
+    var isdesignation = false;
+    positions.forEach((pos)=> {
+        if(pos === designation){
+            isdesignation = true;
+            return;
+        }
+    })
 
     if(!fname && !lname && !email && !phone && !address && !gender && !dob && !password && !confirmPass){
         return 'Enter All Mandatory Details*'
@@ -43,6 +53,12 @@ export default function validationRegister(user,confirmPass){
         return 'Date of Birth is Required *'
     }  else if (!dob.match(regexDob)){
         return 'Date of Birth is Invalid'
+    }
+
+    if(!designation){
+        return 'Designation is Required *'
+    }  else if (isdesignation === false){
+        return 'Designation is Invalid'
     }
 
     if(!password){
