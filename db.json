@@ -7,26 +7,33 @@
       "lname": "Chunarkar",
       "email": "prajwal@gmail.com",
       "phone": "9545557083",
+      "workLocation": "Nagpur",
       "address": "Plot No.10, Shivaji Colony,Hudkeshwar Road, Nagpur-440034",
       "gender": "male",
       "dob": "09/2001",
       "designation": "Intern",
       "password": "prajwal@2001",
+      "empID": 1001,
       "user_type": "admin"
     },
     {
-      "fname": "Rajat",
-      "mname": "",
-      "lname": "Gaikwad",
-      "email": "rajat@gmail.com",
-      "phone": "1234567891",
-      "address": "Nagpur, Maharashtra",
+      "fname": "Abhinav",
+      "mname": "Prabhakar",
+      "lname": "Chunarkar",
+      "email": "abhinav@gmail.com",
+      "phone": "8793153566",
+      "workLocation": "Nagpur",
+      "address": "Plot No.10, Shivaji Colony,Hudkeshwar Road, Nagpur-440034",
       "gender": "male",
-      "dob": "12/2001",
-      "designation": "Intern",
-      "password": "rajat@123",
+      "dob": "12/1994",
+      "designation": "Manager",
+      "password": "abhinav@21",
+      "empID": 1002,
       "user_type": "employee",
       "id": 2
     }
-  ]
+  ],
+  "total-registrations": {
+    "total_registrations": 3
+  }
 }

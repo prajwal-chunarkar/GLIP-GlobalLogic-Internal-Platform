@@ -1,9 +1,6 @@
 import styled from "styled-components";
 
 export const NavContainer = styled.div`
-    /* position: sticky;
-    top: 0; */
-    width: 99.8%;
     min-height: 5rem;
     border: none;
     background-color: #BCBEC0;
@@ -11,7 +8,6 @@ export const NavContainer = styled.div`
 
     &:hover {
     background: rgba(0, 0, 0, 0.4);
-    border: none;
     box-shadow: 0 0 10px rgb(3, 0, 6);
     }
 `;

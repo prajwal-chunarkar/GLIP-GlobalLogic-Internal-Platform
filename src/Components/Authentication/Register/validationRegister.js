@@ -1,5 +1,5 @@
 export default function validationRegister(user,confirmPass){
-    const { fname, mname, lname, email, phone, address, gender, dob, designation, password } = user;
+    const { fname, mname, lname, email, phone, workLocation, address, gender, dob, designation, password } = user;
 
     const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     const regexPhone = /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/
@@ -11,6 +11,16 @@ export default function validationRegister(user,confirmPass){
     positions.forEach((pos)=> {
         if(pos === designation){
             isdesignation = true;
+            return;
+        }
+    })
+
+    //Work Location Logic
+    const locations = ['Nagpur','Noida','Pune','Hyderabad','Banglore']
+    var islocation = false;
+    locations.forEach((loc)=> {
+        if(loc === workLocation){
+            islocation = true;
             return;
         }
     })
@@ -37,6 +47,13 @@ export default function validationRegister(user,confirmPass){
         return 'Phone Number is Required*'
     } else if (!phone.match(regexPhone)){
         return 'Phone is Invalid'
+    }
+
+    
+    if(!workLocation){
+        return 'Work Location is Required *'
+    }  else if (islocation === false){
+        return 'Work Location is Invalid'
     }
 
     if(!address){

@@ -8,16 +8,84 @@ import {
     DashboardMainDiv,
 } from "./dashboard.styles";
 import Navbar from "../Navbar/navbar";
+import axios from "axios";
 import { useSelector } from "react-redux";
-import GetDispatch from "../Redux-Dispatch/get-dispatchFile";
+import { useDispatch } from "react-redux";
 import Footer from "../Footer/footer";
+import { useParams } from "react-router-dom";
+import NameInitials from "./name-initials";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
-    const fullName = useSelector((state) => state.fullName);
-    const empid = useSelector((state) => state.empid);
+    const dispatch = useDispatch();
+    const { id } = useParams();
+    const [currUser, setCurrUser] = useState({});
+    const [initials, setInitials] = useState('');
 
-    var tileItemObj1 = ["Access Previleges", "Transport", "Payslips"];
-    var tileItemObj2 = ["Employees List", "Expenses", "Exit"];
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    useEffect(() => {
+        fetchdata();
+    }, [])
+
+    const fetchdata = async () => {
+        await axios.get(`http://localhost:3003/users/${id}`)
+            .then((res) => {
+                setCurrUser(res.data)
+                dispatch({
+                    type: "CURRENT_USER",
+                    payload: res.data
+                })
+
+                const result = NameInitials(res.data.fname, res.data.lname);
+                setInitials(result)
+                dispatch({
+                    type: "NAME_INITIALS",
+                    payload: result
+                })
+
+                if(res.data.user_type === 'admin'){
+                    setIsAdmin(true)
+                }
+            })
+    }
+
+    const { empID, fname, lname } = currUser;
+
+    var tilesRow1 = [
+        {
+            label: "Access Previleges",
+            adminLink: `/dashboard/accessadmin/${id}`,
+            empLink: `/dashboard/accessemp/${id}`
+        },
+        {
+            label: "Transport",
+            adminLink: `/dashboard/transpadmin/${id}`,
+            empLink: `/dashboard/transpemp/${id}`
+        },
+        {
+            label: "Payslips",
+            adminLink: `/dashboard/${id}`,
+            empLink: `/dashboard/${id}`
+        }
+    ];
+    var tilesRow2 = [
+        {
+            label: "Employees List",
+            adminLink: `/dashboard/emplistadmin/${id}`,
+            empLink: `/dashboard/${id}`
+        },
+        {
+            label: "Expenses",
+            adminLink: `/dashboard/${id}`,
+            empLink: `/dashboard/${id}`
+        },
+        {
+            label: "Exit",
+            adminLink: `/dashboard/${id}`,
+            empLink: `/dashboard/${id}`
+        }
+    ];
 
     return (
         <>
@@ -28,10 +96,10 @@ const Dashboard = () => {
                 <DashboardMainDiv className="container-fluid ">
                     <UserDetails
                         style={{ marginTop: "80px", marginLeft: "50px" }}>
-                        <i>Hello {fullName},</i>
+                        <i>Hello {fname} {lname},</i>
                     </UserDetails>
                     <UserDetails style={{ marginLeft: "50px" }}>
-                        <i>your Emp Id is: {empid}</i>
+                        <i>your Emp Id is: {empID}</i>
                     </UserDetails>
                     <div
                         className="row"
@@ -43,26 +111,30 @@ const Dashboard = () => {
                         <div className="col">
                             <div className="dashboard-tiles">
                                 <DashboardTiles className="pt-3 ps-4 pb-3 pe-4 row">
-                                  
-                                    {tileItemObj1.map((item) => (
-                                        <TileItem className="dashboard-item1 col-lg-3 mb-2">
-                                            {item}
-                                        </TileItem>
+
+                                    {tilesRow1.map((item) => (
+                                        <Link to= {isAdmin ? item.adminLink : item.empLink}>
+                                            <TileItem className="dashboard-item1 col-lg-3 mb-2">
+                                                {item.label}
+                                            </TileItem>
+                                        </Link>
                                     ))}
                                 </DashboardTiles>
 
                                 <DashboardTiles className="pt-3 ps-4 pb-3 pe-4 row">
 
-                                    {tileItemObj2.map((item) => (
-                                        <TileItem className="dashboard-item4 col-lg-3 mb-2">
-                                        {item}
-                                    </TileItem>
+                                    {tilesRow2.map((item) => (
+                                        <Link to= {isAdmin ? item.adminLink : item.empLink}>
+                                            <TileItem className="dashboard-item4 col-lg-3 mb-2">
+                                                {item.label}
+                                            </TileItem>
+                                        </Link>
                                     ))}
                                 </DashboardTiles>
                             </div>
                         </div>
                     </div>
-                    <GetDispatch />
+
                 </DashboardMainDiv>
                 <Footer />
             </div>

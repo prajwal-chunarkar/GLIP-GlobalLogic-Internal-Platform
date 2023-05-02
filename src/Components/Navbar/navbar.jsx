@@ -23,10 +23,9 @@ const Navbar = () => {
 
     const [isOpen, setIsOpen] = useState(false);
     const windowRef = useRef();
-    const nameInit = useSelector((state) => state.nameInit);
-    const empid = useSelector((state) => state.empid);
-    const fullName = useSelector((state) => state.fullName);
-    const empEmail = useSelector((state) => state.empEmail);
+
+    const currUser = useSelector((state)=> state.currUser);
+    const initials = useSelector((state)=> state.initials);
 
     const handleIconClick = (e) => {
         setIsOpen((prev)=> !prev);
@@ -67,18 +66,18 @@ const Navbar = () => {
                     <>
                         <IconButton
                             onClick={(e) => handleIconClick(e)}>
-                            {nameInit}
+                            {initials}
                         </IconButton>
 
                         {isOpen && (
                             <SettingDiv ref={windowRef} className="window">
                                 <div class="card">
                                     <div class="card-body" style={{ borderRadius: "50%", height: "80%" }}>
-                                        <Text class="card-title" ><b>{fullName}</b></Text>
-                                        <Text class="card-title" style={{ fontSize: "0.8rem" }}>{empEmail}</Text>
-                                        <Text class="card-title" style={{ fontSize: "0.9rem" }}>Emp Id: {empid}</Text>
+                                        <Text class="card-title" ><b>{currUser.fname} {currUser.lname}</b></Text>
+                                        <Text class="card-title" style={{ fontSize: "0.8rem" }}>{currUser.email}</Text>
+                                        <Text class="card-title" style={{ fontSize: "0.9rem" }}>Emp Id: {currUser.empID}</Text>
                                         <br />
-                                        <NavLink to= {`/resetpassword/${empid}`} style={{ textDecoration: "none", color: "#000" }}>
+                                        <NavLink to= {`/resetpassword/${currUser.id}`} style={{ textDecoration: "none", color: "#000" }}>
                                             <NavLinkSpan>
                                                 <SettingsRoundedIcon />
                                                 <span className="span mx-2" style={{ fontSize: "0.95rem" }}>Manage Your Account</span>
@@ -117,7 +116,6 @@ const Navbar = () => {
                             </NavLink> */}
                     </>}
             </NavButtonDiv>
-
         </NavContainer>
 
     )

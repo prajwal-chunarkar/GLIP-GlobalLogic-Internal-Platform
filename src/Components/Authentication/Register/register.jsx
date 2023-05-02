@@ -26,6 +26,9 @@ const Register = () => {
   const navigate = useNavigate();
   var status = true;
 
+  const [totalRegistered, setTotalRegistered] = useState();
+  const [newID, setNewID] = useState()
+
   const [result, setResult] = useState([]);
 
   useEffect(() => {
@@ -36,6 +39,12 @@ const Register = () => {
     const res = await axios.get(`http://localhost:3003/users`);
     setResult(res.data);
     // console.log(res.data);
+
+    const res2 = await axios.get(`http://localhost:3003/total-registrations`)
+    setTotalRegistered(res2.data.total_registrations + 1);
+
+    setNewID(res2.data.total_registrations + 1001)
+    setUser({...user, "empID": res2.data.total_registrations + 1001})
   }
 
   const [user, setUser] = useState({
@@ -44,13 +53,16 @@ const Register = () => {
     lname: '',
     email: '',
     phone: '',
+    workLocation: '',
     address: '',
     gender: '',
     dob: '',
     designation: '',
     password: '',
+    empID: newID,
     user_type: 'employee'
   })
+  const { fname, mname, lname, email, phone, workLocation, address, gender, dob, designation, password } = user;
 
   var arrUserKeys = Object.keys(user);
   var arrUservalues = Object.values(user)
@@ -58,8 +70,6 @@ const Register = () => {
   useEffect(() => {
     arrUservalues = Object.values(user)
   }, [user])
-
-  const { fname, mname, lname, email, phone, address, gender, dob, designation, password } = user;
 
   const onInputChange = (e, n) => {
     setUser({ ...user, [e.target.name]: e.target.value });   //arrays of objects
@@ -107,6 +117,11 @@ const Register = () => {
 
       if (status === true) {
         setError(null);
+        
+        axios.put("http://localhost:3003/total-registrations", {
+          total_registrations: totalRegistered,
+        })
+
         axios.post("http://localhost:3003/users", user)
         Swal.fire("Congrats", "You have Successfully Registered.", "success");
         navigate('/')
@@ -158,6 +173,12 @@ const Register = () => {
       label: 'Phone',
       placeholder: 'Enter your Phone Number',
       value: phone
+    },
+    {
+      name: 'workLocation',
+      label: 'Work Location',
+      placeholder: 'Enter your Work Location(City)',
+      value: workLocation
     },
     {
       name: 'address',
