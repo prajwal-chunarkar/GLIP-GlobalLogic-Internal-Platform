@@ -1,13 +1,7 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-import { useSelector } from 'react-redux';
-import corousel1 from "../../Utils/Images/Corousel-1.jpg";
-import corousel2 from "../../Utils/Images/Corousel-2.jpg";
-import corousel3 from "../../Utils/Images/Corousel-3.jpg";
 import Navbar from '../Navbar/navbar';
 import Footer from '../Footer/footer';
 import BackToTop from './back-to-top';
-
 import {
     DivMainHome,
     DivMainHomeCarousel,
@@ -18,6 +12,9 @@ import {
     PHomeTagDescription,
     PHomeTaglineGL2Letters,
 } from "./home.style";
+import corousel1 from "../../Utils/Images/Corousel-1.jpg";
+import corousel2 from "../../Utils/Images/Corousel-2.jpg";
+import corousel3 from "../../Utils/Images/Corousel-3.jpg";
 
 const Home = () => {
     const headingGL = ["G", "l", "o", "b", "a", "l", "L", "o", "g", "i", "c"];

@@ -92,6 +92,7 @@ const ResetPassword = () => {
             lname: obj.lname,
             email: obj.email,
             phone: obj.phone,
+            workLocation: obj.workLocation,
             address: obj.address,
             gender: obj.gender,
             dob: obj.dob,
@@ -180,6 +181,13 @@ const ResetPassword = () => {
           <Link style={{ textDecoration: 'none' }}
             to={`/dashboard/${id}`}>
             <FormLinks>Go to Dashboard</FormLinks>
+          </Link>
+        </LinksDiv>
+
+        <LinksDiv>
+          <Link style={{ textDecoration: 'none' }}
+            to={`/deactivate`}>
+            <FormLinks>Deactivate Account</FormLinks>
           </Link>
         </LinksDiv>
 

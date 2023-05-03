@@ -6,47 +6,30 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import validationRegister from './validationRegister';
 import { useNavigate } from 'react-router-dom';
-import { 
+import {
   FormBackground,
   FormLogo,
-  FormContainer, 
-  FormHeading, 
+  FormContainer,
+  FormHeading,
   FormLabel,
-  FormInput, 
-  FormAstric, 
+  FormInput,
+  FormAstric,
   FlexDiv,
-  SubmitButton, 
-  ErrorMessage, 
-  LinksDiv, 
-  FormLinks 
+  SubmitButton,
+  ErrorMessage,
+  LinksDiv,
+  FormLinks
 } from './forms.style';
 import GLlogo from '../../../Utils/Images/GL-logo.jpg'
 
 const Register = () => {
   const navigate = useNavigate();
-  var status = true;
+
 
   const [totalRegistered, setTotalRegistered] = useState();
   const [newID, setNewID] = useState()
 
   const [result, setResult] = useState([]);
-
-  useEffect(() => {
-    fetchdata();
-  }, [])                          //only once when load
-
-  const fetchdata = async () => {
-    const res = await axios.get(`http://localhost:3003/users`);
-    setResult(res.data);
-    // console.log(res.data);
-
-    const res2 = await axios.get(`http://localhost:3003/total-registrations`)
-    setTotalRegistered(res2.data.total_registrations + 1);
-
-    setNewID(res2.data.total_registrations + 1001)
-    setUser({...user, "empID": res2.data.total_registrations + 1001})
-  }
-
   const [user, setUser] = useState({
     fname: '',
     mname: '',
@@ -60,9 +43,27 @@ const Register = () => {
     designation: '',
     password: '',
     empID: newID,
-    user_type: 'employee'
+    user_type: 'employee'               //By default employee
   })
   const { fname, mname, lname, email, phone, workLocation, address, gender, dob, designation, password } = user;
+
+  useEffect(() => {
+    fetchdata();
+  }, [])                          //only once when load
+
+  const fetchdata = async () => {
+    await axios.get(`http://localhost:3003/users`)
+      .then((res) => {
+        setResult(res.data);
+      })
+
+    await axios.get(`http://localhost:3003/total-registrations`)
+      .then((res) => {
+        setTotalRegistered(res.data.total_registrations + 1);
+        setNewID(res.data.total_registrations + 1001)
+        setUser({ ...user, "empID": res.data.total_registrations + 1001 })
+      })
+  }
 
   var arrUserKeys = Object.keys(user);
   var arrUservalues = Object.values(user)
@@ -91,10 +92,11 @@ const Register = () => {
     }
   }
 
-  const [error, setError] = useState(null);
-
   //Confirm Password
   const [confirmPass, setConfirmPass] = useState("");
+
+  const [error, setError] = useState(null);
+  var status = true;
 
   const onSubmit = (e) => {
     e.preventDefault();       //PREVENT REFRESH OF PAGE
@@ -110,14 +112,15 @@ const Register = () => {
       result.forEach((obj) => {
         if (obj.email === email) {
           status = false;
-          setError("Email Already Registered!")
+          setError("Email Already Registered!");
           Swal.fire("Oops!", "Email Already Registered!", "error");
+          return;
         }
       })
 
       if (status === true) {
         setError(null);
-        
+
         axios.put("http://localhost:3003/total-registrations", {
           total_registrations: totalRegistered,
         })
@@ -125,6 +128,7 @@ const Register = () => {
         axios.post("http://localhost:3003/users", user)
         Swal.fire("Congrats", "You have Successfully Registered.", "success");
         navigate('/')
+        return;
       }
     }
   }
@@ -229,50 +233,51 @@ const Register = () => {
 
   return (
     <FormBackground>
-        
-        <Link to='/'>
+
+      <Link to='/'>
         <FormLogo src={GLlogo} />
-        </Link>
-        
-       <FormContainer>
-          <FormHeading> Registration </FormHeading>
+      </Link>
 
-            {formProp.map((obj, index) => (
-              <>
-                <FormLabel name={obj.name}>{obj.label}</FormLabel>
-                {obj.name!=='mname' && <FormAstric>*</FormAstric> }
-                <FormInput type="text" {...obj} onChange={(e) => onInputChange(e, index)} />
-              </>
-            )
-            )}
+      <FormContainer>
+        <FormHeading> Registration </FormHeading>
 
-            {formPass.map((obj) => (
-              <>
-                <FormLabel name={obj.name}>{obj.label}  </FormLabel><FormAstric>*</FormAstric>
-                <FormInput type={obj.showStatus ? "text" : "password"} {...obj}
-                />
-                {obj.showStatus ? <VisibilityOffIcon onClick={obj.visibilityFunc} /> : <VisibilityIcon onClick={obj.visibilityFunc} />}
-              </>
-            )
-            )}
+        {formProp.map((obj, index) => (
+          <>
+            <FormLabel name={obj.name}>{obj.label}</FormLabel>
+            {obj.name !== 'mname' && <FormAstric>*</FormAstric>}
+            <FormInput type="text" {...obj} onChange={(e) => onInputChange(e, index)} />
+          </>
+        )
+        )}
 
-          <FlexDiv>
-            {error && <ErrorMessage>{error}</ErrorMessage>}
-          </FlexDiv>
+        {formPass.map((obj) => (
+          <>
+            <FormLabel name={obj.name}>{obj.label}  </FormLabel><FormAstric>*</FormAstric>
+            <FormInput type={obj.showStatus ? "text" : "password"} {...obj}
+            />
+            {obj.showStatus ? <VisibilityOffIcon onClick={obj.visibilityFunc} /> : 
+                              <VisibilityIcon onClick={obj.visibilityFunc} /> }
+          </>
+        )
+        )}
 
-          <FlexDiv>
-            <SubmitButton onClick={e => onSubmit(e)}>Register</SubmitButton>
-          </FlexDiv>
+        <FlexDiv>
+          {error && <ErrorMessage>{error}</ErrorMessage>}
+        </FlexDiv>
 
-          <LinksDiv>
-            <Link style={{textDecoration: 'none'}}
-              to="/login">
-              <FormLinks>Already Registered? Login</FormLinks>
-            </Link>
-          </LinksDiv>
-        </FormContainer>
+        <FlexDiv>
+          <SubmitButton onClick={e => onSubmit(e)}>Register</SubmitButton>
+        </FlexDiv>
+
+        <LinksDiv>
+          <Link style={{ textDecoration: 'none' }}
+            to="/login">
+            <FormLinks>Already Registered? Login</FormLinks>
+          </Link>
+        </LinksDiv>
+      </FormContainer>
     </FormBackground>
-       
+
   );
 }
 

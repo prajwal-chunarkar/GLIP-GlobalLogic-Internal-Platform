@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import GLlogo from '../../Utils/Images/GL-logo.jpg'
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 import {
     NavContainer,
@@ -24,12 +25,13 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const windowRef = useRef();
 
-    const currUser = useSelector((state)=> state.currUser);
-    const initials = useSelector((state)=> state.initials);
+    var currUser = useSelector((state) => state.currUser);
+    var initials = useSelector((state) => state.initials);
+
+    const { id, empID, fname, lname, email } = currUser
 
     const handleIconClick = (e) => {
-        setIsOpen((prev)=> !prev);
-        // console.log(isOpen);
+        setIsOpen((prev) => !prev);
     };
 
     const handleClickOutside = (event) => {
@@ -40,7 +42,6 @@ const Navbar = () => {
 
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);
-
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
@@ -61,8 +62,6 @@ const Navbar = () => {
             </NavHeadingDiv>
             <NavButtonDiv>
                 {isloggedin ?
-
-                    // <NavButton style={{ backgroundColor: "red" }} onClick={loggedOut}>Logout</NavButton> 
                     <>
                         <IconButton
                             onClick={(e) => handleIconClick(e)}>
@@ -72,29 +71,49 @@ const Navbar = () => {
                         {isOpen && (
                             <SettingDiv ref={windowRef} className="window">
                                 <div class="card">
-                                    <div class="card-body" style={{ borderRadius: "50%", height: "80%" }}>
-                                        <Text class="card-title" ><b>{currUser.fname} {currUser.lname}</b></Text>
-                                        <Text class="card-title" style={{ fontSize: "0.8rem" }}>{currUser.email}</Text>
-                                        <Text class="card-title" style={{ fontSize: "0.9rem" }}>Emp Id: {currUser.empID}</Text>
+                                    <div
+                                        class="card-body"
+                                        style={{ borderRadius: "50%", height: "80%" }}>
+                                        <Text
+                                            class="card-title" >
+                                            <b>{fname} {lname}</b>
+                                        </Text>
+                                        <Text
+                                            class="card-title"
+                                            style={{ fontSize: "0.8rem" }}>
+                                            {email}
+                                        </Text>
+                                        <Text
+                                            class="card-title"
+                                            style={{ fontSize: "0.9rem" }}>
+                                            Emp Id: {empID}
+                                        </Text>
                                         <br />
-                                        <NavLink to= {`/resetpassword/${currUser.id}`} style={{ textDecoration: "none", color: "#000" }}>
+
+                                        <NavLink
+                                            to={`/resetpassword/${id}`}
+                                            style={{ textDecoration: "none", color: "#000" }}>
                                             <NavLinkSpan>
                                                 <SettingsRoundedIcon />
-                                                <span className="span mx-2" style={{ fontSize: "0.95rem" }}>Manage Your Account</span>
+                                                <span
+                                                    className="span mx-2"
+                                                    style={{ fontSize: "0.95rem" }}>
+                                                    Manage Your Account
+                                                </span>
                                             </NavLinkSpan>
                                         </NavLink>
                                         <hr />
                                         <p class="card-text" >
-                                            {/* <CardContainer> */}
-                                            <NavLink to="#" style={{ textDecoration: "none", color: "#000" }}>
+                                            <NavLink
+                                                to="#"
+                                                style={{ textDecoration: "none", color: "#000" }}>
                                                 <NavLinkSpan>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" onClick={loggedOut} style={{ marginLeft: "45%" }} height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none" /><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z" /></svg>
-                                                    {/* <span className="span mx-2" style={{fontSize:"1rem"}}>Sign Out</span> */}
+                                                    <LogoutIcon 
+                                                    onClick={loggedOut} 
+                                                    style={{ marginLeft: "45%" }} />
                                                 </NavLinkSpan>
                                             </NavLink>
-                                            {/* </CardContainer> */}
                                         </p>
-
                                     </div>
                                 </div>
                             </SettingDiv>
@@ -111,9 +130,7 @@ const Navbar = () => {
                             <NavButton>Register</NavButton>
                         </NavLink>
 
-                        {/* <NavLink to="/deactivate">
-                                <NavButton>Deactivate Account</NavButton>
-                            </NavLink> */}
+
                     </>}
             </NavButtonDiv>
         </NavContainer>

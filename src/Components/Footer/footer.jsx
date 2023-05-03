@@ -1,12 +1,10 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import axios from "axios";
 import CloseButton from "react-bootstrap/CloseButton";
-import { useRef } from "react";
-import { useSelector } from "react-redux";
 
-import{
+import {
     Para,
     TermsAndConditions,
     TermsAndConditionsText,
@@ -28,15 +26,29 @@ const Footer = () => {
     const [modalval, setmodalval] = useState(false);
     const showTnC = () => {
         modalval ? setmodalval(false) : setmodalval(true);
-            window.scrollTo({
-              top: 0, 
-              behavior: 'smooth'
-             
-            });
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     };
+    // -------------------------------------------------------------- //
+    const dispatch = useDispatch();
+    const [totalReg, setTotalReg] = useState()
 
-    const employeeLength = useSelector((state) => state.employeeLength);
+    useEffect(() => {
+        fetchdata();
+    }, [])
 
+    const fetchdata = async () => {
+        await axios.get(`http://localhost:3003/total-registrations`)
+            .then((res) => {
+                setTotalReg(res.data.total_registrations)
+                dispatch({
+                    type: "TOTAL_REGISTERED",
+                    payload: res.data.total_registrations
+                })
+            })
+    }
     return (
         <>
             <div>
@@ -44,25 +56,25 @@ const Footer = () => {
                     <div className="col-md-3">
                         <UL>
                             <Li>
-                                    <Link to="/login" style={{ textDecoration: "none" }}><FooterA>Login</FooterA></Link>
+                                <Link to="/login" style={{ textDecoration: "none" }}><FooterA>Login</FooterA></Link>
                             </Li>
 
                             <Li>
-                                    <Link to="/aboutus" style={{ textDecoration: "none" }}><FooterA>About Us</FooterA></Link>
+                                <Link to="/aboutus" style={{ textDecoration: "none" }}><FooterA>About Us</FooterA></Link>
                             </Li>
 
                             <Li>
-                                    <Link to="/careers" style={{ textDecoration: "none" }}>
-                                        <FooterA>Careers</FooterA>
-                                    </Link>
+                                <Link to="/careers" style={{ textDecoration: "none" }}>
+                                    <FooterA>Careers</FooterA>
+                                </Link>
                             </Li>
-                            
+
                         </UL>
                     </div>
 
                     <div className="col-md-9">
-                            <div>
-                        <BottomDiv>
+                        <div>
+                            <BottomDiv>
                                 <div>
                                     <DivTnC>
                                         <ButtonTnC onClick={showTnC}>
@@ -76,14 +88,14 @@ const Footer = () => {
                                 </div>
 
                                 <div>
-                                    <DivNoE>Number of Employees:                                     
-                                    <ParaNoOfEmployee>
-                                        {employeeLength}
-                                    </ParaNoOfEmployee>
+                                    <DivNoE>Total Registrations
+                                        <ParaNoOfEmployee>
+                                            {totalReg}
+                                        </ParaNoOfEmployee>
                                     </DivNoE>
                                 </div>
-                        </BottomDiv>
-                            </div>
+                            </BottomDiv>
+                        </div>
                     </div>
                 </Flex>
             </div>
@@ -147,14 +159,6 @@ const Footer = () => {
                                 voluptatem quae aliquid ipsum illo a cupiditate
                                 assumenda? Alias!
                             </TermsAndConditionsText>
-                            {/* <div>
-                                <ButtonCloseTnC
-                                    onClick={showTnC}
-                                    className="position-absolute bottom-0 start-50 translate-middle mt-5 me-5"
-                                >
-                                    OK
-                                </ButtonCloseTnC>
-                            </div> */}
                         </div>
                     </TermsAndConditions>
                 </div>

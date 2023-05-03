@@ -1,5 +1,10 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import Navbar from "../Navbar/navbar";
+import Footer from "../Footer/footer";
+import NameInitials from "./name-initials";
 import {
     UserDetails,
     Quote,
@@ -7,14 +12,6 @@ import {
     TileItem,
     DashboardMainDiv,
 } from "./dashboard.styles";
-import Navbar from "../Navbar/navbar";
-import axios from "axios";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import Footer from "../Footer/footer";
-import { useParams } from "react-router-dom";
-import NameInitials from "./name-initials";
-import { Link } from "react-router-dom";
 
 const Dashboard = () => {
     const dispatch = useDispatch();
@@ -36,6 +33,7 @@ const Dashboard = () => {
                     type: "CURRENT_USER",
                     payload: res.data
                 })
+                // localStorage.setItem('currUser',JSON.stringify(res.data))
 
                 const result = NameInitials(res.data.fname, res.data.lname);
                 setInitials(result)
@@ -43,6 +41,7 @@ const Dashboard = () => {
                     type: "NAME_INITIALS",
                     payload: result
                 })
+                // localStorage.initials = result;
 
                 if(res.data.user_type === 'admin'){
                     setIsAdmin(true)
@@ -51,7 +50,6 @@ const Dashboard = () => {
     }
 
     const { empID, fname, lname } = currUser;
-
     var tilesRow1 = [
         {
             label: "Access Previleges",
@@ -113,7 +111,9 @@ const Dashboard = () => {
                                 <DashboardTiles className="pt-3 ps-4 pb-3 pe-4 row">
 
                                     {tilesRow1.map((item) => (
-                                        <Link to= {isAdmin ? item.adminLink : item.empLink}>
+                                        <Link 
+                                        style={{maxWidth: '10vw'}} 
+                                        to= {isAdmin ? item.adminLink : item.empLink} >
                                             <TileItem className="dashboard-item1 col-lg-3 mb-2">
                                                 {item.label}
                                             </TileItem>
@@ -124,7 +124,9 @@ const Dashboard = () => {
                                 <DashboardTiles className="pt-3 ps-4 pb-3 pe-4 row">
 
                                     {tilesRow2.map((item) => (
-                                        <Link to= {isAdmin ? item.adminLink : item.empLink}>
+                                        <Link 
+                                        style={{maxWidth: '10vw'}} 
+                                        to= {isAdmin ? item.adminLink : item.empLink} >
                                             <TileItem className="dashboard-item4 col-lg-3 mb-2">
                                                 {item.label}
                                             </TileItem>
@@ -134,7 +136,6 @@ const Dashboard = () => {
                             </div>
                         </div>
                     </div>
-
                 </DashboardMainDiv>
                 <Footer />
             </div>

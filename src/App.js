@@ -20,7 +20,7 @@ import TranspEmp from './Components/Tiles/Transport/Transport-Employee/transp-em
 
 function App() {
   return (
-    <div>
+    <>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />} />
@@ -42,7 +42,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       
-    </div>
+    </>
   );
 }
 

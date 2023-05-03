@@ -31,9 +31,63 @@
       "empID": 1002,
       "user_type": "employee",
       "id": 2
+    },
+    {
+      "fname": "Rajat",
+      "mname": "",
+      "lname": "Gaikwad",
+      "email": "rajat@gmail.com",
+      "phone": "1234567890",
+      "workLocation": "Noida",
+      "address": "181, Block-H, Beta-2, Greater Noida",
+      "gender": "male",
+      "dob": "05/2001",
+      "designation": "Intern",
+      "password": "rajat@05",
+      "empID": 1004,
+      "user_type": "employee",
+      "id": 3
+    },
+    {
+      "fname": "aa",
+      "mname": "aa",
+      "lname": "aa",
+      "email": "aa@gmail.com",
+      "phone": "1234567890",
+      "workLocation": "Noida",
+      "address": "aa",
+      "gender": "male",
+      "dob": "12/2000",
+      "designation": "Intern",
+      "password": "xxxxxx",
+      "empID": 1005,
+      "user_type": "employee",
+      "id": 4
     }
   ],
   "total-registrations": {
-    "total_registrations": 3
-  }
+    "total_registrations": 5
+  },
+  "locations": [
+    {
+      "city": "Nagpur",
+      "officeAddress": "22XM+FR8, MIHAN, Nagpur, Nagpur, Maharashtra 441108"
+    },
+    {
+      "city": "Pune",
+      "officeAddress": "Commerzone, Building 2, 6th floor, Office 203, Survey 144/145 Samrat Ashok Path, Jail Rd, off Airport Road, Yerawada, Pune, Maharashtra 411006"
+    },
+    {
+      "city": "Hyderabad",
+      "officeAddress": "DLF BUILDING, Block 1, 6th floor, Gachibowli Rd, DLF Cyber City, Indira Nagar, Gachibowli, Telangana 500032"
+    },
+    {
+      "city": "Noida",
+      "officeAddress": "Plot No.7, Oxygen Business Park SEZ, Tower, 3, Noida-Greater Noida Expy, Sector 144, Noida, Uttar Pradesh 201304"
+    },
+    {
+      "city": "Banglore",
+      "officeAddress": "Pritech Park SEZ, 4th Floor, Block 12 , RMZ Ecospace, Marathahalli - Sarjapur Outer Ring Rd, Bellandur, Bengaluru, Karnataka 560103"
+    }
+  ]
 }

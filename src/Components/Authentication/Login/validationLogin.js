@@ -1,7 +1,10 @@
-export default function validationLogin(email,password){
+export default function validationLogin(user){
+    const { email, password } = user;
+    
     const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    
     if(!email && !password){
-        return 'Please Fill All Credentials*'
+        return 'Please Fill Credentials*'
     }
 
     if(!email){

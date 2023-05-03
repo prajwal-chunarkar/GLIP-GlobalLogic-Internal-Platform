@@ -15,14 +15,11 @@ import {
   FormAstric,
   FlexDiv,
   SubmitButton,
-  ErrorMessage,
-  LinksDiv,
-  FormLinks
+  ErrorMessage
 } from '../Register/forms.style.js';
 import GLlogo from '../../../Utils/Images/GL-logo.jpg'
 
 const Deactivate = () => {
-  var status = false;
   const navigate = useNavigate();
   const [result, setResult] = useState([]);         //imp
 
@@ -43,10 +40,10 @@ const Deactivate = () => {
   const { email, password } = user;
 
   var arrUserKeys = Object.keys(user);
-  var arrUservalues = Object.values(user)
+  var arrUservalues = Object.values(user);
 
   useEffect(() => {
-    arrUservalues = Object.values(user)
+    arrUservalues = Object.values(user);
   }, [user])
 
   const onInputChange = (e, n) => {
@@ -70,6 +67,8 @@ const Deactivate = () => {
   }
 
   const [error, setError] = useState(null);
+  var status = false;
+
   const onSubmit = e => {
     e.preventDefault();
     const deactivateError = validationDeactivate(email, password)
@@ -87,8 +86,9 @@ const Deactivate = () => {
           if (obj.password === password) {
             // console.log(obj.id);
             await axios.delete(`http://localhost:3003/users/${obj.id}`);
-            Swal.fire("Congrats", "You have Deactivate Your Account Successfully.", "success");
+            Swal.fire("Congrats", "You have Deactivated Your Account Successfully.", "success");
             navigate("/");
+            return;
           }
           else {
             setError("Incorrect Password!");

@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import Swal from "sweetalert2";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import validationLogin from './validationLogin';
 import uniqid from 'uniqid';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import {
   FormBackground,
   FormLogo,
@@ -26,9 +25,9 @@ import GLlogo from '../../../Utils/Images/GL-logo.jpg'
 
 const Login = () => {
   const dispatch = useDispatch();
-  var status = false;
   const navigate = useNavigate();
-  const [result, setResult] = useState([]);         //imp
+  
+  const [result, setResult] = useState([]);        
 
   useEffect(() => {
     fetchdata();
@@ -74,10 +73,11 @@ const Login = () => {
   }
 
   const [error, setError] = useState(null);
+  var status = false;
 
   const onSubmit = e => {
     e.preventDefault();
-    const loginError = validationLogin(email, password);             //validation
+    const loginError = validationLogin(user);             //validation
 
     if (loginError !== null) {
       setError(loginError);
@@ -90,10 +90,12 @@ const Login = () => {
           status = true;
           if (obj.password === password) {
             localStorage.token = uniqid();
-            Swal.fire("Congrats", "You have Login Successfully.", "success");
+            
             dispatch({
               type: 'LOGIN'
             })
+
+            Swal.fire("Congrats", "You have Login Successfully.", "success");
             navigate(`/dashboard/${obj.id}`);
             return;
           }
@@ -148,7 +150,7 @@ const Login = () => {
         </Link>
       <FormContainer>
         <FormHeading> Login </FormHeading>
-        {formProp.map((obj, index) => (
+        {formProp.map((obj) => (
           <>
             <FormLabel name={obj.name}>{obj.label}</FormLabel>
             <FormAstric>*</FormAstric>

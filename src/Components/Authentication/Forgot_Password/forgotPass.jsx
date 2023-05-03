@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import Swal from "sweetalert2";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
@@ -20,7 +20,6 @@ import {
 import GLlogo from '../../../Utils/Images/GL-logo.jpg'
 
 const ForgotPass = () => {
-  var Status = false;
   const navigate = useNavigate();
   const [result, setResult] = useState([]);         //imp
 
@@ -70,11 +69,12 @@ const ForgotPass = () => {
   }
 
   const [error, setError] = useState(null);
+  var Status = false;
 
   const onSubmit = (e) => {
     e.preventDefault();       //PREVENT REFRESH OF PAGE
 
-    const forgotPassError = validationForgotPass(user);             //validation
+    const forgotPassError = validationForgotPass(user);       //validation
 
     if (forgotPassError !== null) {
       setError(forgotPassError);
@@ -96,6 +96,7 @@ const ForgotPass = () => {
               lname: obj.lname,
               email: obj.email,
               phone: obj.phone,
+              workLocation: obj.workLocation,
               address: obj.address,
               gender: obj.gender,
               dob: obj.dob,
@@ -105,7 +106,7 @@ const ForgotPass = () => {
               user_type: obj.user_type
             }
             axios.put(`http://localhost:3003/users/${obj.id}`, upObj);  //updated user data
-            Swal.fire("Congrats", "You have Successfully changed Password!", "success");
+            Swal.fire("Congrats", "You have Successfully changed your Password!", "success");
             navigate("/login");
             return;
           }
@@ -171,7 +172,7 @@ const ForgotPass = () => {
       <FormContainer>
           <FormHeading> Forgot password </FormHeading>
           
-            {formProp.map((obj, index) => (
+            {formProp.map((obj) => (
               <>
                 <FormLabel name={obj.name}>{obj.label}</FormLabel><FormAstric>*</FormAstric>
                 <FormInput type="text" {...obj}/>

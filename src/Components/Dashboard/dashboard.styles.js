@@ -20,7 +20,9 @@ export const DashboardTiles = styled.span`
   `
 export const TileItem = styled.button`
 /* height: 10rem; */
-  border: 0px;
+  border: none;
+  min-width: 15vw;
+  min-height: 23vh;
   background-color:  rgba(109, 110, 113, 0.8);
   padding: 1.5rem 0rem;
   font-size: 2rem;

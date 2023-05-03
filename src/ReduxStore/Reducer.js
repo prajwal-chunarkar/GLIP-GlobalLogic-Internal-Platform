@@ -2,7 +2,6 @@ export const Reducer = (state = {
     isloggedin: localStorage.token ? true : false,
     currUser: {},
     initials: ''
-    
 }, action) => {
     switch (action.type) {
         case "LOGIN": {
@@ -11,13 +10,18 @@ export const Reducer = (state = {
             return state
         }
         case "CURRENT_USER": {
-            state = { ...state }              //flow right to left
+            state = { ...state }           
             state.currUser = action.payload
             return state
         }
         case "NAME_INITIALS": {
-            state = { ...state }              //flow right to left
+            state = { ...state }            
             state.initials = action.payload
+            return state
+        }
+        case "TOTAL_REGISTERED": {
+            state = { ...state }              
+            state.totalRegistered = action.payload
             return state
         }
         default: return state

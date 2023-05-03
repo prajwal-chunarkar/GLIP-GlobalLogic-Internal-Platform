@@ -8,7 +8,7 @@ export default function validationDeactivate(email, password){
     }
 
     if(!password){
-        return 'Password is Required *'
+        return 'Password is Required*'
     } 
 
     return null;
