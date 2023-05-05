@@ -11,12 +11,19 @@ import ResetPassword from './Components/Authentication/Reset_Password/reset-pass
 
 //Tiles
 
-import AccessAdmin from './Components/Tiles/Access-Privillage/Access-Privillage-Admin/access-admin';
+import AccessPrivilegeAdmin from './Components/Tiles/Access-Privillage/Access-Privillage-Admin/access-privillage-admin';
+
 import AccessEmp from './Components/Tiles/Access-Privillage/Access-Privillage-Employee/access-emp';
 
-import EmpListAdmin from './Components/Tiles/Employee-List/emp-list-admin';
-import TranspAdmin from './Components/Tiles/Transport/Transport-Admin/transp-admin';
+import FilterPrac from './Components/Tiles/Employee-List/employee-list';
+// import TranspAdmin from './Components/Tiles/Transport/Transport-Admin/transp-admin';
 import TransportEmp from './Components/Tiles/Transport/Transport-Employee/transport-emp';
+
+import TransportAdmin from './Components/Tiles/Transport/Transport-Admin/transport-admin';
+
+import TransportAdminApprovedRequest from './Components/Tiles/Transport/Transport-Admin/transport-admin-approved-request';
+
+
 
 function App() {
   return (
@@ -33,12 +40,18 @@ function App() {
           <Route path='*' element={<NotFound />} />
           
           {/* Tiles */}
-          <Route path='/dashboard/accessadmin/:id' element={<AccessAdmin />} />
+          {/* <Route path='/dashboard/accessadmin/:id' element={<AccessAdmin />} /> */}
+
+          <Route path='/dashboard/admin-access-previleges/:id' element={<AccessPrivilegeAdmin />} />
+
           <Route path='/dashboard/accessemp/:id' element={<AccessEmp />} />
-          <Route path='/dashboard/emplistadmin/:id' element={<EmpListAdmin />} />
-          <Route path='/dashboard/transpadmin/:id' element={<TranspAdmin />} />
+          <Route path='/dashboard/emplistadmin/:id' element={<FilterPrac />} />
+
           <Route path='/dashboard/transpemp/:id' element={<TransportEmp />} />
+          <Route path='/dashboard/admin-transport/:id' element={<TransportAdmin />} />
+          <Route path='/dashboard/admin-transport/admin-transport-approved-request/:id' element={<TransportAdminApprovedRequest />} />
           
+         
         </Routes>
       </BrowserRouter>
       

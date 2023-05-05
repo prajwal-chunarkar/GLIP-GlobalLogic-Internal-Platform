@@ -96,6 +96,7 @@ export const SettingDiv = styled.div`
     font-size: 2rem;
     text-align: center;
     animation: showMe 0.3s forwards;
+    z-index: 1000;
 
   @keyframes showMe{
     0%{

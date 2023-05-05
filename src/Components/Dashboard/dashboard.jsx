@@ -53,12 +53,12 @@ const Dashboard = () => {
     var tilesRow1 = [
         {
             label: "Access Previleges",
-            adminLink: `/dashboard/accessadmin/${id}`,
+            adminLink: `/dashboard/admin-access-previleges/${id}`,
             empLink: `/dashboard/accessemp/${id}`
         },
         {
             label: "Transport",
-            adminLink: `/dashboard/transpadmin/${id}`,
+            adminLink: `/dashboard/admin-transport/${id}`,
             empLink: `/dashboard/transpemp/${id}`
         },
         {
