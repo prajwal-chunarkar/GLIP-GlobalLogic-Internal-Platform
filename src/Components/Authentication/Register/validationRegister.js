@@ -1,5 +1,5 @@
 export default function validationRegister(user,confirmPass){
-    const { fname, mname, lname, email, phone, workLocation, address, gender, dob, designation, password } = user;
+    const { fname, lname, email, phone, workLocation, address, gender, dob, designation, password } = user;
 
     const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     const regexPhone = /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/
@@ -62,8 +62,6 @@ export default function validationRegister(user,confirmPass){
 
     if(!gender){
         return 'Gender is Required'
-    } else if(gender !== "male" && gender !== "female"){
-        return 'Please enter valid gender'
     }
 
     if(!dob){

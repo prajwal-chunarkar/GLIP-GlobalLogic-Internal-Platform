@@ -16,7 +16,7 @@ import AccessEmp from './Components/Tiles/Access-Privillage/Access-Privillage-Em
 
 import EmpListAdmin from './Components/Tiles/Employee-List/emp-list-admin';
 import TranspAdmin from './Components/Tiles/Transport/Transport-Admin/transp-admin';
-import TranspEmp from './Components/Tiles/Transport/Transport-Employee/transp-emp';
+import TransportEmp from './Components/Tiles/Transport/Transport-Employee/transport-emp';
 
 function App() {
   return (
@@ -37,7 +37,7 @@ function App() {
           <Route path='/dashboard/accessemp/:id' element={<AccessEmp />} />
           <Route path='/dashboard/emplistadmin/:id' element={<EmpListAdmin />} />
           <Route path='/dashboard/transpadmin/:id' element={<TranspAdmin />} />
-          <Route path='/dashboard/transpemp/:id' element={<TranspEmp />} />
+          <Route path='/dashboard/transpemp/:id' element={<TransportEmp />} />
           
         </Routes>
       </BrowserRouter>

@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios';
 import Swal from "sweetalert2";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import validationRegister from './validationRegister';
-import { useNavigate } from 'react-router-dom';
 import {
   FormBackground,
   FormLogo,
@@ -21,10 +20,12 @@ import {
   FormLinks
 } from './forms.style';
 import GLlogo from '../../../Utils/Images/GL-logo.jpg'
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 const Register = () => {
   const navigate = useNavigate();
-
 
   const [totalRegistered, setTotalRegistered] = useState();
   const [newID, setNewID] = useState()
@@ -66,19 +67,27 @@ const Register = () => {
   }
 
   var arrUserKeys = Object.keys(user);
-  var arrUservalues = Object.values(user)
+  var arrUservalues = Object.values(user);
 
   useEffect(() => {
     arrUservalues = Object.values(user)
   }, [user])
+
+  const genderRef = useRef();
 
   const onInputChange = (e, n) => {
     setUser({ ...user, [e.target.name]: e.target.value });   //arrays of objects
 
     for (let i = 0; i < n; i++) {
       if (arrUservalues[i] === '' && i !== 1) {
-        (document.getElementsByName(arrUserKeys[i]))[0].style.color = "red";
-        (document.getElementsByName(arrUserKeys[i]))[1].style.borderBottom = "2px solid red";
+        if (arrUserKeys[i] === 'gender') {
+          genderRef.current.style.color = "red";
+        }
+        else {
+          console.log("this is bug");
+          (document.getElementsByName(arrUserKeys[i]))[0].style.color = "red";
+          (document.getElementsByName(arrUserKeys[i]))[1].style.borderBottom = "2px solid red";
+        }
       }
     }
 
@@ -193,8 +202,7 @@ const Register = () => {
     {
       name: 'gender',
       label: 'Gender',
-      placeholder: 'Enter your Gender (Male/Female)',
-      value: gender
+      ref: genderRef
     },
     {
       name: 'dob',
@@ -231,6 +239,19 @@ const Register = () => {
     },
   ]
 
+  const genderProps = [
+    {
+      name: 'gender',
+      label: 'Male',
+      value: 'male'
+    },
+    {
+      name: 'gender',
+      label: 'Female',
+      value: 'female'
+    },
+  ]
+
   return (
     <FormBackground>
 
@@ -241,13 +262,41 @@ const Register = () => {
       <FormContainer>
         <FormHeading> Registration </FormHeading>
 
-        {formProp.map((obj, index) => (
-          <>
-            <FormLabel name={obj.name}>{obj.label}</FormLabel>
-            {obj.name !== 'mname' && <FormAstric>*</FormAstric>}
-            <FormInput type="text" {...obj} onChange={(e) => onInputChange(e, index)} />
-          </>
-        )
+        {formProp.map((obj, index) => {
+          if (obj.name === 'gender') {
+            return (
+              <>
+                <FormLabel {...obj}>{obj.label}</FormLabel>
+                <FormAstric>*</FormAstric> <br />
+                <RadioGroup style={{ marginBottom: '0.9rem' }}
+                  name={obj.name}
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                >
+                  {genderProps.map((gen) => (
+                    <FormControlLabel {...gen}
+                      onChange={(e) => onInputChange(e, index)}
+                      control={<Radio
+                        sx={{
+                          '&, &.Mui-checked': {
+                            color: '#6D6E71',
+                          }
+                        }}
+                      />} />
+                  ))}
+                </RadioGroup>
+              </>
+            )
+          }
+          return (
+            <>
+              <FormLabel name={obj.name}>{obj.label}</FormLabel>
+              {obj.name !== 'mname' && <FormAstric>*</FormAstric>}
+              <FormInput type="text" {...obj}
+                onChange={(e) => onInputChange(e, index)} />
+            </>
+          )
+        }
         )}
 
         {formPass.map((obj) => (
@@ -255,8 +304,8 @@ const Register = () => {
             <FormLabel name={obj.name}>{obj.label}  </FormLabel><FormAstric>*</FormAstric>
             <FormInput type={obj.showStatus ? "text" : "password"} {...obj}
             />
-            {obj.showStatus ? <VisibilityOffIcon onClick={obj.visibilityFunc} /> : 
-                              <VisibilityIcon onClick={obj.visibilityFunc} /> }
+            {obj.showStatus ? <VisibilityOffIcon onClick={obj.visibilityFunc} /> :
+              <VisibilityIcon onClick={obj.visibilityFunc} />}
           </>
         )
         )}
