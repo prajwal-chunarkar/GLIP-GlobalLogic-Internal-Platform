@@ -33,10 +33,7 @@ import ValidateEmpTranspRequest from './validate-emp-transp-request';
 const TransportEmp = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const [result, setResult] = useState([]);         //imp
-
   const [locations, setLocations] = useState([]);         //imp
-
   const [currentUser, setCurrentUser] = useState({});         //imp
 
   const [transRequest, setTransRequest] = useState({
@@ -60,9 +57,15 @@ const TransportEmp = () => {
   }, [])                          //only once when load
 
   const fetchdata = async () => {
-    await axios.get(`http://localhost:3003/users`)
+    await axios.get(`http://localhost:3003/users/${id}`)
       .then((res) => {
-        setResult(res.data);
+        setCurrentUser(res.data)
+        setTransRequest({
+          ...transRequest,
+          'empName': `${res.data.fname} ${res.data.lname}`,
+          'empID': res.data.empID,
+          'location': res.data.workLocation
+        })
       })
 
     await axios.get(`http://localhost:3003/locations`)
@@ -70,20 +73,6 @@ const TransportEmp = () => {
         setLocations(res.data);
       })
   }
-
-  useEffect(() => {
-    result.forEach((user) => {
-      if (user.id == id) {
-        setTransRequest({
-          ...transRequest,
-          'empName': `${user.fname} ${user.lname}`,
-          'empID': user.empID,
-          'location': user.workLocation
-        })
-        setCurrentUser(user)
-      }
-    })
-  }, [result])
 
   const onInputChange = (e) => {
     setTransRequest({ ...transRequest, [e.target.name]: e.target.value })
@@ -150,14 +139,12 @@ const TransportEmp = () => {
     {
       name: 'empName',
       label: 'Employee Name',
-      placeholder: 'Enter your Name',
       value: empName,
       readonly: 'readonly'
     },
     {
       name: 'location',
       label: 'Work Location',
-      placeholder: 'Enter Your Location',
       value: location
     },
     {
@@ -319,7 +306,7 @@ const TransportEmp = () => {
             <FormInput type="text" placeholder='Week Days Generate Automatically' name='weekDays' ref={weekDaysRef} value={days} readonly />
           </>
 
-          {/* ----------------------------------------------------------------------- */}
+  {/* ----------------------------------------------------------------------- */}
           <FormLabel name='returnTrip'>Return Trip</FormLabel>
           <FormAstric>*</FormAstric> <br />
           <RadioGroup
