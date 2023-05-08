@@ -49,6 +49,16 @@ const Footer = () => {
                 })
             })
     }
+
+    const termsAndCondtionsObj = [
+        { point: "1. Intellectual Property: All the Content, Logo, Images and Visual Media is owned by GLIP" },
+        { point: "2. Copywrite : All of the property in website is protected by Copywrite and Governing laws in India" },
+        { point: "3. Termination : Use of abusive language, Inappropriate behavior and violating laws leads to termination of user account" },
+        { point: "4. Link to other Websites : GLIP is not taking a responsibility of clicking on third party links" },
+        { point: "5. Multiple Accounts : To Create multiple accounts for the purpose of voting for against users' Visual Content" },
+        { point: "6. Spam URL: To create or transmit unwanted 'spam' to any person or any URL" },
+        { point: "7. Reward: Rewards may be taxable, depending on the value of the item and the federal, state, and local tax laws applicable to Member." },
+    ]
     return (
         <>
             <div>
@@ -110,54 +120,9 @@ const Footer = () => {
                                 />
                             </DivCloseButton>
                             <TermsAndConditionsText>
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Voluptatibus mollitia, quidem
-                                quae assumenda dolore omnis excepturi dicta?
-                                Fugit voluptatem voluptate vero nemo. Suscipit
-                                veritatis eos est, maiores, aliquam labore sequi
-                                architecto quis adipisci esse itaque facilis
-                                illum similique, ea expedita. Aliquam, maiores
-                                molestias aperiam nesciunt laboriosam a qui,
-                                quos dignissimos dolorum iusto quo saepe?
-                                Molestiae odit itaque voluptates sed et
-                                assumenda at voluptatibus, unde minus rem? Quae
-                                quas temporibus rem non nesciunt quo
-                                repellendus, nostrum laboriosam odit beatae
-                                ipsum deserunt, consequatur quam nemo error
-                                alias sint inventore iusto culpa voluptate eum
-                                sunt eius. Lorem ipsum dolor sit amet
-                                consectetur adipisicing elit. Saepe quasi eum
-                                at? Magnam eius officiis a, molestias ducimus
-                                repudiandae, dolore, odit perferendis voluptatum
-                                fuga error pariatur at vel. Ad dolore,
-                                voluptatibus similique id tempora dolores
-                                blanditiis unde consequuntur inventore
-                                consectetur animi voluptatum maiores dolorum
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Suscipit, magnam ratione.
-                                Ducimus maxime nisi, minima doloremque cumque
-                                quasi nostrum pariatur perspiciatis ipsa
-                                voluptatum voluptas ullam repellendus tenetur!
-                                Libero cumque nobis quis odio aut eveniet,
-                                impedit eos dolor, ipsa alias laudantium beatae
-                                voluptatem quae aliquid ipsum illo a cupiditate
-                                assumenda? Alias!\ Lorem ipsum dolor sit amet
-                                consectetur adipisicing elit. Suscipit, magnam
-                                ratione. Ducimus maxime nisi, minima doloremque
-                                cumque quasi nostrum pariatur perspiciatis ipsa
-                                voluptatum voluptas ullam repellendus tenetur!
-                                Libero cumque nobis quis odio aut eveniet,
-                                impedit eos dolor, ipsa alias laudantium beatae
-                                voluptatem quae aliquid ipsum illo a cupiditate
-                                assumenda? Alias! Lorem ipsum dolor sit amet
-                                consectetur adipisicing elit. Suscipit, magnam
-                                ratione. Ducimus maxime nisi, minima doloremque
-                                cumque quasi nostrum pariatur perspiciatis ipsa
-                                voluptatum voluptas ullam repellendus tenetur!
-                                Libero cumque nobis quis odio aut eveniet,
-                                impedit eos dolor, ipsa alias laudantium beatae
-                                voluptatem quae aliquid ipsum illo a cupiditate
-                                assumenda? Alias!
+                                {termsAndCondtionsObj?.map((e) => (
+                                    <>  <div>{e.point}</div><br /></>
+                                ))}
                             </TermsAndConditionsText>
                         </div>
                     </TermsAndConditions>

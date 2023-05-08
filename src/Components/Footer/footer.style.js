@@ -40,10 +40,8 @@ export const TermsAndConditions = styled.div`
 export const TermsAndConditionsText = styled.div`
     font-family: Calibri, Arial, sans-serif;
     word-wrap: break-word;
-    display: flex;
+    /* display: flex; */
     text-align: start;
-    
-  
 `;
 export const Li = styled.li`
     color: #fff;
