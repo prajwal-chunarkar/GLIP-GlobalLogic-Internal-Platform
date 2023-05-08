@@ -48,7 +48,8 @@ const Navbar = () => {
     }, [isOpen]);
 
     const loggedOut = () => {
-        localStorage.removeItem('token');
+        localStorage.removeItem('token');          //clear Login Token
+        localStorage.removeItem('accessData');   //clear Access Privilege Form Data
         window.location.href = '/';
     }
 
