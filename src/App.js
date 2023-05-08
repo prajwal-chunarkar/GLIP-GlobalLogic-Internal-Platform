@@ -11,12 +11,11 @@ import ResetPassword from './Components/Authentication/Reset_Password/reset-pass
 
 //Tiles
 
-import AccessPrivilegeAdmin from './Components/Tiles/Access-Privillage/Access-Privillage-Admin/access-privillage-admin';
+import AccessPrivilegeAdmin from './Components/Tiles/Access-Privilege/Access-Privilege-Admin/access-privilege-admin';
 
-import AccessAccessPrivillageEmp from './Components/Tiles/Access-Privillage/Access-Privillage-Employee/access-privillage-emp'
+import AccessPrivilegeEmp from './Components/Tiles/Access-Privilege/Access-Privilege-Employee/access-privilege-emp';
 
 import FilterPrac from './Components/Tiles/Employee-List/employee-list';
-// import TranspAdmin from './Components/Tiles/Transport/Transport-Admin/transp-admin';
 
 import TransportEmp from './Components/Tiles/Transport/Transport-Employee/transport-emp';
 
@@ -45,7 +44,7 @@ function App() {
 
           <Route path='/dashboard/admin-access-previleges/:id' element={<AccessPrivilegeAdmin />} />
 
-          <Route path='/dashboard/accessemp/:id' element={<AccessAccessPrivillageEmp />} />
+          <Route path='/dashboard/accessemp/:id' element={<AccessPrivilegeEmp />} />
           <Route path='/dashboard/emplistadmin/:id' element={<FilterPrac />} />
 
           <Route path='/dashboard/transpemp/:id' element={<TransportEmp />} />

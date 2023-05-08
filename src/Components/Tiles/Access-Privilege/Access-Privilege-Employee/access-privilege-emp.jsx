@@ -10,15 +10,12 @@ import {
   FlexDiv,
   FormInputt,
   FormAstric,
-} from "./access-privillage-emp.style";
-import { FormBackground, FormLogo } from "./access-privillage-emp.style";
-// import GLlogo from "../../../../Utils/Images/GL-logo.jpg";
-import { Link } from "react-router-dom";
-// import toast from 'react-hot-toast';
+} from "./access-privilege-emp.style.js";
+
 import Swal from "sweetalert2";
 import moment from "moment/moment";
 
-const AccessPrivillageEmp = () => {
+const AccessPrivilegeEmp = () => {
   const getData = async () => {
     const response = await axios.get(
       "http://localhost:8000/api/v1/access-privillage-emp/"
@@ -184,4 +181,4 @@ const AccessPrivillageEmp = () => {
   );
 };
 
-export default AccessPrivillageEmp;
+export default AccessPrivilegeEmp;

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import BgImage from "../../../../Utils/Images/bg-image.png";
 
 export const FormLabel = styled.label`
   /* padding: 15px; */
@@ -13,7 +12,6 @@ export const FormLabel = styled.label`
 export const FormBackground = styled.div`
   height: 100vh;
   width: 100vw;
-  background-image: url(${BgImage});
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;

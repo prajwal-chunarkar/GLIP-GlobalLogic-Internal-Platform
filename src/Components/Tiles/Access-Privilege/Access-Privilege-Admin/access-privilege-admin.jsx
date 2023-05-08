@@ -20,7 +20,7 @@ import {
     TransportHeading,
     TransportHeadingLetters,
     DivViewDetails,
-} from "./access-previlege-admin.style";
+} from "./access-privilege-admin.style";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 import DescriptionIcon from "@mui/icons-material/Description";
 import Paper from "@mui/material/Paper";
