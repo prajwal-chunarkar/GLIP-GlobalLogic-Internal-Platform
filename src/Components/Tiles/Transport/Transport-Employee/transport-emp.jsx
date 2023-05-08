@@ -127,7 +127,7 @@ const TransportEmp = () => {
 
     if (transportEmpError !== null) {
       setError(transportEmpError);
-      console.log(transRequest)
+      // console.log(transRequest)
       return;
     }
     else {

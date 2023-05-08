@@ -188,6 +188,7 @@ function AccessPrivilegeAdmin() {
         { header: "Employee ID" },
         { header: "Name" },
         { header: "Request for" },
+        { header: "Date" },
         { header: "Action" },
     ];
 
@@ -203,6 +204,10 @@ function AccessPrivilegeAdmin() {
         {
             Header: "Request For",
             Value: accessPrevilegeRequestDetails?.requestFor,
+        },
+        {
+            Header: "Date",
+            Value: accessPrevilegeRequestDetails?.date,
         },
         {
             Header: "Reason",
@@ -273,6 +278,9 @@ function AccessPrivilegeAdmin() {
                                                     </TableCell>
                                                     <TableCell align="center">
                                                         {employee.requestFor}
+                                                    </TableCell>
+                                                    <TableCell align="center">
+                                                        {employee.date}
                                                     </TableCell>
                                                     <TableCell align="center">
                                                         <Button
