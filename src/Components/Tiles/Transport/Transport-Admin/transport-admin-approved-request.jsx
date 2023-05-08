@@ -95,10 +95,10 @@ const TransportAdminApprovedRequest = () => {
     };
     const transportRequestTableHeaders = [
         {
-            header: "Sr No.",
+            header: "S No",
         },
         {
-            header: "Employee ID.",
+            header: "Employee ID",
         },
         {
             header: "Name",
@@ -107,7 +107,7 @@ const TransportAdminApprovedRequest = () => {
             header: "Location",
         },
         {
-            header: "Action",
+            header: "View",
         },
     ];
 

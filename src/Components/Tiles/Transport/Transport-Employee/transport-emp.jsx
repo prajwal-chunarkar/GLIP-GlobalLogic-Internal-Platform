@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios';
 import Swal from "sweetalert2";
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Navbar from '../../../Navbar/navbar'
 import CountWeekdays from './count-week-days';
 
@@ -15,9 +15,9 @@ import {
   FlexDiv,
   SubmitButton,
   ErrorMessage,
-  LinksDiv,
-  FormLinks
-} from './transport-emp.style';
+  // LinksDiv,
+  // FormLinks
+} from './transport-emp.style.js';
 
 import { TextField } from '@mui/material'
 import Radio from '@mui/material/Radio';
@@ -53,7 +53,7 @@ const TransportEmp = () => {
     weekDays: ''
   })
 
-  const { empName, empID, location, pickupLocation, pickupAddress, dropLocation, dropAddress, startDate, endDate, returnTrip } = transRequest;
+  const { empName, empID, location, pickupLocation, pickupAddress, dropLocation, dropAddress } = transRequest;
 
   useEffect(() => {
     fetchdata();
@@ -216,7 +216,7 @@ const TransportEmp = () => {
 
   const pickupLocProps = [
     { label: 'Home', value: 'Home' },
-    { label: 'Office', value: 'HomOfficee' }
+    { label: 'Office', value: 'Office' }
   ]
 
   const [sDate, setSDate] = useState();
@@ -226,22 +226,22 @@ const TransportEmp = () => {
   const weekDaysRef = useRef(null);
   var res;
 
-  useEffect(()=> {
-    if(sDate && eDate){
+  useEffect(() => {
+    if (sDate && eDate) {
       res = CountWeekdays(sDate, eDate);
       setDays(res)
       setTransRequest({
         ...transRequest, [weekDaysRef.current.name]: res
       })
     }
-  },[sDate, eDate])
+  }, [sDate, eDate])
 
   return (
     <>
       <Navbar />
+      <FormHeading> Transport Request </FormHeading>
       <TranspEmpBody>
         <FormContainer>
-          <FormHeading> Transport Request </FormHeading>
 
           {formProps1.map((obj, index) => {
             if (index === 3) {
@@ -263,95 +263,95 @@ const TransportEmp = () => {
                   >
                     {pickupLocProps.map((prop, ind) => (
                       <MenuItem {...prop} >
-                      { prop.label }
+                        {prop.label}
                       </MenuItem>
                     ))}
 
-                </Select >
+                  </Select >
                   <br /><br />
                 </>
-        )
+              )
             }
-        return (
-        <>
-          <FormLabel name={obj.name}>{obj.label}</FormLabel>
-          <FormAstric>*</FormAstric>
-          <FormInput type="text" {...obj}
-          />
-        </>
-        )
+            return (
+              <>
+                <FormLabel name={obj.name}>{obj.label}</FormLabel>
+                <FormAstric>*</FormAstric>
+                <FormInput type="text" {...obj}
+                />
+              </>
+            )
           }
           )}
 
-        {datesData.map((obj) => (
-          <>
-            <FormLabel name={obj.name}>{obj.label}</FormLabel>
-            <FormAstric>*</FormAstric> <br />
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <DatePicker disablePast
-                sx={{
-                  svg: { color: "#F37037" },
-                }}
-                className="myDatePicker"
-                slotProps={{ textField: { fullWidth: true } }}
-                renderinput={(params) => <TextField {...params} />}
-                onChange={(newValue) => {
-                  if(obj.name === 'startDate'){
-                    setSDate(newValue)
-                  }
-                  else if(obj.name === 'endDate'){
-                    setEDate(newValue)
-                  }
-                  setTransRequest({
-                    ...transRequest, [obj.name]:
-                      newValue.toISOString().slice(0, 10)
-                  })
-                }}
-              />
-              <br /><br />
-            </LocalizationProvider>
-          </>
-        ))}
-
-        <>
-          <FormLabel name='weekDays'>Week Days</FormLabel>
-          <FormAstric>*</FormAstric>
-          <FormInput type="text" placeholder='Week Days Generate Automatically' name='weekDays' ref = {weekDaysRef} value={days} readonly/>
-        </>
-
-  {/* ----------------------------------------------------------------------- */}
-        <FormLabel name='returnTrip'>Return Trip</FormLabel>
-        <FormAstric>*</FormAstric> <br />
-        <RadioGroup
-          row
-          aria-labelledby="demo-row-radio-buttons-group-label"
-          name="returnTrip"
-        >
-          {returnTripProp.map((obj) => (
-            <FormControlLabel
-              {...obj}
-              control={<Radio
-                sx={{
-                  '&, &.Mui-checked': {
-                    color: '#F37037',
-                  },
-                }}
-              />}
-            />
+          {datesData.map((obj) => (
+            <>
+              <FormLabel name={obj.name}>{obj.label}</FormLabel>
+              <FormAstric>*</FormAstric> <br />
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <DatePicker disablePast
+                  sx={{
+                    svg: { color: "#F37037" },
+                  }}
+                  className="myDatePicker"
+                  slotProps={{ textField: { fullWidth: true } }}
+                  renderinput={(params) => <TextField {...params} />}
+                  onChange={(newValue) => {
+                    if (obj.name === 'startDate') {
+                      setSDate(newValue)
+                    }
+                    else if (obj.name === 'endDate') {
+                      setEDate(newValue)
+                    }
+                    setTransRequest({
+                      ...transRequest, [obj.name]:
+                        newValue.toISOString().slice(0, 10)
+                    })
+                  }}
+                />
+                <br /><br />
+              </LocalizationProvider>
+            </>
           ))}
-        </RadioGroup>
 
-        <FlexDiv>
-          {error && <ErrorMessage>{error}</ErrorMessage>}
-        </FlexDiv>
+          <>
+            <FormLabel name='weekDays'>Week Days</FormLabel>
+            <FormAstric>*</FormAstric>
+            <FormInput type="text" placeholder='Week Days Generate Automatically' name='weekDays' ref={weekDaysRef} value={days} readonly />
+          </>
 
-        <FlexDiv>
-          <SubmitButton onClick={e => onSubmit(e)}>
-            Make Request
-          </SubmitButton>
-        </FlexDiv>
-      </FormContainer>
-    </TranspEmpBody >
+          {/* ----------------------------------------------------------------------- */}
+          <FormLabel name='returnTrip'>Return Trip</FormLabel>
+          <FormAstric>*</FormAstric> <br />
+          <RadioGroup
+            row
+            aria-labelledby="demo-row-radio-buttons-group-label"
+            name="returnTrip"
+          >
+            {returnTripProp.map((obj) => (
+              <FormControlLabel
+                {...obj}
+                control={<Radio
+                  sx={{
+                    '&, &.Mui-checked': {
+                      color: '#F37037',
+                    },
+                  }}
+                />}
+              />
+            ))}
+          </RadioGroup>
+
+          <FlexDiv>
+            {error && <ErrorMessage>{error}</ErrorMessage>}
+          </FlexDiv>
+
+          <FlexDiv>
+            <SubmitButton onClick={e => onSubmit(e)}>
+              Make Request
+            </SubmitButton>
+          </FlexDiv>
+        </FormContainer>
+      </TranspEmpBody >
     </>
   )
 }

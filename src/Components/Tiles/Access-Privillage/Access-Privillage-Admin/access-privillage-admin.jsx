@@ -184,8 +184,8 @@ function AccessPrivilegeAdmin() {
     };
 
     const transportRequestTableHeaders = [
-        { header: "Sr No." },
-        { header: "Employee ID." },
+        { header: "S No" },
+        { header: "Employee ID" },
         { header: "Name" },
         { header: "Request for" },
         { header: "Action" },

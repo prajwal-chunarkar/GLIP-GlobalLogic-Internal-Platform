@@ -13,10 +13,11 @@ import ResetPassword from './Components/Authentication/Reset_Password/reset-pass
 
 import AccessPrivilegeAdmin from './Components/Tiles/Access-Privillage/Access-Privillage-Admin/access-privillage-admin';
 
-import AccessEmp from './Components/Tiles/Access-Privillage/Access-Privillage-Employee/access-emp';
+import AccessAccessPrivillageEmp from './Components/Tiles/Access-Privillage/Access-Privillage-Employee/access-privillage-emp'
 
 import FilterPrac from './Components/Tiles/Employee-List/employee-list';
 // import TranspAdmin from './Components/Tiles/Transport/Transport-Admin/transp-admin';
+
 import TransportEmp from './Components/Tiles/Transport/Transport-Employee/transport-emp';
 
 import TransportAdmin from './Components/Tiles/Transport/Transport-Admin/transport-admin';
@@ -44,13 +45,12 @@ function App() {
 
           <Route path='/dashboard/admin-access-previleges/:id' element={<AccessPrivilegeAdmin />} />
 
-          <Route path='/dashboard/accessemp/:id' element={<AccessEmp />} />
+          <Route path='/dashboard/accessemp/:id' element={<AccessAccessPrivillageEmp />} />
           <Route path='/dashboard/emplistadmin/:id' element={<FilterPrac />} />
 
           <Route path='/dashboard/transpemp/:id' element={<TransportEmp />} />
           <Route path='/dashboard/admin-transport/:id' element={<TransportAdmin />} />
           <Route path='/dashboard/admin-transport/admin-transport-approved-request/:id' element={<TransportAdminApprovedRequest />} />
-          
          
         </Routes>
       </BrowserRouter>

@@ -188,7 +188,7 @@ function TransportAdmin() {
     };
 
     const transportRequestTableHeaders = [
-        { header: "S No." },
+        { header: "S No" },
         { header: "Employee ID" },
         { header: "Name" },
         { header: "Location" },

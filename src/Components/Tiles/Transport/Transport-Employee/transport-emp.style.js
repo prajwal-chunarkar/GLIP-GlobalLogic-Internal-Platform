@@ -12,10 +12,10 @@ export const TranspEmpBody = styled.div`
 export const FormContainer = styled.div`
     background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
     width: 55vw;
-    max-height: 75vh;
+    max-height: 65vh;
     border: 1px solid rgb(227, 224, 229);
-    margin: 2vh 2vw;
-    padding: 2rem;
+    margin: 0.7vh 2vw;
+    padding: 1.5rem 3rem;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.6);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -33,8 +33,8 @@ export const FormContainer = styled.div`
     }
 `;
 
-export const FormHeading = styled.p`
-    margin-bottom: 1.3rem;
+export const FormHeading = styled.h1`
+    margin: 1rem 0;
     text-align: center;
     font-size: 2.5rem;
     font-weight: bolder;
@@ -69,7 +69,7 @@ export const FlexDiv = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.5rem;
+    margin-top: 1.3rem;
 `;
 
 export const SubmitButton = styled.button`
@@ -82,11 +82,12 @@ export const SubmitButton = styled.button`
     min-width: 5rem;
     font-size: large;
 
+    margin: 0 0.5rem;
+
     &:hover{
     background-color: #efa586;
     box-shadow: 0 0 10px #F37037;
     background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
-    box-shadow: rgb(53, 3, 99);
     }
 `;
 
