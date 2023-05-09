@@ -9,6 +9,10 @@ import NotFound from './Components/NotFound/NotFound'
 import Dashboard from './Components/Dashboard/dashboard';
 import ResetPassword from './Components/Authentication/Reset_Password/reset-password'
 
+import LeaveManageAdmin from './Components/Tiles/Leave-Management/Leave-Management-Admin/leave-manage-admin';
+
+import LeaveManageEmp from './Components/Tiles/Leave-Management/Leave-Management-Emp/leave-manage-emp';
+
 //Tiles
 
 import AccessPrivilegeAdmin from './Components/Tiles/Access-Privilege/Access-Privilege-Admin/access-privilege-admin';
@@ -22,6 +26,10 @@ import TransportEmp from './Components/Tiles/Transport/Transport-Employee/transp
 import TransportAdmin from './Components/Tiles/Transport/Transport-Admin/transport-admin';
 
 import TransportAdminApprovedRequest from './Components/Tiles/Transport/Transport-Admin/transport-admin-approved-request';
+
+import PayslipsAdmin from './Components/Tiles/Payslips/Payslip-Admin/payslips-admin';
+
+import PayslipsEmp from './Components/Tiles/Payslips/Payslip-Emp/payslips-emp';
 
 
 
@@ -50,6 +58,14 @@ function App() {
           <Route path='/dashboard/transpemp/:id' element={<TransportEmp />} />
           <Route path='/dashboard/admin-transport/:id' element={<TransportAdmin />} />
           <Route path='/dashboard/admin-transport/admin-transport-approved-request/:id' element={<TransportAdminApprovedRequest />} />
+
+          <Route path='/dashboard/leave-manage-admin/:id' element={<LeaveManageAdmin />} />
+          <Route path='/dashboard/leave-manage-emp/:id' element={<LeaveManageEmp/>} />
+          
+          <Route path='/dashboard/payslip-admin/:id' element={<PayslipsAdmin/>} />
+          <Route path='/dashboard/payslip-emp/:id' element={<PayslipsEmp/>} />
+
+
          
         </Routes>
       </BrowserRouter>

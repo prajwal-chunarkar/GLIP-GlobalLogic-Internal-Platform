@@ -13,7 +13,7 @@ import {
 } from "./access-privilege-emp.style.js";
 
 import Swal from "sweetalert2";
-import moment from "moment/moment";
+// import moment from "moment/moment";
 
 const AccessPrivilegeEmp = () => {
   const getData = async () => {
@@ -155,7 +155,7 @@ const AccessPrivilegeEmp = () => {
                     type="date"
                     class="form-control"
                     id="date"
-                    min={moment().format("YYYY-MM-DD")}
+                    // min={moment().format("YYYY-MM-DD")}
                     required
                   />
                   <span class="input-group-append"></span>

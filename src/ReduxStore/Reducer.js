@@ -1,7 +1,7 @@
 export const Reducer = (state = {
     isloggedin: localStorage.token ? true : false,
-    currUser: {},
-    initials: ''
+    currUser: JSON.parse(localStorage.getItem("currUser")),
+    initials: localStorage.getItem("initials")
 }, action) => {
     switch (action.type) {
         case "LOGIN": {

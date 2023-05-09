@@ -1,42 +1,30 @@
 import { makeStyles } from "@material-ui/styles";
+import CheckBoxRoundedIcon from "@mui/icons-material/CheckBoxRounded";
+import DescriptionIcon from "@mui/icons-material/Description";
+import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
 import Button from "@mui/material/Button";
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Paper from "@mui/material/Paper";
+import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
+import TextField from '@mui/material/TextField';
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Navbar from '../../../Navbar/navbar'
-import {
-    TransportAdminTable,
-    TransportAdminParent,
-    HeadingTransportAdmint,
-    DivCloseButton,
-    TransportDetailsModal,
-    TransportDetailsModalText,
-    ViewTransportDetailsHeading,
-    TransportHeading,
-    TransportHeadingLetters,
-    DivViewDetails,
-} from "./access-privilege-admin.style";
-import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
-import DescriptionIcon from "@mui/icons-material/Description";
-import Paper from "@mui/material/Paper";
-import Table from "@mui/material/Table";
-// import { useSelector } from "react-redux";
 import CloseButton from "react-bootstrap/CloseButton";
-import CheckBoxRoundedIcon from "@mui/icons-material/CheckBoxRounded";
-// import {acceptRequest} from './transport-admin-hook'
-// import {FetchData} from './transport-admin-hook'
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault'; import Alert from '@mui/material/Alert';
+import Navbar from '../../../Navbar/navbar';
+import {
+    CloseButtonDiv, ViewDetailsDiv, TransportAdminParentDiv, TransportAdminTableDiv, TransportDetailsModalDiv, TransportHeadingDiv,
+    TransportHeadingLettersSpan, ViewTransportDetailsHeadingDiv
+} from "./access-privilege-admin.style";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -163,12 +151,6 @@ function AccessPrivilegeAdmin() {
             .then(showModal());
     }
 
-    //-------------------Accept Transport Request-----------------
-    // function acceptRequest() {
-
-    // }
-
-
     const getReason = (e) => {
         setreasonObj({ [e.target.name]: e.target.value })
     }
@@ -184,11 +166,11 @@ function AccessPrivilegeAdmin() {
     };
 
     const transportRequestTableHeaders = [
-        { header: "S No" },
+        { header: "S No." },
         { header: "Employee ID" },
         { header: "Name" },
         { header: "Request for" },
-        { header: "Date" },
+        { header: "date" },
         { header: "Action" },
     ];
 
@@ -207,25 +189,25 @@ function AccessPrivilegeAdmin() {
         },
         {
             Header: "Date",
-            Value: accessPrevilegeRequestDetails?.date,
+            Value: accessPrevilegeRequestDetails?.date.slice(0,10),
         },
         {
             Header: "Reason",
             Value: accessPrevilegeRequestDetails?.reason,
         }
     ];
-    const headingTransportAdmin = ["A", "c", "c", "e", "s", "s", " ", "P", "r", "e", "v", "i", "l", "e", "g", "e", "s", " ", "R", "e", "q", "u", "e", "s", "t", "s"];
+    const headingTransportAdmin = ["A", "c", "c", "e", "s", "s", " ", "P", "r", "i", "v", "i", "l", "e", "g", "e", "s", " ", "R", "e", "q", "u", "e", "s", "t", "s"];
 
     return (
         <>
             <Navbar />
-            <TransportAdminParent>
-                <TransportHeading>
+            <TransportAdminParentDiv>
+                <TransportHeadingDiv>
                     {headingTransportAdmin.map((letter) => (
-                        <TransportHeadingLetters>{letter}</TransportHeadingLetters>
+                        <TransportHeadingLettersSpan>{letter}</TransportHeadingLettersSpan>
                     ))}
-                </TransportHeading>
-                <TransportAdminTable>
+                </TransportHeadingDiv>
+                <TransportAdminTableDiv>
                     <Paper
                         className={classes.root}
                         style={{
@@ -280,7 +262,7 @@ function AccessPrivilegeAdmin() {
                                                         {employee.requestFor}
                                                     </TableCell>
                                                     <TableCell align="center">
-                                                        {employee.date}
+                                                        {employee.date.slice(0, 10)}
                                                     </TableCell>
                                                     <TableCell align="center">
                                                         <Button
@@ -337,12 +319,12 @@ function AccessPrivilegeAdmin() {
                             onRowsPerPageChange={handleChangeRowsPerPage}
                         />
                     </Paper>
-                </TransportAdminTable>
-            </TransportAdminParent>
+                </TransportAdminTableDiv>
+            </TransportAdminParentDiv>
 
             {modalval && (
-                <DivViewDetails className="position-absolute top-50 start-50 translate-middle">
-                    <TransportDetailsModal>
+                <ViewDetailsDiv className="position-absolute top-50 start-50 translate-middle">
+                    <TransportDetailsModalDiv>
                         <TableContainer component={Paper}>
 
                             <Table
@@ -351,31 +333,31 @@ function AccessPrivilegeAdmin() {
                                 <TableHead>
                                     <TableRow>
                                         <TableCell align="center" colSpan={3}>
-                                            <DivCloseButton>
+                                            <CloseButtonDiv>
                                                 <CloseButton
                                                     onClick={showModal}
                                                 />
-                                            </DivCloseButton>
-                                            <ViewTransportDetailsHeading>
+                                            </CloseButtonDiv>
+                                            <ViewTransportDetailsHeadingDiv>
                                                 Transport Details
-                                            </ViewTransportDetailsHeading>
+                                            </ViewTransportDetailsHeadingDiv>
                                         </TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {viewDetailsTableHeaders?.map((e) => (
+                                    {viewDetailsTableHeaders?.map((obj) => (
                                         <TableRow>
                                             <TableCell>
-                                                <b>{e.Header}</b>
+                                                <b>{obj.Header}</b>
                                             </TableCell>
-                                            <TableCell>{e.Value}</TableCell>
+                                            <TableCell>{obj.Value}</TableCell>
                                         </TableRow>
                                     ))}
                                 </TableBody>
                             </Table>
                         </TableContainer>
-                    </TransportDetailsModal>
-                </DivViewDetails>
+                    </TransportDetailsModalDiv>
+                </ViewDetailsDiv>
             )}
 
 

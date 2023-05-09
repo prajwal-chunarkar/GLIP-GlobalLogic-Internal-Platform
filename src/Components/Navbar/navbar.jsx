@@ -21,14 +21,11 @@ import {
 
 const Navbar = () => {
     const isloggedin = useSelector(state => state.isloggedin);
-
-    const [isOpen, setIsOpen] = useState(false);
-    const windowRef = useRef();
-
     var currUser = useSelector((state) => state.currUser);
     var initials = useSelector((state) => state.initials);
 
-    const { id, empID, fname, lname, email } = currUser
+    const [isOpen, setIsOpen] = useState(false);
+    const windowRef = useRef();
 
     const handleIconClick = (e) => {
         setIsOpen((prev) => !prev);
@@ -50,6 +47,9 @@ const Navbar = () => {
     const loggedOut = () => {
         localStorage.removeItem('token');          //clear Login Token
         localStorage.removeItem('accessData');   //clear Access Privilege Form Data
+
+        localStorage.removeItem('currUser');   //clear Access Privilege Form Data
+        localStorage.removeItem('initials');   //clear Access Privilege Form Data
         window.location.href = '/';
     }
 
@@ -77,22 +77,22 @@ const Navbar = () => {
                                         style={{ borderRadius: "50%", height: "80%" }}>
                                         <Text
                                             class="card-title" >
-                                            <b>{fname} {lname}</b>
+                                            <b>{currUser.fname} {currUser.lname}</b>
                                         </Text>
                                         <Text
                                             class="card-title"
                                             style={{ fontSize: "0.8rem" }}>
-                                            {email}
+                                            {currUser.email}
                                         </Text>
                                         <Text
                                             class="card-title"
                                             style={{ fontSize: "0.9rem" }}>
-                                            Emp Id: {empID}
+                                            Emp Id: {currUser.empID}
                                         </Text>
                                         <br />
 
                                         <NavLink
-                                            to={`/resetpassword/${id}`}
+                                            to={`/resetpassword/${currUser.id}`}
                                             style={{ textDecoration: "none", color: "#000" }}>
                                             <NavLinkSpan>
                                                 <SettingsRoundedIcon />
@@ -109,9 +109,9 @@ const Navbar = () => {
                                                 to="#"
                                                 style={{ textDecoration: "none", color: "#000" }}>
                                                 <NavLinkSpan>
-                                                    <LogoutIcon 
-                                                    onClick={loggedOut} 
-                                                    style={{ marginLeft: "45%" }} />
+                                                    <LogoutIcon
+                                                        onClick={loggedOut}
+                                                        style={{ marginLeft: "45%" }} />
                                                 </NavLinkSpan>
                                             </NavLink>
                                         </p>

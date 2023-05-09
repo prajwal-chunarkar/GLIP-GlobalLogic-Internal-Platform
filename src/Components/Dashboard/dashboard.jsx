@@ -33,7 +33,8 @@ const Dashboard = () => {
                     type: "CURRENT_USER",
                     payload: res.data
                 })
-                // localStorage.setItem('currUser',JSON.stringify(res.data))
+
+                localStorage.setItem("currUser", JSON.stringify(res.data));
 
                 const result = NameInitials(res.data.fname, res.data.lname);
                 setInitials(result)
@@ -41,7 +42,7 @@ const Dashboard = () => {
                     type: "NAME_INITIALS",
                     payload: result
                 })
-                // localStorage.initials = result;
+                localStorage.initials = result;
 
                 if(res.data.user_type === 'admin'){
                     setIsAdmin(true)
@@ -63,8 +64,8 @@ const Dashboard = () => {
         },
         {
             label: "Payslips",
-            adminLink: `/dashboard/${id}`,
-            empLink: `/dashboard/${id}`
+            adminLink: `/dashboard/payslip-admin/${id}`,
+            empLink: `/dashboard/payslip-emp/${id}`
         }
     ];
     var tilesRow2 = [
@@ -74,9 +75,9 @@ const Dashboard = () => {
             empLink: `/dashboard/${id}`
         },
         {
-            label: "Expenses",
-            adminLink: `/dashboard/${id}`,
-            empLink: `/dashboard/${id}`
+            label: "Leave Management",
+            adminLink: `/dashboard/leave-manage-admin/${id}`,
+            empLink: `/dashboard/leave-manage-emp/${id}`
         },
         {
             label: "Exit",

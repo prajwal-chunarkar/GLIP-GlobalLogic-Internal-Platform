@@ -11,17 +11,17 @@ import Navbar from '../../../Navbar/navbar'
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {
-    TransportAdminTable,
-    TransportAdminParent,
+    TransportAdminTableDiv,
+    TransportAdminParentDiv,
     HeadingTransportAdmint,
-    DivCloseButton,
-    TransportDetailsModal,
-    TransportDetailsModalText,
-    ViewTransportDetailsHeading,
+    DivCloseButtonDiv,
+    TransportDetailsModalDiv,
+    TransportDetailsModalTextDiv,
+    ViewTransportDetailsHeadingDiv,
     SubmitButton,
-    TransportHeading,
-    TransportHeadingLetters,
-    DivViewDetails,
+    TransportHeadingDiv,
+    TransportHeadingLettersSpan,
+    DivViewDetailsSpan,
 } from "./transport-admin.style";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 import DescriptionIcon from "@mui/icons-material/Description";
@@ -159,19 +159,19 @@ const TransportAdminApprovedRequest = () => {
         <div>
             <Navbar />
             <TransportAdminReduxDispatch />
-            <TransportAdminParent>
-                <TransportHeading>
+            <TransportAdminParentDiv>
+                <TransportHeadingDiv>
                     {headingTransportAdmin.map((letter) => (
-                        <TransportHeadingLetters>{letter}</TransportHeadingLetters>
+                        <TransportHeadingLettersSpan>{letter}</TransportHeadingLettersSpan>
                     ))}
-                </TransportHeading>
+                </TransportHeadingDiv>
                 <Link style={{ width: '2rem', marginLeft: '2rem' }}
                     to={`/dashboard/admin-transport/${id}`}>
                     <SubmitButton>
                         <ArrowBackIcon />
                     </SubmitButton>
                 </Link>
-                <TransportAdminTable>
+                <TransportAdminTableDiv>
                     <Paper
                         style={{
                             boxShadow: "0.5px 0.5px  10px rgb(65 64 66)",
@@ -255,12 +255,12 @@ const TransportAdminApprovedRequest = () => {
                             onRowsPerPageChange={handleChangeRowsPerPage}
                         />
                     </Paper>
-                </TransportAdminTable>
-            </TransportAdminParent>
+                </TransportAdminTableDiv>
+            </TransportAdminParentDiv>
 
             {modalval && (
-                <DivViewDetails className="position-absolute top-50 start-50 translate-middle">
-                    <TransportDetailsModal>
+                <viewDetails className="position-absolute top-50 start-50 translate-middle">
+                    <TransportDetailsModalDiv>
                         <TableContainer component={Paper}>
                             <Table
                                 sx={{ minWidth: 650 }}
@@ -269,14 +269,14 @@ const TransportAdminApprovedRequest = () => {
                                 <TableHead>
                                     <TableRow>
                                         <TableCell align="center" colSpan={3}>
-                                            <DivCloseButton>
+                                            <DivCloseButtonDiv>
                                                 <CloseButton
                                                     onClick={showModal}
                                                 />
-                                            </DivCloseButton>
-                                            <ViewTransportDetailsHeading>
+                                            </DivCloseButtonDiv>
+                                            <ViewTransportDetailsHeadingDiv>
                                                 Transport Details
-                                            </ViewTransportDetailsHeading>
+                                            </ViewTransportDetailsHeadingDiv>
                                         </TableCell>
                                     </TableRow>
                                 </TableHead>
@@ -293,8 +293,8 @@ const TransportAdminApprovedRequest = () => {
                                 </TableBody>
                             </Table>
                         </TableContainer>
-                    </TransportDetailsModal>
-                </DivViewDetails>
+                    </TransportDetailsModalDiv>
+                </viewDetails>
             )}
         </div>
     )

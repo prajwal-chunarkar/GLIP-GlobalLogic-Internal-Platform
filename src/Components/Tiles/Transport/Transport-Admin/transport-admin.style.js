@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
-export const TransportAdminTable = styled.div`
+export const TransportAdminTableDiv = styled.div`
     width: 80%;
     margin: 2rem auto 0 auto; 
     /* margin-top: 4%; */
 `
-export const TransportAdminParent = styled.div`
+export const TransportAdminParentDiv = styled.div`
    /* display:grid; */
    /* display: flex; */
    /* align-items:right; */
@@ -14,14 +14,14 @@ export const TransportAdminParent = styled.div`
 `
 
 
-export const DivCloseButton = styled.div`
+export const DivCloseButtonDiv = styled.div`
     box-sizing: border-box;
     margin-left: 94%;
     font-size: 1rem;
     cursor: pointer;
 `;
 
-export const TransportDetailsModal = styled.div`
+export const TransportDetailsModalDiv = styled.div`
 display: flex;
 justify-content: center;
   width: 50rem;
@@ -47,14 +47,14 @@ justify-content: center;
     }
 `;
 
-export const TransportDetailsModalText = styled.div`
+export const TransportDetailsModalTextDiv = styled.div`
     font-family: Calibri, Arial, sans-serif;
     word-wrap: break-word;
     display: flex;
     text-align: start;
 `;
 
-export const ViewTransportDetailsHeading = styled.div`
+export const ViewTransportDetailsHeadingDiv = styled.div`
     font-family: Calibri, Arial, sans-serif;
     font-weight: bold;
     font-size: 2rem;
@@ -103,13 +103,13 @@ export const ApprovedRequestButton = styled.button`
     }
 `;
 
-export const TransportHeading = styled.div`
+export const TransportHeadingDiv = styled.div`
 margin: 0.7rem 0 3rem 0;
 text-align: center;
 max-height: 5vh;
  `;
 
-export const TransportHeadingLetters = styled.span`
+export const TransportHeadingLettersSpan = styled.span`
 color: #F37037;
 font-size: 3.3rem;
 font-size: 3rem;
@@ -120,7 +120,7 @@ color: #EE9F41;
 }
 `;
 
-export const DivViewDetails = styled.span`
+export const ViewDetailsSpan = styled.span`
 width: 100%;
 height: 100%;
 z-index: 999;

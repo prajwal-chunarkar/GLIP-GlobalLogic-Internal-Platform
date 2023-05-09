@@ -10,16 +10,18 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Navbar from '../../../Navbar/navbar'
 import {
-    TransportAdminTable,
-    TransportAdminParent,
-    DivCloseButton,
-    TransportDetailsModal,
-    TransportDetailsModalText,
-    ViewTransportDetailsHeading,
+    TransportAdminTableDiv,
+    TransportAdminParentDiv,
+    HeadingTransportAdmint,
+    DivCloseButtonDiv,
+    TransportDetailsModalDiv,
+    TransportDetailsModalTextDiv,
+    ViewTransportDetailsHeadingDiv,
+    SubmitButton,
+    TransportHeadingDiv,
+    TransportHeadingLettersSpan,
     ApprovedRequestButton,
-    TransportHeading,
-    TransportHeadingLetters,
-    DivViewDetails,
+    ViewDetailsSpan
 } from "./transport-admin.style";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 import DescriptionIcon from "@mui/icons-material/Description";
@@ -188,7 +190,7 @@ function TransportAdmin() {
     };
 
     const transportRequestTableHeaders = [
-        { header: "S No" },
+        { header: "S No." },
         { header: "Employee ID" },
         { header: "Name" },
         { header: "Location" },
@@ -245,14 +247,14 @@ function TransportAdmin() {
             <Navbar />
             <TransportAdminReduxDispatch />
 
-            <TransportAdminParent>
-                <TransportHeading>
+            <TransportAdminParentDiv>
+                <TransportHeadingDiv>
                     {headingTransportAdmin.map((letter) => (
-                        <TransportHeadingLetters>
+                        <TransportHeadingLettersSpan>
                             {letter}
-                        </TransportHeadingLetters>
+                        </TransportHeadingLettersSpan>
                     ))}
-                </TransportHeading>
+                </TransportHeadingDiv>
                 
                 <Link style={{ width: '2rem', marginLeft: '2rem' }}
                     to={`/dashboard/admin-transport/admin-transport-approved-request/${id}`}>
@@ -260,7 +262,7 @@ function TransportAdmin() {
                         Approved Requests
                     </ApprovedRequestButton>
                 </Link>
-                <TransportAdminTable>
+                <TransportAdminTableDiv>
                     <Paper
                         className={classes.root}
                         style={{
@@ -369,12 +371,12 @@ function TransportAdmin() {
                             onRowsPerPageChange={handleChangeRowsPerPage}
                         />
                     </Paper>
-                </TransportAdminTable>
-            </TransportAdminParent>
+                </TransportAdminTableDiv>
+            </TransportAdminParentDiv>
 
             {modalval && (
-                <DivViewDetails className="position-absolute top-50 start-50 translate-middle">
-                    <TransportDetailsModal>
+                <ViewDetailsSpan className="position-absolute top-50 start-50 translate-middle">
+                    <TransportDetailsModalDiv>
                         <TableContainer component={Paper}>
                             <Table
                                 sx={{ minWidth: 650 }}
@@ -383,14 +385,14 @@ function TransportAdmin() {
                                 <TableHead>
                                     <TableRow>
                                         <TableCell align="center" colSpan={3}>
-                                            <DivCloseButton>
+                                            <DivCloseButtonDiv>
                                                 <CloseButton
                                                     onClick={showModal}
                                                 />
-                                            </DivCloseButton>
-                                            <ViewTransportDetailsHeading>
+                                            </DivCloseButtonDiv>
+                                            <ViewTransportDetailsHeadingDiv>
                                                 Transport Details
-                                            </ViewTransportDetailsHeading>
+                                            </ViewTransportDetailsHeadingDiv>
                                         </TableCell>
                                     </TableRow>
                                 </TableHead>
@@ -406,8 +408,8 @@ function TransportAdmin() {
                                 </TableBody>
                             </Table>
                         </TableContainer>
-                    </TransportDetailsModal>
-                </DivViewDetails>
+                    </TransportDetailsModalDiv>
+                </    ViewDetailsSpan>
             )}
 
             <Dialog open={open} onClose={handleClose}>
