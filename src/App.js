@@ -19,7 +19,7 @@ import AccessPrivilegeAdmin from './Components/Tiles/Access-Privilege/Access-Pri
 
 import AccessPrivilegeEmp from './Components/Tiles/Access-Privilege/Access-Privilege-Employee/access-privilege-emp';
 
-import FilterPrac from './Components/Tiles/Employee-List/employee-list';
+import EmpListAdmin from './Components/Tiles/Employee-List/employee-list';
 
 import TransportEmp from './Components/Tiles/Transport/Transport-Employee/transport-emp';
 
@@ -53,9 +53,10 @@ function App() {
           <Route path='/dashboard/admin-access-previleges/:id' element={<AccessPrivilegeAdmin />} />
 
           <Route path='/dashboard/accessemp/:id' element={<AccessPrivilegeEmp />} />
-          <Route path='/dashboard/emplistadmin/:id' element={<FilterPrac />} />
+          <Route path='/dashboard/emplistadmin/:id' element={<EmpListAdmin />} />
 
-          <Route path='/dashboard/transpemp/:id' element={<TransportEmp />} />
+          {/* <Route path='/dashboard/transpemp/:id' element={<TransportEmp />} /> */}
+          
           <Route path='/dashboard/admin-transport/:id' element={<TransportAdmin />} />
           <Route path='/dashboard/admin-transport/admin-transport-approved-request/:id' element={<TransportAdminApprovedRequest />} />
 
@@ -65,8 +66,6 @@ function App() {
           <Route path='/dashboard/payslip-admin/:id' element={<PayslipsAdmin/>} />
           <Route path='/dashboard/payslip-emp/:id' element={<PayslipsEmp/>} />
 
-
-         
         </Routes>
       </BrowserRouter>
       

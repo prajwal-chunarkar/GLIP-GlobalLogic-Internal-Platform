@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function FilterPrac() {
+function EmpListAdmin() {
   const classes = useStyles();
   const [rows, setRows] = useState([]);
   const [page, setPage] = useState(0);
@@ -547,4 +547,4 @@ function FilterPrac() {
   );
 }
 
-export default FilterPrac;
+export default EmpListAdmin;
