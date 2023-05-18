@@ -64,8 +64,8 @@ const Dashboard = () => {
         },
         {
             label: "Payslips",
-            adminLink: `/dashboard/payslip-admin/${id}`,
-            empLink: `/dashboard/payslip-emp/${id}`
+            adminLink: `/dashboard/payslips-admin/${id}`,
+            empLink: `/dashboard/payslips-emp/${id}`
         }
     ];
     var tilesRow2 = [

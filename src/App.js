@@ -31,8 +31,6 @@ import PayslipsAdmin from './Components/Tiles/Payslips/Payslip-Admin/payslips-ad
 
 import PayslipsEmp from './Components/Tiles/Payslips/Payslip-Emp/payslips-emp';
 
-
-
 function App() {
   return (
     <>
@@ -48,14 +46,13 @@ function App() {
           <Route path='*' element={<NotFound />} />
           
           {/* Tiles */}
-          {/* <Route path='/dashboard/accessadmin/:id' element={<AccessAdmin />} /> */}
 
           <Route path='/dashboard/admin-access-previleges/:id' element={<AccessPrivilegeAdmin />} />
 
           <Route path='/dashboard/accessemp/:id' element={<AccessPrivilegeEmp />} />
           <Route path='/dashboard/emplistadmin/:id' element={<EmpListAdmin />} />
 
-          {/* <Route path='/dashboard/transpemp/:id' element={<TransportEmp />} /> */}
+          <Route path='/dashboard/transpemp/:id' element={<TransportEmp />} />
           
           <Route path='/dashboard/admin-transport/:id' element={<TransportAdmin />} />
           <Route path='/dashboard/admin-transport/admin-transport-approved-request/:id' element={<TransportAdminApprovedRequest />} />
@@ -63,8 +60,8 @@ function App() {
           <Route path='/dashboard/leave-manage-admin/:id' element={<LeaveManageAdmin />} />
           <Route path='/dashboard/leave-manage-emp/:id' element={<LeaveManageEmp/>} />
           
-          <Route path='/dashboard/payslip-admin/:id' element={<PayslipsAdmin/>} />
-          <Route path='/dashboard/payslip-emp/:id' element={<PayslipsEmp/>} />
+          <Route path='/dashboard/payslips-admin/:id' element={<PayslipsAdmin/>} />
+          <Route path='/dashboard/payslips-emp/:id' element={<PayslipsEmp/>} />
 
         </Routes>
       </BrowserRouter>

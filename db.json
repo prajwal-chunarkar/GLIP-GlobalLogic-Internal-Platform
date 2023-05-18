@@ -134,34 +134,6 @@
       "returnTrip": "yes",
       "weekDays": 2,
       "id": 3
-    },
-    {
-      "empName": "Rajat Gaikwad",
-      "empID": 1003,
-      "location": "Nagpur",
-      "pickupLocation": "Home",
-      "pickupAddress": "Hingna, Nagpur",
-      "dropLocation": "Office",
-      "dropAddress": "22XM+FR8, MIHAN, Nagpur, Nagpur, Maharashtra 441108",
-      "startDate": "2023-05-11",
-      "endDate": "2023-10-11",
-      "returnTrip": "yes",
-      "weekDays": 110,
-      "id": 5
-    },
-    {
-      "empName": "Rajat Gaikwad",
-      "empID": 1003,
-      "location": "Nagpur",
-      "pickupLocation": "Home",
-      "pickupAddress": "Hingna, Nagpur",
-      "dropLocation": "Office",
-      "dropAddress": "22XM+FR8, MIHAN, Nagpur, Nagpur, Maharashtra 441108",
-      "startDate": "2023-05-11",
-      "endDate": "2023-10-11",
-      "returnTrip": "yes",
-      "weekDays": 110,
-      "id": 4
     }
   ],
   "transport-request-rejected": [],
@@ -171,11 +143,113 @@
       "empID": 1002,
       "requestFor": "admin",
       "manager": "Renuka Chowdary Nalluri",
-      "reason": "Any Reason",
-      "date": "2023-05-09T18:30:00.000Z",
+      "reason": "I wanted to be Admin",
+      "date": "2023-05-10T18:30:00.000Z",
       "id": 1
+    },
+    {
+      "empName": "Prajwal Chunarkar",
+      "empID": 1002,
+      "requestFor": "admin",
+      "manager": "Renuka Chowdary Nalluri",
+      "reason": "aaa",
+      "date": "2023-05-16T18:30:00.000Z",
+      "id": 2
     }
   ],
   "access-previlege-request-approved": [],
-  "access-previlege-request-rejected": []
+  "access-previlege-request-rejected": [],
+  "leave-requests": [
+    {
+      "empName": "Prajwal Chunarkar",
+      "empID": 1002,
+      "leaveType": "Sick Leave",
+      "startDate": "2023-05-15T18:30:00.000Z",
+      "endDate": "2023-05-15T18:30:00.000Z",
+      "duration": 1.5,
+      "isHalfDay": "Yes",
+      "halfDayDate": "2023-05-16T18:30:00.000Z",
+      "reason": "Headache",
+      "actionBy": "Renuka Chowdary Nalluri",
+      "rejectReason": "-",
+      "status": "Approved",
+      "id": 1
+    },
+    {
+      "empName": "Prajwal Chunarkar",
+      "empID": 1002,
+      "leaveType": "Paid Leave",
+      "startDate": "2023-05-28T18:30:00.000Z",
+      "endDate": "2023-05-30T18:30:00.000Z",
+      "duration": 3,
+      "isHalfDay": "No",
+      "halfDayDate": "",
+      "reason": "Family Picnic",
+      "actionBy": "Renuka Chowdary Nalluri",
+      "rejectReason": "No I will not, as too much work.",
+      "status": "Rejected",
+      "id": 2
+    },
+    {
+      "empName": "Prajwal Chunarkar",
+      "empID": 1002,
+      "leaveType": "Paid Leave",
+      "startDate": "2023-05-17T18:30:00.000Z",
+      "endDate": "2023-05-20T18:30:00.000Z",
+      "duration": 2,
+      "isHalfDay": "No",
+      "halfDayDate": "",
+      "reason": "picnic",
+      "actionBy": "Renuka Chowdary Nalluri",
+      "rejectReason": "-",
+      "status": "Approved",
+      "id": 3
+    }
+  ],
+  "leaves-remain": [
+    {
+      "id": 1,
+      "empID": 1001,
+      "empName": "Renuka Chowdary Nalluri",
+      "casualLeaves": 6,
+      "sickLeaves": 8,
+      "paidLeaves": 10
+    },
+    {
+      "id": 2,
+      "empID": 1002,
+      "empName": "Prajwal Chunarkar",
+      "casualLeaves": 6,
+      "sickLeaves": 6.5,
+      "paidLeaves": 8
+    },
+    {
+      "id": 3,
+      "empID": 1003,
+      "empName": "Rajat Gaikwad",
+      "casualLeaves": 6,
+      "sickLeaves": 8,
+      "paidLeaves": 10
+    },
+    {
+      "id": 4,
+      "empID": 1004,
+      "empName": "Gaurang Kumar",
+      "casualLeaves": 6,
+      "sickLeaves": 8,
+      "paidLeaves": 10
+    }
+  ],
+  "payslips": [
+    {
+      "id": 1,
+      "name": "Renuka Chowdary",
+      "designation": "Manager",
+      "empID": 1002,
+      "salary": 100000,
+      "deduction": 10000,
+      "month": "05",
+      "year": "2023"
+    }
+  ]
 }

@@ -24,13 +24,11 @@ import {
     ViewDetailsSpan
 } from "./transport-admin.style";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
-import DescriptionIcon from "@mui/icons-material/Description";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 // import { useSelector } from "react-redux";
 import TransportAdminReduxDispatch from "./transport-admin-redux-dispatch";
 import CloseButton from "react-bootstrap/CloseButton";
-import CheckBoxRoundedIcon from "@mui/icons-material/CheckBoxRounded";
 // import {acceptRequest} from './transport-admin-hook'
 // import {FetchData} from './transport-admin-hook'
 import TextField from "@mui/material/TextField";
@@ -41,6 +39,8 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import DescriptionIcon from "@mui/icons-material/Description";
+import CheckBoxRoundedIcon from "@mui/icons-material/CheckBoxRounded";
 import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
 import { useParams } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({

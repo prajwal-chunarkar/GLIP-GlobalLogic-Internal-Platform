@@ -43,10 +43,11 @@ const Register = () => {
     dob: '',
     designation: '',
     password: '',
-    empID: newID,
+    confirmPass: '',
+    empID: '',
     user_type: 'employee'               //By default employee
   })
-  const { fname, mname, lname, email, phone, workLocation, address, gender, dob, designation, password } = user;
+  const { fname, mname, lname, email, phone, workLocation, address, gender, dob, designation, password, confirmPass, empID } = user;
 
   useEffect(() => {
     fetchdata();
@@ -61,7 +62,7 @@ const Register = () => {
     await axios.get(`http://localhost:3003/total-registrations`)
       .then((res) => {
         setTotalRegistered(res.data.total_registrations + 1);
-        setNewID(res.data.total_registrations + 1001)
+        // setNewID(res.data.total_registrations + 1001)
         setUser({ ...user, "empID": res.data.total_registrations + 1001 })
       })
   }
@@ -73,7 +74,7 @@ const Register = () => {
     arrUservalues = Object.values(user)
   }, [user])
 
-  const genderRef = useRef();
+  const genderRef = useRef(null);
 
   const onInputChange = (e, n) => {
     setUser({ ...user, [e.target.name]: e.target.value });   //arrays of objects
@@ -101,15 +102,12 @@ const Register = () => {
     }
   }
 
-  //Confirm Password
-  const [confirmPass, setConfirmPass] = useState("");
-
   const [error, setError] = useState(null);
   var status = true;
 
   const onSubmit = (e) => {
     e.preventDefault();       //PREVENT REFRESH OF PAGE
-    const registerError = validationRegister(user, confirmPass);             //validation
+    const registerError = validationRegister(user);             //validation
 
     if (registerError !== null) {
       setError(registerError);
@@ -130,10 +128,20 @@ const Register = () => {
       if (status === true) {
         setError(null);
 
+        const leavesObj = {                         //we require this in leave-management-emp
+          "empID": empID,
+          "empName": `${fname} ${lname}`,
+          "casualLeaves": 6,
+          "sickLeaves": 8,
+          "paidLeaves": 10
+        }
+        axios.post("http://localhost:3003/leaves-remain", leavesObj)
+
         axios.put("http://localhost:3003/total-registrations", {
           total_registrations: totalRegistered,
         })
 
+        delete (user.confirmPass);                       //we dont require this in db
         axios.post("http://localhost:3003/users", user)
         Swal.fire("Congrats", "You have Successfully Registered.", "success");
         navigate('/')
@@ -224,7 +232,6 @@ const Register = () => {
       label: 'Password',
       placeholder: 'Enter your Password',
       value: password,
-      onChange: (e) => onInputChange(e, 8),
       showStatus: show,
       visibilityFunc: changeVisibility
     },
@@ -233,10 +240,9 @@ const Register = () => {
       label: 'Confirm Password',
       placeholder: 'Enter your Confirm Password',
       value: confirmPass,
-      onChange: (e) => setConfirmPass(e.target.value),
       showStatus: showCP,
       visibilityFunc: changeVisibilityCP
-    },
+    }
   ]
 
   const genderProps = [
@@ -299,10 +305,11 @@ const Register = () => {
         }
         )}
 
-        {formPass.map((obj) => (
+        {formPass.map((obj, ind) => (
           <>
             <FormLabel name={obj.name}>{obj.label}  </FormLabel><FormAstric>*</FormAstric>
             <FormInput type={obj.showStatus ? "text" : "password"} {...obj}
+              onChange={(e) => onInputChange(e, ind + 10)}
             />
             {obj.showStatus ? <VisibilityOffIcon onClick={obj.visibilityFunc} /> :
               <VisibilityIcon onClick={obj.visibilityFunc} />}
