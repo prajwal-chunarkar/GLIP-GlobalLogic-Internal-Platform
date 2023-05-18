@@ -52,7 +52,7 @@ function App() {
           <Route path='/dashboard/accessemp/:id' element={<AccessPrivilegeEmp />} />
           <Route path='/dashboard/emplistadmin/:id' element={<EmpListAdmin />} />
 
-          <Route path='/dashboard/transpemp/:id' element={<TransportEmp />} />
+          {/* <Route path='/dashboard/transpemp/:id' element={<TransportEmp />} /> */}
           
           <Route path='/dashboard/admin-transport/:id' element={<TransportAdmin />} />
           <Route path='/dashboard/admin-transport/admin-transport-approved-request/:id' element={<TransportAdminApprovedRequest />} />
