@@ -241,6 +241,11 @@ function EmpListEmp() {
     setNameFilter("");
   }
 
+    // const uniqueDesignations = [
+  //   // Get a list of unique designations for the drop-down list
+  //   ...new Set(employees?.map((employee) => employee.designation)),
+  // ];
+
   const desigantionProps = [
     { label: 'Intern', value: 'Intern' },
     { label: 'Manager', value: 'Manager' },
