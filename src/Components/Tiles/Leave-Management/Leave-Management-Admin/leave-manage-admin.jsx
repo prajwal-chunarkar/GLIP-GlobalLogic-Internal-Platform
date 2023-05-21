@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Swal from "sweetalert2";
 import Navbar from '../../../Navbar/navbar'
@@ -26,10 +26,8 @@ import { makeStyles } from "@material-ui/styles";
 import DescriptionIcon from "@mui/icons-material/Description";
 import CheckBoxRoundedIcon from "@mui/icons-material/CheckBoxRounded";
 import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
-import CountWeekdays from '../../Transport/Transport-Employee/count-week-days';
 import Button from "@mui/material/Button";
 import CloseButton from "react-bootstrap/CloseButton";
-
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -42,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%"
   },
   container: {
-    maxHeight: '440',
+    maxHeight: '55vh'
   },
   myDialog: {
     '&::-webkit-scrollbar': {
@@ -156,21 +154,17 @@ const LeaveManageAdmin = () => {
                 console.log(sl, cl, pl)
                 console.log(res.data.duration);
                 if (res.data.leaveType === 'Sick Leave') {
-                  debugger;
                   sl = sl - res.data.duration;
                   console.log(sl)
                 }
                 else if (res.data.leaveType === 'Casual Leave') {
-                  debugger;
                   cl = cl - res.data.duration;
                   console.log(cl)
                 }
                 else if (res.data.leaveType === 'Paid Leave') {
-                  debugger;
                   pl = pl - res.data.duration;
                   console.log(pl);
                 }
-                debugger;
                 const leavesRemainObj = {
                   id: obj.id,
                   empID: obj.empID,
@@ -179,21 +173,14 @@ const LeaveManageAdmin = () => {
                   sickLeaves: sl,
                   paidLeaves: pl
                 }
-                debugger;
                 axios.put(`http://localhost:3003/leaves-remain/${obj.id}`, leavesRemainObj)
-                debugger;
                 Swal.fire("Done", "Request Approved Successfully.", "success");
-                window.location.href = `/${id}`;
+                fetchdata();
                 return;
               }
             })
           })
       })
-    // .then(() => {
-    //   debugger;
-    //   console.log("href")
-    //   // window.location.href = `/${id}`;    //must change after merge (id of users->admin)
-    // })
   }
 
   // -----------------------------------------------------------------------------------------
@@ -237,10 +224,10 @@ const LeaveManageAdmin = () => {
           id: res.data.id
         }
         axios.put(`http://localhost:3003/leave-requests/${leaveid}`, reqObj)
-      })
-      .then(() => {
-        handleClose();
-        window.location.href = `/${id}`;            //must change after merge (id of users->admin)
+        .then(()=> {
+          handleClose();
+          fetchdata();
+        })
       })
   }
 
@@ -306,9 +293,9 @@ const LeaveManageAdmin = () => {
         <FormHeading> Leaves Management </FormHeading>
         <Paper className={classes.root}
           style={{ boxShadow: "0.5px 0.5px  10px rgb(65 64 66)" }} >
-          <TableContainer className={`${classes.container} ${classes.myDialog}`}
-            style={{ maxHeight: '50vh' }}>
-            <Table stickyHeader aria-label="sticky table">
+          <TableContainer className={`${classes.container} ${classes.myDialog}`} >
+            
+            <Table stickyHeader>
               <TableHead>
                 <TableRow>
                   {LeavesRecordHeaders.map((header) => (

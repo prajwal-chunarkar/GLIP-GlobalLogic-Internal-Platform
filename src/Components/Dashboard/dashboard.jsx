@@ -19,8 +19,6 @@ const Dashboard = () => {
     const [currUser, setCurrUser] = useState({});
     const [initials, setInitials] = useState('');
 
-    const [isAdmin, setIsAdmin] = useState(false);
-
     useEffect(() => {
         fetchdata();
     }, [])
@@ -43,10 +41,6 @@ const Dashboard = () => {
                     payload: result
                 })
                 localStorage.initials = result;
-
-                if(res.data.user_type === 'admin'){
-                    setIsAdmin(true)
-                }
             })
     }
 
@@ -54,92 +48,88 @@ const Dashboard = () => {
     var tilesRow1 = [
         {
             label: "Access Previleges",
-            adminLink: `/dashboard/admin-access-previleges/${id}`,
-            empLink: `/dashboard/accessemp/${id}`
+            link: currUser?.user_type === 'Admin' ?
+                `/dashboard/admin-access-previleges/${id}` :
+                `/dashboard/accessemp/${id}`,
         },
         {
             label: "Transport",
-            adminLink: `/dashboard/admin-transport/${id}`,
-            empLink: `/dashboard/transpemp/${id}`
+            link: currUser?.user_type === 'Transport Admin' ?
+                `/dashboard/admin-transport/${id}` :
+                `/dashboard/transpemp/${id}`
         },
         {
             label: "Payslips",
-            adminLink: `/dashboard/payslips-admin/${id}`,
-            empLink: `/dashboard/payslips-emp/${id}`
+            link: currUser?.user_type === 'Payroll Admin' ?
+                `/dashboard/payslips-admin/${id}` :
+                `/dashboard/payslips-emp/${id}`
         }
     ];
     var tilesRow2 = [
         {
             label: "Employees List",
-            adminLink: `/dashboard/emplistadmin/${id}`,
-            empLink: `/dashboard/${id}`
+            link: (currUser?.user_type === 'HR Admin' || currUser?.user_type === 'Manager Admin') ?
+                `/dashboard/emplistadmin/${id}` :
+                `/dashboard/emplistemp/${id}`
         },
+
         {
             label: "Leave Management",
-            adminLink: `/dashboard/leave-manage-admin/${id}`,
-            empLink: `/dashboard/leave-manage-emp/${id}`
+            link: (currUser?.user_type === 'HR Admin' || currUser?.user_type === 'Manager Admin') ?
+                `/dashboard/leave-manage-admin/${id}` :
+                `/dashboard/leave-manage-emp/${id}`
         },
         {
-            label: "Exit",
-            adminLink: `/dashboard/${id}`,
-            empLink: `/dashboard/${id}`
+            label: "Feedback",
+            link: `/dashboard/feedback-home/${id}`
         }
     ];
 
     return (
         <>
-            <div>
-                <Navbar />
-            </div>
-            <div>
-                <DashboardMainDiv className="container-fluid ">
-                    <UserDetails
-                        style={{ marginTop: "80px", marginLeft: "50px" }}>
-                        <i>Hello {fname} {lname},</i>
-                    </UserDetails>
-                    <UserDetails style={{ marginLeft: "50px" }}>
-                        <i>your Emp Id is: {empID}</i>
-                    </UserDetails>
-                    <div
-                        className="row"
-                        style={{ boxSizing: "border-box", marginTop: "75px" }}>
-                        <Quote className="col-md-3 mb-4 mt-3 pt-4">
-                            "All our dreams can come true if we have the courage
-                            to pursue them." <br />- Walt Disney
-                        </Quote>
-                        <div className="col">
-                            <div className="dashboard-tiles">
-                                <DashboardTiles className="pt-3 ps-4 pb-3 pe-4 row">
+            <Navbar />
+            <DashboardMainDiv className="container-fluid ">
+                <UserDetails
+                    style={{ marginTop: "80px", marginLeft: "50px" }}>
+                    <i>Hello {fname} {lname},</i>
+                </UserDetails>
+                <UserDetails style={{ marginLeft: "50px" }}>
+                    <i>your Emp Id is: {empID}</i>
+                </UserDetails>
+                <div className="row" style={{ boxSizing: "border-box", marginTop: "75px" }}>
+                    <Quote className="col-md-3 mb-4 mt-3 pt-4">
+                        "All our dreams can come true if we have the courage
+                        to pursue them." <br />- Walt Disney
+                    </Quote>
+                    <div className="col">
+                        <DashboardTiles className="pt-3 ps-4 pb-3 pe-4 row">
+                            {tilesRow1.map((props) => (
+                                <Link
+                                    style={{ maxWidth: '10vw' }}
+                                    to={props.link} >
+                                    <TileItem className="dashboard-item1 col-lg-3 mb-2">
+                                        {props.label}
+                                    </TileItem>
+                                </Link>
+                            ))}
+                        </DashboardTiles>
 
-                                    {tilesRow1.map((item) => (
-                                        <Link 
-                                        style={{maxWidth: '10vw'}} 
-                                        to= {isAdmin ? item.adminLink : item.empLink} >
-                                            <TileItem className="dashboard-item1 col-lg-3 mb-2">
-                                                {item.label}
-                                            </TileItem>
-                                        </Link>
-                                    ))}
-                                </DashboardTiles>
+                        <DashboardTiles className="pt-3 ps-4 pb-3 pe-4 row">
 
-                                <DashboardTiles className="pt-3 ps-4 pb-3 pe-4 row">
-
-                                    {tilesRow2.map((item) => (
-                                        <Link 
-                                        style={{maxWidth: '10vw'}} 
-                                        to= {isAdmin ? item.adminLink : item.empLink} >
-                                            <TileItem className="dashboard-item4 col-lg-3 mb-2">
-                                                {item.label}
-                                            </TileItem>
-                                        </Link>
-                                    ))}
-                                </DashboardTiles>
-                            </div>
-                        </div>
+                            {tilesRow2.map((props) => (
+                                <Link
+                                    style={{ maxWidth: '10vw' }}
+                                    to={props.link} >
+                                    <TileItem className="dashboard-item4 col-lg-3 mb-2">
+                                        {props.label}
+                                    </TileItem>
+                                </Link>
+                            ))}
+                        </DashboardTiles>
                     </div>
-                </DashboardMainDiv>
-                <Footer />
-            </div>
+                </div>
+            </DashboardMainDiv>
+            <Footer />
         </>
     );
 };

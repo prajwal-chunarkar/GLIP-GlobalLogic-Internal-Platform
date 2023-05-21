@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/styles";
 import CheckBoxRoundedIcon from "@mui/icons-material/CheckBoxRounded";
 import DescriptionIcon from "@mui/icons-material/Description";
@@ -18,22 +19,37 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import TextField from '@mui/material/TextField';
 import axios from "axios";
-import React, { useEffect, useState } from "react";
 import CloseButton from "react-bootstrap/CloseButton";
 import Navbar from '../../../Navbar/navbar';
 import {
-    CloseButtonDiv, ViewDetailsDiv, TransportAdminParentDiv, TransportAdminTableDiv, TransportDetailsModalDiv, TransportHeadingDiv,
-    TransportHeadingLettersSpan, ViewTransportDetailsHeadingDiv
+    TableHeading,
+    CloseButtonDiv,
+    ViewDetailsDiv,
+    TransportAdminParentDiv,
+    TransportAdminTableDiv,
+    TransportDetailsModalDiv,
+    TransportHeadingDiv,
+    TransportHeadingLettersSpan,
+    ViewTransportDetailsHeadingDiv
 } from "./access-privilege-admin.style";
-
 
 const useStyles = makeStyles((theme) => ({
     root: {
         width: "100%",
     },
     container: {
-        maxHeight: 440,
+        maxHeight: '55vh'
     },
+    myDialog: {
+        '&::-webkit-scrollbar': {
+            background: 'transparent',
+            width: '10px',
+        },
+        '&::-webkit-scrollbar-thumb': {
+            background: 'rgba(0, 0, 0, 0.4)',
+            borderRadius: '4px'
+        }
+    }
 }));
 
 function AccessPrivilegeAdmin() {
@@ -47,9 +63,9 @@ function AccessPrivilegeAdmin() {
     const [empid, setEmpid] = useState()
     const [reasonObj, setreasonObj] = useState({})
 
-    //-------------calling fetchData()-----------------
+    //-------------calling fetchdata()-----------------
     useEffect(() => {
-        FetchData();
+        fetchdata();
     }, []);
 
     //----------------view details modal----------------
@@ -65,31 +81,23 @@ function AccessPrivilegeAdmin() {
     //----------------view details dialog----------------
     const [id, setid] = useState()
     const showDialogBox = (id) => {
-        axios
-            .get(`http://localhost:3003/access-previlege-request/${id}`).then((res) => {
+        axios.get(`http://localhost:3003/access-previlege-request/${id}`)
+            .then((res) => {
                 setEmpid(res.data)
                 setid(id)
                 handleClickOpen()
             })
     };
 
-
     const sentRequestReason = () => {
-        axios.post(
-            "http://localhost:3003/access-previlege-request-rejected",
-            reasonObj
-        ).then(
-            axios({
-                method: "delete",
-                url: `http://localhost:3003/access-previlege-request/${id}`,
-            })
-        )
+        axios.post("http://localhost:3003/access-previlege-request-rejected", reasonObj)
             .then(() => {
-                FetchData();
+                axios.delete(`http://localhost:3003/access-previlege-request/${id}`)
             })
-            ?.then(
+            .then(() => {
+                fetchdata();
                 handleClose()
-            )
+            })
     }
 
     const [open, setOpen] = useState(false);
@@ -104,51 +112,34 @@ function AccessPrivilegeAdmin() {
 
 
     //--------------- getting list of transport requests
-    const FetchData = async () => {
-        const result = await axios.get(
-            "http://localhost:3003/access-previlege-request"
-        );
-        setRows(result.data);
+    const fetchdata = async () => {
+        const result = await axios.get("http://localhost:3003/access-previlege-request");
+        setRows(result.data.length);
         setAccessPrevilegeRequest(result.data);
     };
 
     //-------------------Approve Request-----------------
     function approveRequest(id) {
-        axios
-            .get(`http://localhost:3003/access-previlege-request/${id}`)
+        axios.get(`http://localhost:3003/access-previlege-request/${id}`)
             .then((res) => {
-                axios.post(
-                    "http://localhost:3003/access-previlege-request-approved",
-                    res.data
-                );
-            }
-            )
-            .then(
-                axios({
-                    method: "delete",
-                    url: `http://localhost:3003/access-previlege-request/${id}`,
-                })
-            )
+                axios.post("http://localhost:3003/access-previlege-request-approved", res.data);
+            })
             .then(() => {
-                FetchData();
+                axios.delete(`http://localhost:3003/access-previlege-request/${id}`)
+                    .then(() => {
+                        fetchdata();
+                    })
             })
     }
 
     //-------------------View Access Request Details-----------------
     function viewDetails(id) {
-        axios({
-            method: "get",
-            url: `http://localhost:3003/access-previlege-request/${id}`,
-        })
-            .then(
-                (response) => {
-                    setaccessPrevilegeRequestDetails(response.data);
-                },
-                (error) => {
-                    console.log("the error is", error);
-                }
+        axios.get(`http://localhost:3003/access-previlege-request/${id}`)
+            .then((res) => {
+                setaccessPrevilegeRequestDetails(res.data);
+                showModal()
+            }
             )
-            .then(showModal());
     }
 
     const getReason = (e) => {
@@ -156,187 +147,142 @@ function AccessPrivilegeAdmin() {
     }
 
     //----------------select rows
-    const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(+event.target.value);
+    const handleChangeRowsPerPage = (e) => {
+        setRowsPerPage(+e.target.value);
         setPage(0);
     };
     //----------------next page
-    const handleChangePage = (event, newPage) => {
+    const handleChangePage = (e, newPage) => {
         setPage(newPage);
     };
 
-    const transportRequestTableHeaders = [
-        { header: "S No." },
-        { header: "Employee ID" },
-        { header: "Name" },
-        { header: "Request for" },
-        { header: "date" },
-        { header: "Action" },
-    ];
+    const tableHeaders = ['S No.', 'Employee ID', 'Name', 'Request for', 'Date', 'Action'];
 
-    const viewDetailsTableHeaders = [
+    const detailsHeaders = [
         {
             Header: "Employee ID",
-            Value: accessPrevilegeRequestDetails?.empID,
+            value: accessPrevilegeRequestDetails?.empID,
         },
         {
             Header: "Employee Name",
-            Value: accessPrevilegeRequestDetails?.empName,
+            value: accessPrevilegeRequestDetails?.empName,
         },
         {
             Header: "Request For",
-            Value: accessPrevilegeRequestDetails?.requestFor,
+            value: accessPrevilegeRequestDetails?.requestFor,
         },
         {
             Header: "Date",
-            Value: accessPrevilegeRequestDetails?.date.slice(0,10),
+            value: accessPrevilegeRequestDetails?.date.slice(0, 10),
         },
         {
             Header: "Reason",
-            Value: accessPrevilegeRequestDetails?.reason,
+            value: accessPrevilegeRequestDetails?.reason,
         }
     ];
-    const headingTransportAdmin = ["A", "c", "c", "e", "s", "s", " ", "P", "r", "i", "v", "i", "l", "e", "g", "e", "s", " ", "R", "e", "q", "u", "e", "s", "t", "s"];
 
     return (
         <>
             <Navbar />
-            <TransportAdminParentDiv>
-                <TransportHeadingDiv>
-                    {headingTransportAdmin.map((letter) => (
-                        <TransportHeadingLettersSpan>{letter}</TransportHeadingLettersSpan>
-                    ))}
-                </TransportHeadingDiv>
-                <TransportAdminTableDiv>
-                    <Paper
-                        className={classes.root}
-                        style={{
-                            boxShadow: "0.5px 0.5px  10px rgb(65 64 66)",
-                        }}>
-                        <TableContainer className={classes.container} style={{ maxHeight: '55vh' }}>
-                            <Table aria-label="sticky table">
-                                <TableHead>
-                                    <TableRow>
-                                        {transportRequestTableHeaders.map(
-                                            (e) => (
-                                                <TableCell
-                                                    align="center"
-                                                    style={{
-                                                        backgroundColor:
-                                                            "#D3D3D3",
-                                                        fontSize: "1rem",
-                                                    }}>
-                                                    <b>{e.header}</b>
+            <TableHeading> Access Privilege Requests </TableHeading>
+            <TransportAdminTableDiv>
+                <Paper className={classes.root}
+                    style={{ boxShadow: "0.5px 0.5px  10px rgb(65 64 66)" }} >
+                    <TableContainer className={`${classes.container} ${classes.myDialog}`} >
+                        <Table stickyHeader>
+                            <TableHead>
+                                <TableRow>
+                                    {tableHeaders.map((header) => (
+                                        <TableCell
+                                            align="center"
+                                            style={{
+                                                backgroundColor: "#D3D3D3",
+                                                fontWeight: 'bold'
+                                            }}>
+                                            {header}
+                                        </TableCell>
+                                    )
+                                    )}
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {accessPrevilegeRequest?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                    .map((emp, index) => {
+                                        return (
+                                            <TableRow
+                                                hover
+                                                role="checkbox"
+                                                tabIndex={-1}
+                                                key={index}>
+                                                <TableCell align="center"
+                                                    style={{ fontWeight: "bold" }} >
+                                                    {index + 1}
                                                 </TableCell>
-                                            )
-                                        )}
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {accessPrevilegeRequest
-                                        ?.slice(
-                                            page * rowsPerPage,
-                                            page * rowsPerPage + rowsPerPage
-                                        )
-                                        .map((employee, index) => {
-                                            return (
-                                                <TableRow
-                                                    hover
-                                                    role="checkbox"
-                                                    tabIndex={-1}
-                                                    key={index}>
-                                                    <TableCell
-                                                        align="center"
-                                                        style={{
-                                                            fontWeight: "bold",
-                                                        }}>
-                                                        {index + 1}
-                                                    </TableCell>
-                                                    <TableCell align="center">
-                                                        {employee.empID}
-                                                    </TableCell>
-                                                    <TableCell align="center">
-                                                        {employee.empName}
-                                                    </TableCell>
-                                                    <TableCell align="center">
-                                                        {employee.requestFor}
-                                                    </TableCell>
-                                                    <TableCell align="center">
-                                                        {employee.date.slice(0, 10)}
-                                                    </TableCell>
-                                                    <TableCell align="center">
-                                                        <Button
-                                                            onClick={() =>
-                                                                viewDetails(
-                                                                    employee.id
-                                                                )
-                                                            }>
-                                                            <DescriptionIcon
-                                                                style={{
-                                                                    color: "#2550df",
-                                                                }}
-                                                            />
-                                                        </Button>
-                                                        <Button
-                                                            onClick={() =>
-                                                                approveRequest(
-                                                                    employee.id
-                                                                )
-                                                            }>
-                                                            <CheckBoxRoundedIcon
-                                                                style={{
-                                                                    color: "#15ca05",
-                                                                }}
-                                                            />
-                                                        </Button>
-                                                        <Button
-                                                            onClick={() =>
-                                                                showDialogBox(
-                                                                    employee.id
-                                                                )
-                                                            }>
-                                                            <DisabledByDefaultIcon
-                                                                style={{
-                                                                    color: "#df2525",
-                                                                }}
-                                                            />
-                                                        </Button>
-                                                    </TableCell>
-                                                </TableRow>
-                                            );
-                                        })}
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
 
-                        <TablePagination
-                            rowsPerPageOptions={[5, 10, 25, 100]}
-                            component="div"
-                            count={rows.length}
-                            rowsPerPage={rowsPerPage}
-                            page={page}
-                            onPageChange={handleChangePage}
-                            onRowsPerPageChange={handleChangeRowsPerPage}
-                        />
-                    </Paper>
-                </TransportAdminTableDiv>
-            </TransportAdminParentDiv>
+                                                <TableCell align="center">
+                                                    {emp.empID}
+                                                </TableCell>
+
+                                                <TableCell align="center">
+                                                    {emp.empName}
+                                                </TableCell>
+
+                                                <TableCell align="center">
+                                                    {emp.requestFor}
+                                                </TableCell>
+
+                                                <TableCell align="center">
+                                                    {emp.date.slice(0, 10)}
+                                                </TableCell>
+
+                                                <TableCell align="center">
+                                                    <Button onClick={() => viewDetails(emp.id)} >
+                                                        <DescriptionIcon
+                                                            style={{ color: "#2550df" }}
+                                                        />
+                                                    </Button>
+                                                    
+                                                    <Button onClick={() => approveRequest(emp.id)} >
+                                                        <CheckBoxRoundedIcon
+                                                            style={{color: "#15ca05"}}
+                                                        />
+                                                    </Button>
+
+                                                    <Button onClick={() => showDialogBox(emp.id) } >
+                                                        <DisabledByDefaultIcon
+                                                            style={{ color: "#df2525" }}
+                                                        />
+                                                    </Button>
+                                                </TableCell>
+                                            </TableRow>
+                                        );
+                                    })}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+
+                    <TablePagination
+                        rowsPerPageOptions={[5, 10, 25, 100]}
+                        component="div"
+                        count={rows}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        onPageChange={handleChangePage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
+                    />
+                </Paper>
+            </TransportAdminTableDiv>
 
             {modalval && (
                 <ViewDetailsDiv className="position-absolute top-50 start-50 translate-middle">
                     <TransportDetailsModalDiv>
                         <TableContainer component={Paper}>
-
-                            <Table
-                                sx={{ minWidth: 650 }}
-                                aria-label="simple table">
+                            <Table>
                                 <TableHead>
                                     <TableRow>
                                         <TableCell align="center" colSpan={3}>
                                             <CloseButtonDiv>
-                                                <CloseButton
-                                                    onClick={showModal}
-                                                />
+                                                <CloseButton onClick={showModal} />
                                             </CloseButtonDiv>
                                             <ViewTransportDetailsHeadingDiv>
                                                 Transport Details
@@ -345,12 +291,12 @@ function AccessPrivilegeAdmin() {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {viewDetailsTableHeaders?.map((obj) => (
+                                    {detailsHeaders?.map((obj) => (
                                         <TableRow>
-                                            <TableCell>
-                                                <b>{obj.Header}</b>
+                                            <TableCell style={{fontWeight: 'bold'}}>
+                                                {obj.Header}
                                             </TableCell>
-                                            <TableCell>{obj.Value}</TableCell>
+                                            <TableCell>{obj.value}</TableCell>
                                         </TableRow>
                                     ))}
                                 </TableBody>
@@ -359,9 +305,6 @@ function AccessPrivilegeAdmin() {
                     </TransportDetailsModalDiv>
                 </ViewDetailsDiv>
             )}
-
-
-
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Reason</DialogTitle>
                 <DialogContent>
@@ -385,7 +328,6 @@ function AccessPrivilegeAdmin() {
                     <Button onClick={sentRequestReason}>Delete</Button>
                 </DialogActions>
             </Dialog>
-
         </>
     );
 }

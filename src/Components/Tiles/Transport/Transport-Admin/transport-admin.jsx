@@ -1,3 +1,6 @@
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 import { makeStyles } from "@material-ui/styles";
 import Button from "@mui/material/Button";
 import TableBody from "@mui/material/TableBody";
@@ -6,39 +9,26 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
 import Navbar from '../../../Navbar/navbar'
 import {
+    TableHeading,
     TransportAdminTableDiv,
-    TransportAdminParentDiv,
-    HeadingTransportAdmint,
     DivCloseButtonDiv,
     TransportDetailsModalDiv,
-    TransportDetailsModalTextDiv,
     ViewTransportDetailsHeadingDiv,
-    SubmitButton,
-    TransportHeadingDiv,
-    TransportHeadingLettersSpan,
-    ApprovedRequestButton,
+    TopButtonDiv,
+    TopButton,
     ViewDetailsSpan
 } from "./transport-admin.style";
-import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
-// import { useSelector } from "react-redux";
-import TransportAdminReduxDispatch from "./transport-admin-redux-dispatch";
 import CloseButton from "react-bootstrap/CloseButton";
-// import {acceptRequest} from './transport-admin-hook'
-// import {FetchData} from './transport-admin-hook'
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { Link } from "react-router-dom";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import DescriptionIcon from "@mui/icons-material/Description";
 import CheckBoxRoundedIcon from "@mui/icons-material/CheckBoxRounded";
 import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
@@ -48,8 +38,18 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
     },
     container: {
-        maxHeight: 440,
+        maxHeight: '55vh'
     },
+    myDialog: {
+        '&::-webkit-scrollbar': {
+            background: 'transparent',
+            width: '10px',
+        },
+        '&::-webkit-scrollbar-thumb': {
+            background: 'rgba(0, 0, 0, 0.4)',
+            borderRadius: '4px'
+        }
+    }
 }));
 
 function TransportAdmin() {
@@ -64,38 +64,27 @@ function TransportAdmin() {
         reason: "",
     });
 
-    const { id } = useParams();
+    const { id } = useParams();              //to navigate approved request page
 
-    // const [detilsToAcceptRequest, setdetilsToAcceptRequest] = useState({});
-    // const [demo, setdemo] = useState({
-    //     demo: "demo",
-    // });
-
-    // const transportRequest = useSelector((state) => state.transportRequest);
-
-    // const [rows, setRows] = FetchData();
-    // const [transportRequest, settransportRequest] = FetchData();
-
-    //-------------calling fetchData()
+    //-----calling fetchData()------//
     useEffect(() => {
-        FetchData();
+        fetchData();
     }, []);
 
-    //----------------view details modal----------------
+    //----------------view details modal----------------//
     const [modalval, setmodalval] = useState(false);
     const showModal = () => {
         modalval ? setmodalval(false) : setmodalval(true);
         window.scrollTo({
             top: 0,
-            behavior: "smooth",
+            behavior: "smooth"
         });
     };
 
     //----------------view details dialog----------------
     const [reqID, setReqID] = useState();
     const showDialogBox = (id) => {
-        axios
-            .get(`http://localhost:3003/transport-request/${id}`)
+        axios.get(`http://localhost:3003/transport-request/${id}`)
             .then((res) => {
                 setreasonObj({ ...reasonObj, empID: res.data.empID });
                 setReqID(id);
@@ -104,18 +93,14 @@ function TransportAdmin() {
     };
 
     const sentRequestReason = () => {
-        axios
-            .post("http://localhost:3003/transport-request-rejected", reasonObj)
-            .then(
-                axios({
-                    method: "delete",
-                    url: `http://localhost:3003/transport-request/${reqID}`,
-                })
-            )
+        axios.post("http://localhost:3003/transport-request-rejected", reasonObj)
             .then(() => {
-                FetchData();
+                axios.delete(`http://localhost:3003/transport-request/${reqID}`)
+                    .then(() => {
+                        fetchData();
+                        handleClose()
+                    })
             })
-            ?.then(handleClose());
     };
 
     const [open, setOpen] = useState(false);
@@ -129,75 +114,53 @@ function TransportAdmin() {
     };
 
     //--------------- getting list of transport requests
-    const FetchData = async () => {
-        const result = await axios.get(
-            "http://localhost:3003/transport-request"
-        );
-        setRows(result.data);
-        settransportRequest(result.data);
+    const fetchData = async () => {
+        axios.get("http://localhost:3003/transport-request")
+            .then((res) => {
+                setRows(res.data.length);
+                settransportRequest(res.data);
+            })
     };
 
     //-------------------Approve Request-----------------
     function approveRequest(id) {
-        axios
-            .get(`http://localhost:3003/transport-request/${id}`)
+        axios.get(`http://localhost:3003/transport-request/${id}`)
             .then((res) => {
-                axios.post(
-                    "http://localhost:3003/transport-request-approved",
-                    res.data
-                );
+                axios.post("http://localhost:3003/transport-request-approved", res.data)
+                    .then(() => {
+                        axios.delete(`http://localhost:3003/transport-request/${id}`)
+                        fetchData();
+                    })
             })
-            .then(
-                axios({
-                    method: "delete",
-                    url: `http://localhost:3003/transport-request/${id}`,
-                })
-            )
-            .then(() => {
-                FetchData();
-            });
     }
 
     //-------------------View Transport Details-----------------
     function viewDetails(id) {
-        axios({
-            method: "get",
-            url: `http://localhost:3003/transport-request/${id}`,
-        })
-            .then(
-                (response) => {
-                    settransportRequestDetails(response.data);
-                },
-                (error) => {
-                    console.log("the error is", error);
-                }
+        axios.get(`http://localhost:3003/transport-request/${id}`)
+            .then((res) => {
+                settransportRequestDetails(res.data);
+                showModal()
+            }
             )
-            .then(showModal());
     }
 
     const getReason = (e) => {
         setreasonObj({ ...reasonObj, [e.target.name]: e.target.value });
     };
 
-    //----------------select rows
-    const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(+event.target.value);
+    //--------------select rows----------------//
+    const handleChangeRowsPerPage = (e) => {
+        setRowsPerPage(+e.target.value);
         setPage(0);
     };
     //----------------next page
-    const handleChangePage = (event, newPage) => {
+    const handleChangePage = (e, newPage) => {
         setPage(newPage);
     };
 
-    const transportRequestTableHeaders = [
-        { header: "S No." },
-        { header: "Employee ID" },
-        { header: "Name" },
-        { header: "Location" },
-        { header: "Action" },
-    ];
+    const tableHeaders = ["S No.", "Employee ID", "Name", "Location", "Action"]
 
-    const viewDetailsTableHeaders = [
+    const detailsHeaders = [
         {
             Header: "Employee ID",
             Value: transportRequestDetails?.empID,
@@ -240,155 +203,110 @@ function TransportAdmin() {
         },
     ];
 
-    const headingTransportAdmin = ["T", "r", "a", "n", "s", "p", "o", "r", "t", " ", "R", "e", "q", "u", "e", "s", "t", "s"];
-
     return (
         <>
             <Navbar />
-            <TransportAdminReduxDispatch />
-
-            <TransportAdminParentDiv>
-                <TransportHeadingDiv>
-                    {headingTransportAdmin.map((letter) => (
-                        <TransportHeadingLettersSpan>
-                            {letter}
-                        </TransportHeadingLettersSpan>
-                    ))}
-                </TransportHeadingDiv>
-                
+            <TableHeading> Transport Requests </TableHeading>
+            <TopButtonDiv>
                 <Link style={{ width: '2rem', marginLeft: '2rem' }}
                     to={`/dashboard/admin-transport/admin-transport-approved-request/${id}`}>
-                    <ApprovedRequestButton>
+                    <TopButton>
                         Approved Requests
-                    </ApprovedRequestButton>
+                    </TopButton>
                 </Link>
-                <TransportAdminTableDiv>
-                    <Paper
-                        className={classes.root}
-                        style={{
-                            boxShadow: "0.5px 0.5px  10px rgb(65 64 66)",
-                        }}>
-                        <TableContainer className={classes.container} style={{ maxHeight: '50vh'}}>
-                            <Table stickyHeader aria-label="sticky table">
-                                <TableHead>
-                                    <TableRow>
-                                        {transportRequestTableHeaders.map(
-                                            (e) => (
-                                                <TableCell
-                                                    align="center"
-                                                    style={{
-                                                        backgroundColor:
-                                                            "#D3D3D3",
-                                                        fontSize: "1rem",
-                                                    }}>
-                                                    <b>{e.header}</b>
-                                                </TableCell>
-                                            )
-                                        )}
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {transportRequest
-                                        ?.slice(
-                                            page * rowsPerPage,
-                                            page * rowsPerPage + rowsPerPage
-                                        )
-                                        .map((employee, index) => {
-                                            return (
-                                                <TableRow
-                                                    hover
-                                                    role="checkbox"
-                                                    tabIndex={-1}
-                                                    key={index}>
-                                                    <TableCell
-                                                        align="center"
-                                                        style={{
-                                                            fontWeight: "bold",
-                                                        }}>
-                                                        {index + 1}
-                                                    </TableCell>
-                                                    <TableCell align="center">
-                                                        {employee.empID}
-                                                    </TableCell>
-                                                    <TableCell align="center">
-                                                        {employee.empName}
-                                                    </TableCell>
-                                                    <TableCell align="center">
-                                                        {employee.location}
-                                                    </TableCell>
-                                                    <TableCell align="center">
-                                                        <Button
-                                                            onClick={() =>
-                                                                viewDetails(
-                                                                    employee.id
-                                                                )
-                                                            }>
-                                                            <DescriptionIcon
-                                                                style={{
-                                                                    color: "#2550df",
-                                                                }}
-                                                            />
-                                                        </Button>
-                                                        <Button
-                                                            onClick={() =>
-                                                                approveRequest(
-                                                                    employee.id
-                                                                )
-                                                            }>
-                                                            <CheckBoxRoundedIcon
-                                                                style={{
-                                                                    color: "#15ca05",
-                                                                }}
-                                                            />
-                                                        </Button>
-                                                        <Button
-                                                            onClick={() =>
-                                                                showDialogBox(
-                                                                    employee.id
-                                                                )
-                                                            }>
-                                                            <DisabledByDefaultIcon
-                                                                style={{
-                                                                    color: "#df2525",
-                                                                }}
-                                                            />
-                                                        </Button>
-                                                    </TableCell>
-                                                </TableRow>
-                                            );
-                                        })}
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
+            </TopButtonDiv>
 
-                        <TablePagination
-                            rowsPerPageOptions={[5, 10, 25, 100]}
-                            component="div"
-                            count={rows.length}
-                            rowsPerPage={rowsPerPage}
-                            page={page}
-                            onPageChange={handleChangePage}
-                            onRowsPerPageChange={handleChangeRowsPerPage}
-                        />
-                    </Paper>
-                </TransportAdminTableDiv>
-            </TransportAdminParentDiv>
+
+            <TransportAdminTableDiv>
+                <Paper
+                    className={classes.root}
+                    style={{ boxShadow: "0.5px 0.5px  10px rgb(65 64 66)" }} >
+                    <TableContainer className={`${classes.container} ${classes.myDialog}`} >
+                        <Table stickyHeader >
+                            <TableHead>
+                                <TableRow>
+                                    {tableHeaders.map((header) => (
+                                        <TableCell align="center"
+                                            style={{
+                                                backgroundColor: "#D3D3D3",
+                                                fontWeight: "bold",
+                                            }} >
+                                            {header}
+                                        </TableCell>
+                                    )
+                                    )}
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {transportRequest?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                    .map((emp, index) => {
+                                        return (
+                                            <TableRow hover role="checkbox" tabIndex={-1} key={index}>
+                                                <TableCell align="center"
+                                                    style={{ fontWeight: "bold" }}>
+                                                    {index + 1}
+                                                </TableCell>
+
+                                                <TableCell align="center">
+                                                    {emp.empID}
+                                                </TableCell>
+
+                                                <TableCell align="center">
+                                                    {emp.empName}
+                                                </TableCell>
+
+                                                <TableCell align="center">
+                                                    {emp.location}
+                                                </TableCell>
+
+                                                <TableCell align="center">
+                                                    <Button
+                                                        onClick={() => viewDetails(emp.id)}>
+                                                        <DescriptionIcon
+                                                            style={{ color: "#2550df" }} />
+                                                    </Button>
+
+                                                    <Button
+                                                        onClick={() => approveRequest(emp.id)} >
+                                                        <CheckBoxRoundedIcon
+                                                            style={{ color: "#15ca05" }} />
+                                                    </Button>
+
+                                                    <Button
+                                                        onClick={() => showDialogBox(emp.id)} >
+                                                        <DisabledByDefaultIcon
+                                                            style={{ color: "#df2525" }} />
+                                                    </Button>
+                                                </TableCell>
+                                            </TableRow>
+                                        );
+                                    })}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+
+                    <TablePagination
+                        rowsPerPageOptions={[5, 10, 25, 100]}
+                        component="div"
+                        count={rows}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        onPageChange={handleChangePage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
+                    />
+                </Paper>
+            </TransportAdminTableDiv>
 
             {modalval && (
                 <ViewDetailsSpan className="position-absolute top-50 start-50 translate-middle">
                     <TransportDetailsModalDiv>
-                        <TableContainer component={Paper}>
-                            <Table
-                                sx={{ minWidth: 650 }}
-                                stickyHeader
-                                aria-label="sticky table">
+                        <TableContainer component={Paper} className={classes.myDialog}>
+                            <Table stickyHeader >
                                 <TableHead>
                                     <TableRow>
                                         <TableCell align="center" colSpan={3}>
                                             <DivCloseButtonDiv>
-                                                <CloseButton
-                                                    onClick={showModal}
-                                                />
+                                                <CloseButton onClick={showModal} />
                                             </DivCloseButtonDiv>
                                             <ViewTransportDetailsHeadingDiv>
                                                 Transport Details
@@ -397,12 +315,12 @@ function TransportAdmin() {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {viewDetailsTableHeaders.map((e) => (
+                                    {detailsHeaders.map((obj) => (
                                         <TableRow>
                                             <TableCell>
-                                                <b>{e.Header}</b>
+                                                <b>{obj.Header}</b>
                                             </TableCell>
-                                            <TableCell>{e.Value}</TableCell>
+                                            <TableCell>{obj.Value}</TableCell>
                                         </TableRow>
                                     ))}
                                 </TableBody>

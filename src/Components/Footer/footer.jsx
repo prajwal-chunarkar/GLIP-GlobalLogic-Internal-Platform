@@ -50,15 +50,15 @@ const Footer = () => {
             })
     }
 
-    const termsAndCondtionsObj = [
-        { point: "1. Intellectual Property: All the Content, Logo, Images and Visual Media is owned by GLIP" },
-        { point: "2. Copywrite : All of the property in website is protected by Copywrite and Governing laws in India" },
-        { point: "3. Termination : Use of abusive language, Inappropriate behavior and violating laws leads to termination of user account" },
-        { point: "4. Link to other Websites : GLIP is not taking a responsibility of clicking on third party links" },
-        { point: "5. Multiple Accounts : To Create multiple accounts for the purpose of voting for against users' Visual Content" },
-        { point: "6. Spam URL: To create or transmit unwanted 'spam' to any person or any URL" },
-        { point: "7. Reward: Rewards may be taxable, depending on the value of the item and the federal, state, and local tax laws applicable to Member." },
-    ]
+    const termsAndCondtionsObj = [ 
+        "1. Intellectual Property: All the Content, Logo, Images and Visual Media is owned by GLIP", 
+        "2. Copywrite : All of the property in website is protected by Copywrite and Governing laws in India", 
+        "3. Termination : Use of abusive language, Inappropriate behavior and violating laws leads to termination of user account", 
+        "4. Link to other Websites : GLIP is not taking a responsibility of clicking on third party links", 
+        "5. Multiple Accounts : To Create multiple accounts for the purpose of voting for against users' Visual Content", 
+        "6. Spam URL: To create or transmit unwanted 'spam' to any person or any URL", 
+        "7. Reward: Rewards may be taxable, depending on the value of the item and the federal, state, and local tax laws applicable to Member." ]
+       
     return (
         <>
             <div>
@@ -120,8 +120,8 @@ const Footer = () => {
                                 />
                             </DivCloseButton>
                             <TermsAndConditionsText>
-                                {termsAndCondtionsObj?.map((e) => (
-                                    <>  <div>{e.point}</div><br /></>
+                                {termsAndCondtionsObj?.map((point) => (
+                                    <>  <div>{point}</div><br /></>
                                 ))}
                             </TermsAndConditionsText>
                         </div>

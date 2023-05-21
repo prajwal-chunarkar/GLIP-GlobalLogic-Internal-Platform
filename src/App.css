@@ -1,0 +1,7 @@
+body {
+    font-family: 'Lucida Sans Unicode';
+}
+
+.myDatePicker .Mui-focused fieldset.MuiOutlinedInput-notchedOutline {
+    border-color: #F37037;
+  }

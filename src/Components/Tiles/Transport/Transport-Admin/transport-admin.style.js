@@ -1,18 +1,17 @@
 import styled from 'styled-components'
 
+export const TableHeading = styled.h1`
+    margin: 1rem 0 -2rem 0;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: #F37037;
+`;
+
 export const TransportAdminTableDiv = styled.div`
     width: 80%;
     margin: 2rem auto 0 auto; 
-    /* margin-top: 4%; */
 `
-export const TransportAdminParentDiv = styled.div`
-   /* display:grid; */
-   /* display: flex; */
-   /* align-items:right; */
-   /* background-color:rgba(230 231 235); */
-   /* min-height:100vh; */
-`
-
 
 export const DivCloseButtonDiv = styled.div`
     box-sizing: border-box;
@@ -22,28 +21,18 @@ export const DivCloseButtonDiv = styled.div`
 `;
 
 export const TransportDetailsModalDiv = styled.div`
-display: flex;
-justify-content: center;
-  width: 50rem;
-  height: 83vh;
-
-  margin: auto;
-  background-color: 'background.paper';
-  border: '2px solid #000';
-  padding: 4rem;
-  &::-webkit-scrollbar {
-    background: transparent;
-    width: 10px;
-    };
-
-    &::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 5px;
-    }
-
+    display: flex;
+    justify-content: center;
+    width: 50vw;
+    max-height: 70vh;
+    margin: auto;
+    margin-top: 15vh;
+    background-color: 'background.paper';
+    border: none;
+    padding: 4rem;
+    z-index: 1000;
     @media (max-width: 767px) {
         width: 40rem;
-       
     }
 `;
 
@@ -61,63 +50,24 @@ export const ViewTransportDetailsHeadingDiv = styled.div`
     text-align: center;
 `;
 
-export const SubmitButton = styled.button`
-position: sticky;
-left: 2rem;
-top: 5.5rem;
-border: none;
-    background-color: #F37037;
-    /* border: 1px solid #F37037; */
-    border-radius: 2rem;
-    height: 2rem;
-    min-width: 5rem;
-    font-size: 1rem;
-    width: 1rem;
-    color: #fff;
-    &:hover{
-        background-color: rgba(243, 112, 55, 0.5);
-        color: #fff;
-    /* box-shadow: rgb(53, 3, 99); */
-    }
-`;
-export const ApprovedRequestButton = styled.button`
-/* position: sticky; */
-/* left: 2rem; */
-/* top: 5.5rem; */
+export const TopButtonDiv = styled.div`
+    margin-top: 5vh;
+`
 
+export const TopButton = styled.button`
     border: none;
-    background-color: #F37037;  
-    /* border: 1px solid #F37037; */
+    background-color: #F37037;
     border-radius: 2rem;
     height: 2rem;
-    max-width: 10rem;
+    min-width: 5vw;
     font-size: 1rem;
-    width: 10rem;
     color: #fff;
     overflow: hidden;
     white-space: nowrap;
     &:hover{
         background-color: rgba(243, 112, 55, 0.5);
-        color: #fff;
-    /* box-shadow: rgb(53, 3, 99); */
+        box-shadow: rgb(53, 3, 99);
     }
-`;
-
-export const TransportHeadingDiv = styled.div`
-margin: 0.7rem 0 3rem 0;
-text-align: center;
-max-height: 5vh;
- `;
-
-export const TransportHeadingLettersSpan = styled.span`
-color: #F37037;
-font-size: 3.3rem;
-font-size: 3rem;
-font-weight: bolder;
-cursor: pointer;
- &:hover {
-color: #EE9F41;
-}
 `;
 
 export const ViewDetailsSpan = styled.span`

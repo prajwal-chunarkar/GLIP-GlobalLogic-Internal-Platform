@@ -1,16 +1,16 @@
 import styled from 'styled-components'
 
+export const TableHeading = styled.h1`
+    margin: 1rem 0 -2rem 0;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: #F37037;
+`; 
+
 export const TransportAdminTableDiv = styled.div`
     width: 80%;
     margin: 4rem auto 0 auto; 
-    /* margin-top: 4%; */
-`
-export const TransportAdminParentDiv = styled.div`
-   /* display:grid; */
-   /* display: flex; */
-   /* align-items:right; */
-   /* background-color:rgba(230 231 235); */
-   /* min-height:100vh; */
 `
 
 
@@ -22,25 +22,18 @@ export const CloseButtonDiv = styled.div`
 `;
 
 export const TransportDetailsModalDiv = styled.div`
-display: flex;
-justify-content: center;
-  width: 50rem;
-  height: 83vh;
+    position: fixed;
+    top: 45%;
+    left: 50%;      
+    width: 35vw;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+    border: none;
 
-  margin: auto;
-  background-color: 'background.paper';
-  border: '2px solid #000';
-  padding: 4rem;
-  &::-webkit-scrollbar {
-    background: transparent;
-    width: 10px;
-    };
-
-    &::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 5px;
-    }
-
+  &::after{
+    transition: all .5s ease-in-out;
+  }
     @media (max-width: 767px) {
         width: 40rem;
        

@@ -62,15 +62,15 @@ import CloseButton from "react-bootstrap/CloseButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "100%",
+    width: "100%"
   },
   container: {
-    maxHeight: 440,
+    maxHeight: '55vh'
   },
   myDialog: {
     '&::-webkit-scrollbar': {
       background: 'transparent',
-      width: '10px',
+      width: '10px'
     },
     '&::-webkit-scrollbar-thumb': {
       background: 'rgba(0, 0, 0, 0.4)',
@@ -510,8 +510,8 @@ const LeaveManageEmp = () => {
           style={{
             boxShadow: "0.5px 0.5px  10px rgb(65 64 66)",
           }}>
-          <TableContainer className={`${classes.container} ${classes.myDialog}`} 
-            style={{ maxHeight: '50vh' }}>
+          <TableContainer className={`${classes.container} ${classes.myDialog}`} >
+            
             <Table stickyHeader>
               <TableHead>
                 <TableRow>

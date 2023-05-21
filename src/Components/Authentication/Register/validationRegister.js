@@ -6,7 +6,7 @@ export default function validationRegister(user){
     const regexDob = /^((0[1-9])|(1[0-2]))\/(\d{4})$/
 
     //Designation validation Logic
-    const positions = ['Intern','Trainee Software Engineer','Associate Software Engineer','Software Engineer','Senior Software Engineer','Tester','Manager','HR']
+    const positions = ['Intern','Associate Software Engineer','Software Engineer','Senior Software Engineer','Manager','HR','Consultant']
     var isdesignation = false;
     positions.forEach((pos)=> {
         if(pos === designation){
