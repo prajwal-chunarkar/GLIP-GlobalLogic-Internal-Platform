@@ -13,6 +13,7 @@ import {
     MuiPickersUtilsProvider,
     KeyboardDatePicker,
 } from "@material-ui/pickers";
+import Navbar from '../../../Navbar/navbar'
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import html2canvas from "html2canvas";
@@ -175,6 +176,7 @@ const PayslipsEmp = () => {
 
     return (
         <>
+        <Navbar/>
             <ParentPayslipEmpDiv>
                 {/* ------------------------------------heading---------------------------- */}
                 <HeadingPayslipEmpDiv>

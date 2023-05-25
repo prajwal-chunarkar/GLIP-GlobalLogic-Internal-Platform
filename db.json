@@ -30,7 +30,7 @@
       "designation": "Intern",
       "password": "prajwal@2001",
       "empID": 1002,
-      "user_type": "employee"
+      "user_type": "HR Admin"
     },
     {
       "fname": "Rajat",
@@ -63,6 +63,22 @@
       "empID": 1004,
       "user_type": "employee",
       "id": 4
+    },
+    {
+      "fname": "Vishesh",
+      "mname": "",
+      "lname": "Jindal",
+      "email": "vishesh@gmail.com",
+      "phone": "8763448045",
+      "workLocation": "Banglore",
+      "address": "Malleshwaram, Banglore",
+      "gender": "male",
+      "dob": "09/2001",
+      "designation": "Intern",
+      "password": "vishesh@08",
+      "empID": 1005,
+      "user_type": "employee",
+      "id": 5
     }
   ],
   "total-registrations": {
@@ -250,6 +266,73 @@
       "deduction": 10000,
       "month": "05",
       "year": "2023"
+    }
+  ],
+  "company-survey": [
+    {
+      "empName": "Renuka Chowdary Nalluri",
+      "empID": 1001,
+      "empSatisfaction": "5",
+      "trainingDev": "5",
+      "empEngagement": "5",
+      "empBenifits": "5",
+      "empLeadership": "5",
+      "empFuturePlanning": "5",
+      "empWorkDiversity": "5",
+      "empCommunication": "5",
+      "id": 1
+    },
+    {
+      "empName": "Prajwal Chunarkar",
+      "empID": 1002,
+      "empSatisfaction": "4",
+      "trainingDev": "4",
+      "empEngagement": "4",
+      "empBenifits": "4",
+      "empLeadership": "4",
+      "empFuturePlanning": "4",
+      "empWorkDiversity": "4",
+      "empCommunication": "4",
+      "id": 2
+    },
+    {
+      "empName": "Rajat Gaikwad",
+      "empID": 1003,
+      "empSatisfaction": "3",
+      "trainingDev": "3",
+      "empEngagement": "3",
+      "empBenifits": "3",
+      "empLeadership": "3",
+      "empFuturePlanning": "3",
+      "empWorkDiversity": "3",
+      "empCommunication": "3",
+      "id": 3
+    },
+    {
+      "empName": "Gaurang Kumar",
+      "empID": 1004,
+      "empSatisfaction": "2",
+      "trainingDev": "2",
+      "empEngagement": "2",
+      "empBenifits": "5",
+      "empLeadership": "2",
+      "empFuturePlanning": "2",
+      "empWorkDiversity": "2",
+      "empCommunication": "2",
+      "id": 4
+    },
+    {
+      "empName": "Vishesh Jindal",
+      "empID": 1005,
+      "empSatisfaction": "5",
+      "trainingDev": "4",
+      "empEngagement": "3",
+      "empBenifits": "5",
+      "empLeadership": "1",
+      "empFuturePlanning": "1",
+      "empWorkDiversity": "4",
+      "empCommunication": "4",
+      "id": 5
     }
   ]
 }

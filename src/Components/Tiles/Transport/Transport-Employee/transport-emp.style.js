@@ -6,9 +6,8 @@ export const TranspEmpBody = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 1.5rem 0
-`
-
+    margin: 1.5rem 0;
+`;
 export const FormContainer = styled.div`
     background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
     width: 55vw;
