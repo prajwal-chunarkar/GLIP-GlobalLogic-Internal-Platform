@@ -208,8 +208,7 @@ const LeaveManageEmp = () => {
       Swal.fire("Congrats", "You have sent Leave Request Successfully.", "success");
 
       localStorage.removeItem('LeaveEmpData');
-      window.location.href = `/${id}`;                  //must change after merge
-      // navigate(`/dashboard/${id}`);
+      window.location.href = `/dashboard/leave-manage-emp/${id}`;  
       onCancel();
       return;
     }
@@ -422,7 +421,6 @@ const LeaveManageEmp = () => {
             <FormAstric>*</FormAstric> <br />
             <RadioGroup style={{ marginBottom: '1rem' }}
               row
-              aria-labelledby="demo-row-radio-buttons-group-label"
               name="isHalfDay"
               value={isHalfDay}
             >
@@ -455,8 +453,7 @@ const LeaveManageEmp = () => {
                     renderinput={(params) => <TextField {...params} />}
                     onChange={(newValue) => {
                       setLeaveRequest({
-                        ...leaveRequest, 'halfDayDate': newValue
-                      })
+                        ...leaveRequest, 'halfDayDate': newValue })
                     }}
                   />
                   <br /><br />

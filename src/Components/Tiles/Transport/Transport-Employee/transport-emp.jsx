@@ -36,25 +36,32 @@ const TransportEmp = () => {
   const [locations, setLocations] = useState([]);         //imp
   const [currentUser, setCurrentUser] = useState({});         //imp
 
-  const [transRequest, setTransRequest] = useState({
-    empName: '',
-    empID: '',
-    location: '',
-    pickupLocation: '',
-    pickupAddress: '',
-    dropLocation: '',
-    dropAddress: '',
-    startDate: '',
-    endDate: '',
-    returnTrip: '',
-    weekDays: ''
-  })
+  const [transRequest, setTransRequest] = useState(() => {
+    var localStore = JSON.parse(localStorage.getItem("transpData"));
+    if (localStore) {
+      localStore.startDate = new Date(localStore.startDate)
+      localStore.endDate = new Date(localStore.endDate)
+    }
+    return localStore || {
+      empName: '',
+      empID: '',
+      location: '',
+      pickupLocation: '',
+      pickupAddress: '',
+      dropLocation: '',
+      dropAddress: '',
+      startDate: '',
+      endDate: '',
+      returnTrip: '',
+      weekDays: ''
+    }
+  });
 
-  const { empName, empID, location, pickupLocation, pickupAddress, dropLocation, dropAddress } = transRequest;
+  const { empName, empID, location, pickupLocation, pickupAddress, dropLocation, dropAddress, startDate, endDate, returnTrip, weekDays } = transRequest;
 
   useEffect(() => {
     fetchdata();
-  }, [])                          //only once when load
+  }, []);                          //only once when load
 
   const fetchdata = async () => {
     await axios.get(`http://localhost:3003/users/${id}`)
@@ -123,7 +130,8 @@ const TransportEmp = () => {
       setError(null);
       axios.post("http://localhost:3003/transport-request", transRequest)
       Swal.fire("Congrats", "You have sent Transport Request Successfully.", "success");
-      // navigate(`/dashboard/${id}`);
+      localStorage.removeItem('transpData');   //clear Access Privilege Form Data
+      navigate(`/dashboard/${id}`);
       return;
     }
   }
@@ -179,10 +187,12 @@ const TransportEmp = () => {
     {
       name: 'startDate',
       label: 'Start Date',
+      value: startDate
     },
     {
       name: 'endDate',
       label: 'End Date',
+      value: endDate
     }
   ]
 
@@ -190,13 +200,13 @@ const TransportEmp = () => {
     {
       name: 'returnTrip',
       label: 'Yes',
-      value: 'yes',
+      value: 'Yes',
       onChange: (e) => onInputChange(e)
     },
     {
       name: 'returnTrip',
       label: 'No',
-      value: 'no',
+      value: 'No',
       onChange: (e) => onInputChange(e)
     }
   ]
@@ -206,22 +216,34 @@ const TransportEmp = () => {
     { label: 'Office', value: 'Office' }
   ]
 
-  const [sDate, setSDate] = useState();
-  const [eDate, setEDate] = useState();
-  const [days, setDays] = useState(null);
-
-  const weekDaysRef = useRef(null);
-  var res;
-
   useEffect(() => {
-    if (sDate && eDate) {
-      res = CountWeekdays(sDate, eDate);
-      setDays(res)
+    if (startDate && endDate) {
       setTransRequest({
-        ...transRequest, [weekDaysRef.current.name]: res
+        ...transRequest, 'weekDays': CountWeekdays(startDate, endDate)
       })
     }
-  }, [sDate, eDate])
+  }, [startDate, endDate])
+
+  const onCancel = () => {
+    setTransRequest({
+      ...transRequest,
+      location: '',
+      pickupLocation: '',
+      pickupAddress: '',
+      dropLocation: '',
+      dropAddress: '',
+      startDate: '',
+      endDate: '',
+      returnTrip: '',
+      weekDays: ''
+    })
+    localStorage.removeItem('transpData');   //clear Access Privilege Form Data
+  }
+
+  const onSave = () => {
+    localStorage.setItem("transpData", JSON.stringify(transRequest));
+    Swal.fire("Congrats", "Saved as Draft Successfully.", "success");
+  }
 
   return (
     <>
@@ -239,6 +261,7 @@ const TransportEmp = () => {
                   <Select
                     style={{ width: '97%', height: '3rem' }}
                     name={obj.name} onChange={obj.onChange}
+                    value={pickupLocation}
                     sx={{
                       '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
                         borderColor: '#F37037',
@@ -282,17 +305,10 @@ const TransportEmp = () => {
                   className="myDatePicker"
                   slotProps={{ textField: { fullWidth: true } }}
                   renderinput={(params) => <TextField {...params} />}
+                  value={obj.value ? obj.value : null}
                   onChange={(newValue) => {
-                    if (obj.name === 'startDate') {
-                      setSDate(newValue)
-                    }
-                    else if (obj.name === 'endDate') {
-                      setEDate(newValue)
-                    }
                     setTransRequest({
-                      ...transRequest, [obj.name]:
-                        newValue.toISOString().slice(0, 10)
-                    })
+                      ...transRequest, [obj.name]: newValue })
                   }}
                 />
                 <br /><br />
@@ -303,7 +319,7 @@ const TransportEmp = () => {
           <>
             <FormLabel name='weekDays'>Week Days</FormLabel>
             <FormAstric>*</FormAstric>
-            <FormInput type="text" placeholder='Week Days Generate Automatically' name='weekDays' ref={weekDaysRef} value={days} readonly />
+            <FormInput type="text" placeholder='Week Days Generate Automatically' name='weekDays' value={weekDays} readonly />
           </>
 
   {/* ----------------------------------------------------------------------- */}
@@ -311,8 +327,8 @@ const TransportEmp = () => {
           <FormAstric>*</FormAstric> <br />
           <RadioGroup
             row
-            aria-labelledby="demo-row-radio-buttons-group-label"
             name="returnTrip"
+            value={returnTrip}
           >
             {returnTripProp.map((obj) => (
               <FormControlLabel
@@ -335,6 +351,12 @@ const TransportEmp = () => {
           <FlexDiv>
             <SubmitButton onClick={e => onSubmit(e)}>
               Make Request
+            </SubmitButton>
+            <SubmitButton onClick={e => onCancel(e)}>
+              Cancel
+            </SubmitButton>
+            <SubmitButton onClick={e => onSave(e)}>
+              Save as Draft
             </SubmitButton>
           </FlexDiv>
         </FormContainer>

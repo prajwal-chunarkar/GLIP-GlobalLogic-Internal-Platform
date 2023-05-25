@@ -79,6 +79,8 @@ function EmpListAdmin() {
   };
   //---------------New user details-------------
   const [selectOption, setSelectOption] = useState('');
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -254,7 +256,8 @@ function EmpListAdmin() {
     { label: 'Senior Software Engineer', value: 'Senior Software Engineer' },
     { label: 'Manager', value: 'Manager' },
     { label: 'HR', value: 'HR' },
-    { label: 'Consultant', value: 'Consultant' }
+    { label: 'Transport Emp', value: 'Transport Emp' },
+    { label: 'Payroll Emp', value: 'Payroll Emp' }
   ]
 
   const tableHeaders = ['S No.', 'Employee ID', 'Name', 'Designation', 'Email', 'Action'];
@@ -420,7 +423,10 @@ function EmpListAdmin() {
                         <Select
                           style={{ width: '20vw' }}
                           value={selectOption}
-                          onChange={(e) => { setSelectOption(e.target.value) }}
+                          onChange={(e) => { 
+                            setSelectOption(e.target.value);
+                            setOpen(false); 
+                          }}
                           sx={{
                             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
                               borderColor: '#F37037',

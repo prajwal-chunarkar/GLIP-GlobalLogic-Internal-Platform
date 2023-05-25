@@ -248,10 +248,13 @@ function EmpListEmp() {
 
   const desigantionProps = [
     { label: 'Intern', value: 'Intern' },
-    { label: 'Manager', value: 'Manager' },
     { label: 'Associate Software Engineer', value: 'Associate Software Engineer' },
     { label: 'Software Engineer', value: 'Software Engineer' },
-    { label: 'Consultant', value: 'Consultant' }
+    { label: 'Senior Software Engineer', value: 'Senior Software Engineer' },
+    { label: 'Manager', value: 'Manager' },
+    { label: 'HR', value: 'HR' },
+    { label: 'Transport Emp', value: 'Transport Emp' },
+    { label: 'Payroll Emp', value: 'Payroll Emp' }  
   ]
 
   const tableHeaders = ['S No.', 'Employee ID', 'Name', 'Designation', 'Email', 'Action'];

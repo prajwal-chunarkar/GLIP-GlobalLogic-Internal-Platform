@@ -127,10 +127,8 @@ function TransportAdmin() {
         axios.get(`http://localhost:3003/transport-request/${id}`)
             .then((res) => {
                 axios.post("http://localhost:3003/transport-request-approved", res.data)
-                    .then(() => {
-                        axios.delete(`http://localhost:3003/transport-request/${id}`)
-                        fetchData();
-                    })
+                axios.delete(`http://localhost:3003/transport-request/${id}`)
+                fetchData();
             })
     }
 
@@ -195,12 +193,16 @@ function TransportAdmin() {
         },
         {
             Header: "Start Date",
-            Value: transportRequestDetails?.startDate,
+            Value: transportRequestDetails?.startDate.slice(0, 10),
         },
         {
             Header: "End Date",
-            Value: transportRequestDetails?.endDate,
+            Value: transportRequestDetails?.endDate.slice(0, 10),
         },
+        {
+            Header: "Days",
+            Value: transportRequestDetails?.weekDays
+        }
     ];
 
     return (

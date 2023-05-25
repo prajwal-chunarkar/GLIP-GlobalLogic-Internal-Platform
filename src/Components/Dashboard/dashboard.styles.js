@@ -21,6 +21,9 @@ export const DashboardTiles = styled.span`
 `
 
 export const TileItem = styled.button`
+/* text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden; */
   border: none;
   min-width: 17vw;
   min-height: 23vh;

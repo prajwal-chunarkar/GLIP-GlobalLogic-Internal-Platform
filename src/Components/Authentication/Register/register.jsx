@@ -5,6 +5,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import validationRegister from './validationRegister';
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 import {
   FormBackground,
   FormLogo,
@@ -75,6 +77,8 @@ const Register = () => {
   }, [user])
 
   const genderRef = useRef(null);
+  const desRef = useRef(null);
+  const selRef = useRef(null);
 
   const onInputChange = (e, n) => {
     setUser({ ...user, [e.target.name]: e.target.value });   //arrays of objects
@@ -84,8 +88,10 @@ const Register = () => {
         if (arrUserKeys[i] === 'gender') {
           genderRef.current.style.color = "red";
         }
+        else if(arrUserKeys[i] === 'desigation'){
+          desRef.current.style.color = "red";
+        }
         else {
-          console.log("this is bug");
           (document.getElementsByName(arrUserKeys[i]))[0].style.color = "red";
           (document.getElementsByName(arrUserKeys[i]))[1].style.borderBottom = "2px solid red";
         }
@@ -97,8 +103,11 @@ const Register = () => {
       (document.getElementsByName(arrUserKeys[n]))[0].style.color = "red";
     }
     else {
-      e.target.style.borderBottom = null;
-      (document.getElementsByName(arrUserKeys[n]))[0].style.color = null;
+      if(e.target.name !== 'designation'){
+        e.target.style.borderBottom = null;
+        (document.getElementsByName(arrUserKeys[n]))[0].style.color = null;
+      }
+      
     }
   }
 
@@ -221,8 +230,9 @@ const Register = () => {
     {
       name: 'designation',
       label: 'Designation',
-      placeholder: 'Enter Your Designation',
-      value: designation
+      // placeholder: 'Enter Your Designation',
+      value: designation,
+      ref: desRef
     }
   ]
 
@@ -256,8 +266,18 @@ const Register = () => {
       label: 'Female',
       value: 'female'
     },
-  ]
+  ];
 
+  const desigantionProps = [
+    { label: 'Intern', value: 'Intern' },
+    { label: 'Associate Software Engineer', value: 'Associate Software Engineer' },
+    { label: 'Software Engineer', value: 'Software Engineer' },
+    { label: 'Senior Software Engineer', value: 'Senior Software Engineer' },
+    { label: 'Manager', value: 'Manager' },
+    { label: 'HR', value: 'HR' },
+    { label: 'Transport Emp', value: 'Transport Emp' },
+    { label: 'Payroll Emp', value: 'Payroll Emp' }
+  ]
   return (
     <FormBackground>
 
@@ -277,7 +297,6 @@ const Register = () => {
                 <RadioGroup style={{ marginBottom: '0.9rem' }}
                   name={obj.name}
                   row
-                  aria-labelledby="demo-row-radio-buttons-group-label"
                 >
                   {genderProps.map((gen) => (
                     <FormControlLabel {...gen}
@@ -294,6 +313,38 @@ const Register = () => {
               </>
             )
           }
+          if (obj.name === 'designation') {
+            return (
+              <>
+                <FormLabel name={obj.name} ref={obj.ref}>{obj.label}</FormLabel>
+                <FormAstric>*</FormAstric> <br />
+                <Select
+                  style={{ width: '97%', marginBottom:'1.1rem' }}
+                  name={obj.name}
+                  ref={selRef}
+                  value={obj.value}
+                  onChange={(e) => onInputChange(e, index)}
+                  sx={{
+                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                      borderColor: '#F37037',
+                    },
+                    '.MuiSvgIcon-root ': {
+                      fill: "#F37037",
+                    }
+                  }}
+                >
+                  {desigantionProps.map((prop, ind) => (
+                    <MenuItem {...prop}  >
+                      {prop.label}
+                    </MenuItem>
+                  ))}
+
+                </Select >
+              </>
+            )
+          }
+
+
           return (
             <>
               <FormLabel name={obj.name}>{obj.label}</FormLabel>
@@ -332,7 +383,7 @@ const Register = () => {
           </Link>
         </LinksDiv>
       </FormContainer>
-    </FormBackground>
+    </FormBackground >
 
   );
 }

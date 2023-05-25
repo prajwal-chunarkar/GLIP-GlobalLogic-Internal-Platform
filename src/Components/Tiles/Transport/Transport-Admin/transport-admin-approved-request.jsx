@@ -137,11 +137,15 @@ const TransportAdminApprovedRequest = () => {
         },
         {
             Header: "Start Date",
-            Value: transportRequestDetails?.startDate,
+            Value: transportRequestDetails?.startDate.slice(0, 10),
         },
         {
             Header: "End Date",
-            Value: transportRequestDetails?.endDate,
+            Value: transportRequestDetails?.endDate.slice(0, 10),
+        },
+        {
+            Header: "Days",
+            Value: transportRequestDetails?.weekDays
         }
     ];
 

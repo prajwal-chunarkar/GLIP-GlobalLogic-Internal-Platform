@@ -34,11 +34,11 @@ const AccessPrivilegeEmp = () => {
   const [managerList, setManagerList] = useState([]);
 
   const [accessRequest, setAccessRequest] = useState(() => {
-    var localStotage = JSON.parse(localStorage.getItem("accessData"));
-    if (localStotage) {
-      localStotage.date = new Date(localStotage.date)
+    var localStore = JSON.parse(localStorage.getItem("accessData"));
+    if (localStore) {
+      localStore.date = new Date(localStore.date)
     }
-    return localStotage || {
+    return localStore || {
       empName: '',
       empID: '',
       requestFor: '',
