@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import CloseButton from "react-bootstrap/CloseButton";
+import { useSelector } from "react-redux";
 
 import {
     Para,
@@ -23,6 +24,8 @@ import {
 } from "./footer.style";
 
 const Footer = () => {
+    const isloggedin = useSelector((state)=> state.isloggedin)
+
     const [modalval, setmodalval] = useState(false);
     const showTnC = () => {
         modalval ? setmodalval(false) : setmodalval(true);
@@ -65,10 +68,11 @@ const Footer = () => {
                 <Flex className="row">
                     <div className="col-md-3">
                         <UL>
-                            <Li>
+                            {!isloggedin && 
+                                <Li>
                                 <Link to="/login" style={{ textDecoration: "none" }}><FooterA>Login</FooterA></Link>
                             </Li>
-
+                            }
                             <Li>
                                 <Link to="/aboutus" style={{ textDecoration: "none" }}><FooterA>About Us</FooterA></Link>
                             </Li>
