@@ -30,7 +30,6 @@ const Register = () => {
   const navigate = useNavigate();
 
   const [totalRegistered, setTotalRegistered] = useState();
-  const [newID, setNewID] = useState()
 
   const [result, setResult] = useState([]);
   const [user, setUser] = useState({
@@ -49,7 +48,7 @@ const Register = () => {
     empID: '',
     user_type: 'employee'               //By default employee
   })
-  const { fname, mname, lname, email, phone, workLocation, address, gender, dob, designation, password, confirmPass, empID } = user;
+  const { fname, mname, lname, email, phone, workLocation, address, dob, designation, password, confirmPass, empID } = user;
 
   useEffect(() => {
     fetchdata();
@@ -64,7 +63,6 @@ const Register = () => {
     await axios.get(`http://localhost:3003/total-registrations`)
       .then((res) => {
         setTotalRegistered(res.data.total_registrations + 1);
-        // setNewID(res.data.total_registrations + 1001)
         setUser({ ...user, "empID": res.data.total_registrations + 1001 })
       })
   }
@@ -137,7 +135,7 @@ const Register = () => {
       if (status === true) {
         setError(null);
 
-        const leavesObj = {                         //we require this in leave-management-emp
+        const leavesObj = {     //we require this in leave-management-emp
           "empID": empID,
           "empName": `${fname} ${lname}`,
           "casualLeaves": 6,
@@ -275,8 +273,8 @@ const Register = () => {
     { label: 'Senior Software Engineer', value: 'Senior Software Engineer' },
     { label: 'Manager', value: 'Manager' },
     { label: 'HR', value: 'HR' },
-    { label: 'Transport Emp', value: 'Transport Emp' },
-    { label: 'Payroll Emp', value: 'Payroll Emp' }
+    { label: 'Transport Emp', value: 'Transport' }, 
+    { label: 'Payroll Emp', value: 'Payroll' }
   ]
   return (
     <FormBackground>

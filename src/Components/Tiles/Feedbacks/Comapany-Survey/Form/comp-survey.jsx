@@ -231,7 +231,6 @@ const CompSurvey = () => {
                                 {...obj}
                                 name = "trainingDev"
                                 // onChange={(e)=>onInputChange(e)}
-
                                 control={
                                     <Radio
                                         sx={{
@@ -256,9 +255,7 @@ const CompSurvey = () => {
                             <FormControlLabel
                                 {...obj}
                                 name = "empEngagement"
-
                                 // onChange={(e)=>onInputChange(e)}
-
                                 control={
                                     <Radio
                                         sx={{
@@ -283,9 +280,7 @@ const CompSurvey = () => {
                             <FormControlLabel
                                 {...obj}
                                 name = "empBenifits"
-
                                 // onChange={(e)=>onInputChange(e)}
-
                                 control={
                                     <Radio
                                         sx={{
@@ -310,7 +305,6 @@ const CompSurvey = () => {
                             <FormControlLabel
                                 {...obj}
                                 name = "empLeadership"
-
                                 // onChange={(e)=>onInputChange(e)}
                                 control={
                                     <Radio
@@ -336,9 +330,7 @@ const CompSurvey = () => {
                             <FormControlLabel
                                 {...obj}
                                 name = "empFuturePlanning"
-
                                 // onChange={(e)=>onInputChange(e)}
-
                                 control={
                                     <Radio
                                         sx={{
@@ -363,9 +355,7 @@ const CompSurvey = () => {
                             <FormControlLabel
                                 {...obj}
                                 name = "empWorkDiversity"
-
                                 // onChange={(e)=>onInputChange(e)}
-
                                 control={
                                     <Radio
                                         sx={{
@@ -390,9 +380,7 @@ const CompSurvey = () => {
                             <FormControlLabel
                                 {...obj}
                                 name = "empCommunication"
-
                                 // onChange={(e)=>onInputChange(e)}
-
                                 control={
                                     <Radio
                                         sx={{

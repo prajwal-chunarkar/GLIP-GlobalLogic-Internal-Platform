@@ -7,8 +7,7 @@ export const HeadingCompSurveyEmpDiv = styled.div`
 
 export const CompSurveyHeadingLettersSpan = styled.span`
     color: #f37037;
-    font-size: 3.3rem;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     font-weight: bolder;
     cursor: pointer;
     &:hover {

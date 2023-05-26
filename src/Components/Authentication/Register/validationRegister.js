@@ -1,19 +1,19 @@
 export default function validationRegister(user){
-    const { fname, lname, email, phone, workLocation, address, gender, dob, designation, password, confirmPass } = user;
+    const { fname, lname, email, phone, workLocation, address, gender, dob, password, confirmPass } = user;
 
     const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     const regexPhone = /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/
     const regexDob = /^((0[1-9])|(1[0-2]))\/(\d{4})$/
 
     //Designation validation Logic
-    const positions = ['Intern','Associate Software Engineer','Software Engineer','Senior Software Engineer','Manager','HR','Payroll Emp', 'Transport Emp']
-    var isdesignation = false;
-    positions.forEach((pos)=> {
-        if(pos === designation){
-            isdesignation = true;
-            return;
-        }
-    })
+    // const positions = ['Intern','Associate Software Engineer','Software Engineer','Senior Software Engineer','Manager','HR','Payroll Emp', 'Transport Emp']
+    // var isdesignation = false;
+    // positions.forEach((pos)=> {
+    //     if(pos === designation){
+    //         isdesignation = true;
+    //         return;
+    //     }
+    // })
 
     //Work Location Logic
     const locations = ['Nagpur','Noida','Pune','Hyderabad','Banglore']

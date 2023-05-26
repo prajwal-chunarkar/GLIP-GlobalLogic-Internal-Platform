@@ -256,8 +256,8 @@ function EmpListAdmin() {
     { label: 'Senior Software Engineer', value: 'Senior Software Engineer' },
     { label: 'Manager', value: 'Manager' },
     { label: 'HR', value: 'HR' },
-    { label: 'Transport Emp', value: 'Transport Emp' },
-    { label: 'Payroll Emp', value: 'Payroll Emp' }
+    { label: 'Transport Emp', value: 'Transport' },
+    { label: 'Payroll Emp', value: 'Payroll' }
   ]
 
   const tableHeaders = ['S No.', 'Employee ID', 'Name', 'Designation', 'Email', 'Action'];

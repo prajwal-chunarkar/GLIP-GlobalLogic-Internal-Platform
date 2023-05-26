@@ -314,7 +314,7 @@
     {
       "empName": "Prajwal Chunarkar",
       "empID": 1002,
-      "empDept": "Payroll Emp",
+      "empDept": "Payroll",
       "empFeedName": "g",
       "rating": 50,
       "id": 9
@@ -322,7 +322,7 @@
     {
       "empName": "Prajwal Chunarkar",
       "empID": 1002,
-      "empDept": "Payroll Emp",
+      "empDept": "Payroll",
       "empFeedName": "h",
       "rating": 80,
       "id": 10
@@ -330,7 +330,7 @@
     {
       "empName": "Prajwal Chunarkar",
       "empID": 1002,
-      "empDept": "Transport Emp",
+      "empDept": "Transport",
       "empFeedName": "i",
       "rating": 90,
       "id": 11
@@ -338,7 +338,7 @@
     {
       "empName": "Prajwal Chunarkar",
       "empID": 1002,
-      "empDept": "Transport Emp",
+      "empDept": "Transport",
       "empFeedName": "j",
       "rating": 50,
       "id": 12

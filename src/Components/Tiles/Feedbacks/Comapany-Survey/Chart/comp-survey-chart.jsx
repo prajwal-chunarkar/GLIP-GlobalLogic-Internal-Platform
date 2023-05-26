@@ -141,7 +141,8 @@ const ratingsArr = ["Employee Satisfaction", "Training & Development", "Employee
       </DisplayChartDiv>
       <DisplayValues className="col-md-2">
         <div>
-            Total Employees Filled Form <br />{ratingsData.length}
+            Total Employees Filled Form <br /> 
+            <p style={{color: '#F37037'}}>{ratingsData.length} </p> 
         </div>
       </DisplayValues>
     </ChartParentDiv>
