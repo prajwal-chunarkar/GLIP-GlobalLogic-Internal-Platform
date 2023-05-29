@@ -167,11 +167,11 @@ const TechSurveyChart = () => {
           label: "No. of Votes",
           data: fourthData,
           backgroundColor: [
-            '#FF6384',
-            '#36A2EB',
-            '#FFCE56',
-            '#4BC0C0',
-            '#9966FF',
+            'rgba(255, 99, 132, 0.85)',
+            'rgba(54, 162, 235, 0.85)',
+            'rgba(255, 206, 86, 0.85)',
+            'rgba(75, 192, 192, 0.85)',
+            'rgba(153, 102, 255, 0.85)',
           ],
           hoverBackgroundColor: [
             '#ffb7c7',

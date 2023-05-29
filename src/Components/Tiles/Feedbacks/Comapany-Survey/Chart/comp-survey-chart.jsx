@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Pie } from 'react-chartjs-2';
-import { Box, Button, ButtonGroup } from '@mui/material';
 import "chart.js/auto";
 import Navbar from '../../../../Navbar/navbar';
 import {
@@ -11,7 +10,6 @@ import {
   DisplayOptionsDiv,
   DisplayChartDiv,
   OptionsButton,
-  OptionsParent,
   DisplayValues
 } from "./comp-survey-chart.styled";
 import Footer from '../../../../Footer/footer';
@@ -126,13 +124,13 @@ function RatingChart() {
 
       <ChartParentDiv className="row">
         <DisplayOptionsDiv className="col-md-4">
-          {Object.keys(ratingCountsByQuestion).map((questionKey) => (
+          {Object.keys(ratingCountsByQuestion).map((questionKey,ind) => (
             <OptionsButton
               key={questionKey}
               onClick={() => handleQuestionChange(questionKey)}
               variant={selectedQuestion === questionKey ? 'contained' : 'outlined'}
             >
-              {questionKey}
+              {ratingsArr[ind]}
             </OptionsButton>
           ))}
         </DisplayOptionsDiv>
@@ -141,7 +139,7 @@ function RatingChart() {
         </DisplayChartDiv>
         <DisplayValues className="col-md-2">
           <div>
-            Total Employees Filled Form <br />
+            Total Surveys <br />
             <p style={{ color: '#F37037' }}>{ratingsData.length} </p>
           </div>
         </DisplayValues>

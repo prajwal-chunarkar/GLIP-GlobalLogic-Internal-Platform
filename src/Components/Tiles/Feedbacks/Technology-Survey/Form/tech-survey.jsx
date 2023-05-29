@@ -47,7 +47,6 @@ const TechSurvey = () => {
       const { id } = useParams();
       const { empName, empID, intech, cyber, cbs, comm } = techSurveyData;
 
-      
       useEffect(() => {
         fetchData();
       }, [])  

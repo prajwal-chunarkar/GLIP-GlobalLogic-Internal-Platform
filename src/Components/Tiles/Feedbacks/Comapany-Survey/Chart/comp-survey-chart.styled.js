@@ -25,6 +25,7 @@ export const DisplayOptionsDiv = styled.div`
   height: 65vh;
   flex-direction: column;
 `;
+
 export const DisplayChartDiv = styled.div`
     display: flex;
     justify-content: center;
