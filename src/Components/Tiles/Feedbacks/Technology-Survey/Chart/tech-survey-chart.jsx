@@ -14,6 +14,8 @@ import {
 
 Chart.register(RadialLinearScale, ArcElement, Tooltip, Legend);
 
+//this is new
+
 const TechSurveyChart = () => {
   var [firstData, setFirstData] = useState([]);
   var [secondData, setSecondData] = useState([]);
