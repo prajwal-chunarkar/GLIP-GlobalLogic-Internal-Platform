@@ -247,6 +247,14 @@
       "sickLeaves": 8,
       "paidLeaves": 10,
       "id": 5
+    },
+    {
+      "empID": 1005,
+      "empName": "aa aaaa",
+      "casualLeaves": 6,
+      "sickLeaves": 8,
+      "paidLeaves": 10,
+      "id": 6
     }
   ],
   "payslips": [

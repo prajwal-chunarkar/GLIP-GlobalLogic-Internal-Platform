@@ -123,8 +123,15 @@ export const LinksDiv = styled.div`
     margin-bottom: -0.7rem ;
 `;
 
+export const SpanText = styled.p`
+    color: #333;
+    margin-right: 0.3rem;
+    cursor: pointer;
+`;
+
 export const FormLinks = styled.p`
     color: #333;
+    text-decoration: underline;
 
     &:hover {
     color: #F37037;

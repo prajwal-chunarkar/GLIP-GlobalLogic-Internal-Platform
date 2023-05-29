@@ -70,12 +70,6 @@ export default function validationRegister(user){
         return 'Date of Birth is Invalid'
     }
 
-    if(!designation){
-        return 'Designation is Required *'
-    }  else if (isdesignation === false){
-        return 'Designation is Invalid'
-    }
-
     if(!password){
         return 'Password is Required *'
     } else if(password.length <= 5) {

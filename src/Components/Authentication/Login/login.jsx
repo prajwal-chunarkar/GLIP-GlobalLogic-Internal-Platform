@@ -19,6 +19,7 @@ import {
   SubmitButton,
   ErrorMessage,
   LinksDiv,
+  SpanText,
   FormLinks
 } from '../Register/forms.style.js';
 import GLlogo from '../../../Utils/Images/GL-logo.jpg'
@@ -186,9 +187,10 @@ const Login = () => {
         </LinksDiv>
 
         <LinksDiv>
+        <SpanText>Not Registered?</SpanText>
           <Link style={{ textDecoration: 'none' }}
             to="/register">
-            <FormLinks>Not Registered? Register</FormLinks>
+            <FormLinks>Register</FormLinks>
           </Link>
         </LinksDiv>
       </FormContainer>
