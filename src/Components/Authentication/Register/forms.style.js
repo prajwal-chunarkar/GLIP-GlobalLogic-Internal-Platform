@@ -33,12 +33,12 @@ export const FormContainer = styled.div`
     margin-top: 10vh;
     margin-left: 60vw;
     padding: 0.8rem;
+    padding-top: 0;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.6);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     overflow: auto;
     
-
     &::-webkit-scrollbar {
     /* visibility: hidden; */
     background: transparent;
@@ -51,6 +51,14 @@ export const FormContainer = styled.div`
     }
 `;
 
+// export const FormHeadDiv = styled.div`
+//     background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
+//     background-color: rgb(255, 255, 255);
+//     border-radius: 2rem;
+//     position: sticky;
+//     top: 0;
+// `
+
 export const FormHeading = styled.p`
     margin-bottom: 1.3rem;
     text-align: center;
@@ -58,6 +66,7 @@ export const FormHeading = styled.p`
     font-weight: bolder;
     color: #F37037;
 `;
+
 export const FormLabel = styled.label`
     color: #333;
 `;

@@ -11,6 +11,7 @@ import {
   FormBackground,
   FormLogo,
   FormContainer,
+  // FormHeadDiv,
   FormHeading,
   FormLabel,
   FormInput,
@@ -87,7 +88,7 @@ const Register = () => {
         if (arrUserKeys[i] === 'gender') {
           genderRef.current.style.color = "red";
         }
-        else if(arrUserKeys[i] === 'desigation'){
+        else if (arrUserKeys[i] === 'desigation') {
           desRef.current.style.color = "red";
         }
         else {
@@ -102,11 +103,10 @@ const Register = () => {
       (document.getElementsByName(arrUserKeys[n]))[0].style.color = "red";
     }
     else {
-      if(e.target.name !== 'designation'){
+      if (e.target.name !== 'designation') {
         e.target.style.borderBottom = null;
         (document.getElementsByName(arrUserKeys[n]))[0].style.color = null;
       }
-      
     }
   }
 
@@ -274,7 +274,7 @@ const Register = () => {
     { label: 'Senior Software Engineer', value: 'Senior Software Engineer' },
     { label: 'Manager', value: 'Manager' },
     { label: 'HR', value: 'HR' },
-    { label: 'Transport Emp', value: 'Transport' }, 
+    { label: 'Transport Emp', value: 'Transport' },
     { label: 'Payroll Emp', value: 'Payroll' }
   ]
   return (
@@ -283,10 +283,9 @@ const Register = () => {
       <Link to='/'>
         <FormLogo src={GLlogo} />
       </Link>
-
+     
       <FormContainer>
         <FormHeading> Registration </FormHeading>
-
         {formProp.map((obj, index) => {
           if (obj.name === 'gender') {
             return (
@@ -318,7 +317,7 @@ const Register = () => {
                 <FormLabel name={obj.name} ref={obj.ref}>{obj.label}</FormLabel>
                 <FormAstric>*</FormAstric> <br />
                 <Select
-                  style={{ width: '97%', marginBottom:'1.1rem' }}
+                  style={{ width: '97%', marginBottom: '1.1rem' }}
                   name={obj.name}
                   ref={selRef}
                   value={obj.value}
@@ -376,7 +375,7 @@ const Register = () => {
         </FlexDiv>
 
         <LinksDiv>
-        <SpanText>  Already Registered? </SpanText>
+          <SpanText>  Already Registered? </SpanText>
           <Link style={{ textDecoration: 'none' }}
             to="/login">
             <FormLinks> Login </FormLinks>
