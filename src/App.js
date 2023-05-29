@@ -35,8 +35,9 @@ import FeedChart from './Components/Tiles/Feedbacks/Feedback-Form/Chart/feed-cha
 import CompSurvey from './Components/Tiles/Feedbacks/Comapany-Survey/Form/comp-survey';
 import CompSurveyChart from './Components/Tiles/Feedbacks/Comapany-Survey/Chart/comp-survey-chart';
 
-import TechSurvey from './Components/Tiles/Feedbacks/Technology-Servey/Form/tech-survey';
-import TechSurveyChart from './Components/Tiles/Feedbacks/Technology-Servey/Chart/tech-survey-chart';
+import TechSurvey from './Components/Tiles/Feedbacks/Technology-Survey/Form/tech-survey';
+
+import TechSurveyChart from './Components/Tiles/Feedbacks/Technology-Survey/Chart/tech-survey-chart';
 
 function App() {
   return (

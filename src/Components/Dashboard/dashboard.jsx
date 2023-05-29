@@ -47,7 +47,7 @@ const Dashboard = () => {
     const { empID, fname, lname } = currUser;
     var tilesRow1 = [
         {
-            label: "Access Previleges",
+            label: "Access Privileges",
             link: currUser?.user_type === 'Admin' ?
                 `/dashboard/admin-access-previleges/${id}` :
                 `/dashboard/accessemp/${id}`,

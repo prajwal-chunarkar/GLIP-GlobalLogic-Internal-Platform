@@ -17,7 +17,6 @@
       "user_type": "HR Admin"
     },
     {
-      "id": 2,
       "fname": "Prajwal",
       "mname": "Prabhakar",
       "lname": "Chunarkar",
@@ -30,7 +29,8 @@
       "designation": "Intern",
       "password": "prajwal@2001",
       "empID": 1002,
-      "user_type": "employee"
+      "user_type": "employee",
+      "id": 2
     },
     {
       "fname": "Rajat",
@@ -190,6 +190,21 @@
       "rejectReason": "-",
       "status": "Approved",
       "id": 4
+    },
+    {
+      "empName": "Rajat Gaikwad",
+      "empID": 1003,
+      "leaveType": "Casual Leave",
+      "startDate": "2023-05-29T18:30:00.000Z",
+      "endDate": "2023-05-30T18:30:00.000Z",
+      "duration": 2.5,
+      "isHalfDay": "Yes",
+      "halfDayDate": "2023-05-28T18:30:00.000Z",
+      "reason": "bkjdsbjkbcdj",
+      "actionBy": "Renuka Chowdary Nalluri",
+      "rejectReason": "-",
+      "status": "Approved",
+      "id": 5
     }
   ],
   "leaves-remain": [
@@ -213,7 +228,7 @@
       "id": 3,
       "empID": 1003,
       "empName": "Rajat Gaikwad",
-      "casualLeaves": 6,
+      "casualLeaves": 3.5,
       "sickLeaves": 8,
       "paidLeaves": 10
     },
@@ -342,6 +357,14 @@
       "empFeedName": "j",
       "rating": 50,
       "id": 12
+    },
+    {
+      "empName": "Prajwal Chunarkar",
+      "empID": 1002,
+      "empDept": "Admin",
+      "empFeedName": "Renuka Chowdary Nalluri",
+      "rating": 0,
+      "id": 13
     }
   ],
   "company-survey": [
@@ -409,6 +432,121 @@
       "empWorkDiversity": "4",
       "empCommunication": "4",
       "id": 5
+    }
+  ],
+  "tech-survey-data": [
+    {
+      "empName": "Vishesh Jindal",
+      "empID": 1002,
+      "intech": "Java",
+      "cyber": "Firewall",
+      "id": 1
+    },
+    {
+      "empName": "Renuka Chowdary Nalluri",
+      "empID": 1001,
+      "intech": "DevOps",
+      "cyber": "Firewall",
+      "cbs": "Monthly",
+      "id": 2
+    },
+    {
+      "empName": "Renuka Chowdary Nalluri",
+      "empID": 1001,
+      "intech": "DotNet",
+      "cyber": "VPN",
+      "cbs": "Rarely",
+      "comm": "Microsoft Teams",
+      "id": 3
+    },
+    {
+      "empName": "Renuka Chowdary Nalluri",
+      "empID": 1001,
+      "intech": "DevOps",
+      "cyber": "Firewall",
+      "cbs": "Monthly",
+      "comm": "Microsoft Teams",
+      "newtech": "I am open to change, but it takes some time for me to adapt.",
+      "id": 4
+    },
+    {
+      "empName": "Renuka Chowdary Nalluri",
+      "empID": 1001,
+      "intech": [],
+      "cyber": "Software",
+      "cbs": "Monthly",
+      "comm": "Slack",
+      "newtech": "Yes, I enjoy learning and embracing new technology.",
+      "id": 5
+    },
+    {
+      "empName": "Vishesh Jindal",
+      "empID": 1002,
+      "intech": [],
+      "cyber": [],
+      "cbs": [],
+      "comm": [],
+      "newtech": [],
+      "id": 6
+    },
+    {
+      "empName": "Vishesh Jindal",
+      "empID": 1002,
+      "intech": [],
+      "cyber": [],
+      "cbs": [],
+      "comm": [],
+      "newtech": [],
+      "id": 7
+    },
+    {
+      "empName": "Vishesh Jindal",
+      "empID": 1002,
+      "intech": "DevOps",
+      "cyber": "Firewall",
+      "cbs": "Monthly",
+      "comm": "Slack",
+      "newtech": "Yes, I enjoy learning and embracing new technology.",
+      "id": 8
+    }
+  ],
+  "tech-survey": [
+    {
+      "Reactjs": 0,
+      "Java": 0,
+      "Dev-Ops": 4,
+      "DotNet": 3,
+      "AI/ML": 1,
+      "id": 1
+    }
+  ],
+  "cyber-security": [
+    {
+      "Anti-Virus": 3,
+      "Firewall": 2,
+      "VPN": 1,
+      "Authentication": 5,
+      "Other": 2,
+      "id": 1
+    }
+  ],
+  "cloud-based-services": [
+    {
+      "Daily": 3,
+      "Weekly": 2,
+      "Monthly": 1,
+      "Rarely": 5,
+      "id": 1
+    }
+  ],
+  "work-discussion": [
+    {
+      "Email": 3,
+      "Microsoft Teams": 2,
+      "Slack": 1,
+      "Zoom": 5,
+      "Other": 3,
+      "id": 1
     }
   ]
 }

@@ -25,7 +25,7 @@ function RatingChart() {
       try {
         const response = await axios.get('http://localhost:3003/company-survey');
         setRatingsData(response.data);
-       
+
       } catch (error) {
         console.error('Error fetching ratings data:', error);
       }
@@ -70,18 +70,18 @@ function RatingChart() {
         {
           data: ratingCounts,
           backgroundColor: [
-            '#ffb7c7',
-            '#99c3df',
-            '#fce9b8',
-            '#8abebe',
-            '#ceb7fc',
-          ],
-          hoverBackgroundColor: [
             '#FF6384',
             '#36A2EB',
             '#FFCE56',
             '#4BC0C0',
             '#9966FF',
+          ],
+          hoverBackgroundColor: [
+            '#ffb7c7',
+            '#99c3df',
+            '#fce9b8',
+            '#8abebe',
+            '#ceb7fc',
           ],
           label: questionLabel,
         },
@@ -93,8 +93,8 @@ function RatingChart() {
     setSelectedQuestion(questionKey);
   };
 
-   //----------------------------Heading Object------------------------------------
-   const headingTransportAdmin = [
+  //----------------------------Heading Object------------------------------------
+  const headingTransportAdmin = [
     "C",
     "o",
     "m",
@@ -109,23 +109,23 @@ function RatingChart() {
     "v",
     "e",
     "y",
-];
+  ];
 
-const ratingsArr = ["Employee Satisfaction", "Training & Development", "Employee Engagement", "Employee Benifits", "Leadership & Management", "Future Planning", "Work Diversity", "Employee Communication"]
+  const ratingsArr = ["Employee Satisfaction", "Training & Development", "Employee Engagement", "Employee Benifits", "Leadership & Management", "Future Planning", "Work Diversity", "Employee Communication"]
   return (
     <>
-    <Navbar/>
-     {/* ------------------------------------heading---------------------------- */}
-     <HeadingCompSurveyEmpDiv>
-                {headingTransportAdmin.map((letter) => (
-                    <CompSurveyHeadingLettersSpan>
-                        {letter}
-                    </CompSurveyHeadingLettersSpan>
-                ))}
-            </HeadingCompSurveyEmpDiv>
+      <Navbar />
+      {/* ------------------------------------heading---------------------------- */}
+      <HeadingCompSurveyEmpDiv>
+        {headingTransportAdmin.map((letter) => (
+          <CompSurveyHeadingLettersSpan>
+            {letter}
+          </CompSurveyHeadingLettersSpan>
+        ))}
+      </HeadingCompSurveyEmpDiv>
 
-    <ChartParentDiv className="row">
-      <DisplayOptionsDiv className="col-md-4">
+      <ChartParentDiv className="row">
+        <DisplayOptionsDiv className="col-md-4">
           {Object.keys(ratingCountsByQuestion).map((questionKey) => (
             <OptionsButton
               key={questionKey}
@@ -135,19 +135,19 @@ const ratingsArr = ["Employee Satisfaction", "Training & Development", "Employee
               {questionKey}
             </OptionsButton>
           ))}
-      </DisplayOptionsDiv>
-      <DisplayChartDiv className="col-md-4">
-        <Pie data={generateChartData(selectedQuestion)} />
-      </DisplayChartDiv>
-      <DisplayValues className="col-md-2">
-        <div>
-            Total Employees Filled Form <br /> 
-            <p style={{color: '#F37037'}}>{ratingsData.length} </p> 
-        </div>
-      </DisplayValues>
-    </ChartParentDiv>
-    <Footer/>
-          </>
+        </DisplayOptionsDiv>
+        <DisplayChartDiv className="col-md-4">
+          <Pie data={generateChartData(selectedQuestion)} />
+        </DisplayChartDiv>
+        <DisplayValues className="col-md-2">
+          <div>
+            Total Employees Filled Form <br />
+            <p style={{ color: '#F37037' }}>{ratingsData.length} </p>
+          </div>
+        </DisplayValues>
+      </ChartParentDiv>
+      <Footer />
+    </>
   );
 }
 

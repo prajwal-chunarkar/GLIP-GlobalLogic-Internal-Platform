@@ -29,6 +29,7 @@ const FeedChart = () => {
   useEffect(() => {
     fetchData();
   }, [])
+
   const fetchData = () => {
     axios.get('http://localhost:3003/feedbacks')
       .then((res) => {
@@ -38,7 +39,8 @@ const FeedChart = () => {
               sum[ind] = sum[ind] + obj.rating;
               count[ind]++;
             }
-          })
+          });
+          
           //   switch (obj.empDept) {
           //     case 'Admin':
           //       sum[0] = sum[0] + obj.rating;
@@ -141,7 +143,7 @@ const FeedChart = () => {
           label: 'Rating',
           backgroundColor: UserData.map(o => o.color),
           hoverBackgroundColor: UserData.map(o => o.hcolor),
-          border: 'none',
+          border: `${UserData.map(o => o.color)}`,
           data: UserData.map(o => o.rating)
         }
       ]
@@ -150,12 +152,11 @@ const FeedChart = () => {
       plugins: {
         title: {
           display: true,
-          // text: 'Bar Chart'
+          text: 'Teams Ratings Bar Chart'
         }
       }
     }
   };
-
 
   return (
     <>
