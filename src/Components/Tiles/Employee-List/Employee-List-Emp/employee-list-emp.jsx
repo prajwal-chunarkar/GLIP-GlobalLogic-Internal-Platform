@@ -430,7 +430,7 @@ function EmpListEmp() {
             </TableContainer>
           </EmployeeDetailsModal>
         </EmployeeDetailsModalParent>
-      )}``
+      )}
     </>
   );
 }

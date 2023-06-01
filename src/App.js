@@ -37,6 +37,7 @@ import CompSurveyChart from './Components/Tiles/Feedbacks/Comapany-Survey/Chart/
 
 import TechSurvey from './Components/Tiles/Feedbacks/Technology-Servey/Form/tech-survey';
 import TechSurveyChart from './Components/Tiles/Feedbacks/Technology-Servey/Chart/tech-survey-chart';
+import GenerateOtp from './Generate OTP/generate-otp';
 
 function App() {
   return (
@@ -46,7 +47,8 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/forgotpassword' element={<ForgotPass />} />
+          <Route path='/forgotpassword' element={<GenerateOtp/>}/>
+          <Route path='/forgotpassword/confirm' element={<ForgotPass />} />
           <Route path='/deactivate' element={<Deactivate />} />
           <Route path='/dashboard/:id' element={<Dashboard />} />
           <Route path='/resetpassword/:id' element={<ResetPassword />} />
@@ -83,6 +85,8 @@ function App() {
 
           <Route path="/dashboard/tech-survey/:id" element={<TechSurvey />} />
           <Route path="/dashboard/tech-survey-chart/:id" element={<TechSurveyChart />} />
+
+          
 
 
         </Routes>

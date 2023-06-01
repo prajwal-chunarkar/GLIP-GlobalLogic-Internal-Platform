@@ -1,0 +1,7 @@
+.abc button{
+    border:none;
+    /* color: green; */
+}
+.abc button:visited{
+    color: blue;
+}
