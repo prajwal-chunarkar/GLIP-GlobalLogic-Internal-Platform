@@ -23,14 +23,11 @@ import CloseButton from "react-bootstrap/CloseButton";
 import Navbar from '../../../Navbar/navbar';
 import {
     TableHeading,
+    AccessAdminTableDiv,
     CloseButtonDiv,
-    ViewDetailsDiv,
-    TransportAdminParentDiv,
-    TransportAdminTableDiv,
-    TransportDetailsModalDiv,
-    TransportHeadingDiv,
-    TransportHeadingLettersSpan,
-    ViewTransportDetailsHeadingDiv
+    AccessDetailsModalDiv,
+    ViewAccessDetailsHeadingDiv,
+    ViewDetailsDiv
 } from "./access-privilege-admin.style";
 
 const useStyles = makeStyles((theme) => ({
@@ -83,7 +80,7 @@ function AccessPrivilegeAdmin() {
     const showDialogBox = (id) => {
         axios.get(`http://localhost:3003/access-previlege-request/${id}`)
             .then((res) => {
-                setEmpid(res.data)
+                setEmpid(res.data.empID)
                 setid(id)
                 handleClickOpen()
             })
@@ -109,7 +106,6 @@ function AccessPrivilegeAdmin() {
     const handleClose = () => {
         setOpen(false);
     };
-
 
     //--------------- getting list of transport requests
     const fetchdata = async () => {
@@ -143,7 +139,7 @@ function AccessPrivilegeAdmin() {
     }
 
     const getReason = (e) => {
-        setreasonObj({ [e.target.name]: e.target.value })
+        setreasonObj({ [e.target.name]: e.target.value , 'empID': empid });
     }
 
     //----------------select rows
@@ -185,7 +181,7 @@ function AccessPrivilegeAdmin() {
         <>
             <Navbar />
             <TableHeading> Access Privilege Requests </TableHeading>
-            <TransportAdminTableDiv>
+            <AccessAdminTableDiv>
                 <Paper className={classes.root}
                     style={{ boxShadow: "0.5px 0.5px  10px rgb(65 64 66)" }} >
                     <TableContainer className={`${classes.container} ${classes.myDialog}`} >
@@ -271,11 +267,11 @@ function AccessPrivilegeAdmin() {
                         onRowsPerPageChange={handleChangeRowsPerPage}
                     />
                 </Paper>
-            </TransportAdminTableDiv>
+            </AccessAdminTableDiv>
 
             {modalval && (
                 <ViewDetailsDiv className="position-absolute top-50 start-50 translate-middle">
-                    <TransportDetailsModalDiv>
+                    <AccessDetailsModalDiv>
                         <TableContainer component={Paper}>
                             <Table>
                                 <TableHead>
@@ -284,9 +280,9 @@ function AccessPrivilegeAdmin() {
                                             <CloseButtonDiv>
                                                 <CloseButton onClick={showModal} />
                                             </CloseButtonDiv>
-                                            <ViewTransportDetailsHeadingDiv>
+                                            <ViewAccessDetailsHeadingDiv>
                                                 Transport Details
-                                            </ViewTransportDetailsHeadingDiv>
+                                            </ViewAccessDetailsHeadingDiv>
                                         </TableCell>
                                     </TableRow>
                                 </TableHead>
@@ -302,7 +298,7 @@ function AccessPrivilegeAdmin() {
                                 </TableBody>
                             </Table>
                         </TableContainer>
-                    </TransportDetailsModalDiv>
+                    </AccessDetailsModalDiv>
                 </ViewDetailsDiv>
             )}
             <Dialog open={open} onClose={handleClose}>

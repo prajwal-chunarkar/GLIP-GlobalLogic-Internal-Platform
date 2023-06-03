@@ -1,16 +1,19 @@
 import styled from "styled-components";
 
+export const FormHeading = styled.h1`
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: #F37037;
+`;
+
 export const ParentPayslipEmpDiv = styled.div`
     margin: 0;
     padding: 0;
     width: 100%;
 `;
 
-export const HeadingPayslipEmpDiv = styled.div`
-    margin: 0.7rem 0 3rem 0;
-    text-align: center;
-    max-height: 10vh;
-`;
 export const ComponentsParentPayslipEmpDiv = styled.div`
     display: flex;
     justify-content: space-around;
@@ -30,7 +33,6 @@ export const ComponentPayslipEmpDiv1 = styled.div`
         width: 90%;
         margin: 2rem 5%;
         padding: 1rem 2rem;
-
     }
 `;
 export const ComponentPayslipEmpDiv2 = styled.div`
@@ -43,21 +45,9 @@ export const ComponentPayslipEmpDiv2 = styled.div`
         width: 90%;
         margin: 2rem 5%;
         padding: 1rem 2rem;
-
-
     }
 `;
 
-export const PayslipHeadingLettersSpan = styled.span`
-    color: #f37037;
-    font-size: 3.3rem;
-    font-size: 3rem;
-    font-weight: bolder;
-    cursor: pointer;
-    &:hover {
-        color: #ee9f41;
-    }
-`;
 export const Component1HeadingDiv = styled.div`
     /* color: #414042; */
     font-size: 1.5rem;
@@ -66,6 +56,7 @@ export const Component1HeadingDiv = styled.div`
     background-color: #fff;
     margin: 0.7rem;
 `;
+
 export const Component1BodyDiv = styled.div`
     padding: 1rem;
     font-weight: bold;
@@ -74,26 +65,23 @@ export const Component1BodyDiv = styled.div`
     background-color: #fff;
     letter-spacing: 0.1rem;
 `;
+
 export const Component2BodyDiv = styled.div`
-display: flex;
+    display: flex;
     padding: 1rem;
     font-weight: bold;
     font-size: 1.2rem;
     line-height: 1.2rem;
     background-color: #fff;
     letter-spacing: 0.1rem;
-
     @media (max-width: 650px) {
         width: 100%;
         /* margin: 2rem 5%; */
         padding: 1rem 0rem;
         flex-direction: column;
-
-
     }
-
-    
 `;
+
 export const Component2HeadingDiv = styled.div`
     font-size: 2rem;
     font-weight: bold;
@@ -101,8 +89,9 @@ export const Component2HeadingDiv = styled.div`
     background-color: #fff;
     margin: 0.7rem;
 `;
+
 export const PayslipEmpPreviewButton = styled.button`
-      background-color: #F37037;
+    background-color: #F37037;
     border: 1px solid #F37037;
     border-radius: 6px;
     /* box-shadow: 0 0 10px #F37037; */
@@ -110,9 +99,7 @@ export const PayslipEmpPreviewButton = styled.button`
     height: 2rem;
     min-width: 5rem;
     font-size: large;
-
     margin: 0.5rem 0.5rem;
-
     &:hover{
     /* background-color: #efa586; */
     box-shadow: 0 0 5px #F37037;
@@ -121,6 +108,7 @@ export const PayslipEmpPreviewButton = styled.button`
         transform: translateY(1px);
     };
 `;
+
 export const PayslipEmpDownloadButton = styled.button`
   background-color: #F37037;
     border: 1px solid #F37037;
@@ -130,9 +118,7 @@ export const PayslipEmpDownloadButton = styled.button`
     height: 2rem;
     min-width: 5rem;
     font-size: large;
-
     margin: 0.5rem 0.5rem;
-
     &:hover{
     /* background-color: #efa586; */
     box-shadow: 0 0 5px #F37037;
@@ -150,47 +136,42 @@ export const InfoP = styled.p`
     overflow-wrap: break-word;
     &:hover{
         background-color: #BCBEC0;
-   
     }
    
 `;
+
 export const ComponentsButton = styled.div`
     display: flex;
     flex-direction: column;
-
-
 `;
+
 export const Component2BodyChild1Div = styled.div`
-margin: 0.5rem auto;
-/* width: 35%; */
-display: grid;
-justify-content: center;
-@media (max-width: 650px) {
+    margin: 0.5rem auto;
+    /* width: 35%; */
+    display: grid;
+    justify-content: center;
+    @media (max-width: 650px) {
         width: 90%;
         margin: 2rem 5%;
         padding: 1rem 2rem;
-
-
     }
 `;
+
 export const Component2BodyChild2Div = styled.div`
-width: 40%;
-   margin: 0.5rem 1rem;
-   @media (max-width: 650px) {
+    width: 40%;
+    margin: 0.5rem 1rem;
+    @media (max-width: 650px) {
         width: 90%;
         margin: 2rem 5%;
         padding: 1rem 2rem;
-
-
     }
-   
 `;
 
 export const PayslipEmpSubmitButton = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-background-color: #F37037;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F37037;
     border: 1px solid #F37037;
     border-radius: 6px;
     /* box-shadow: 0 0 10px #F37037; */
@@ -199,7 +180,6 @@ background-color: #F37037;
     width: 15rem;
     font-size: large;
     margin: 0.5rem auto;
-
     &:hover{
     /* background-color: #efa586; */
     box-shadow: 0 0 5px #F37037;
@@ -210,28 +190,29 @@ background-color: #F37037;
     };
    
 `;
+
 export const CurrentYearDiv = styled.div`
-display: flex;
-align-items: center;
+    display: flex;
+    align-items: center;
 `;
+
 export const CurrentYearLable = styled.div`
-margin-left: 1rem;
-font-weight: 400;
+    margin-left: 1rem;
+    font-weight: 400;
 `;
 
 export const NotAvailableErrorDiv = styled.div`
- text-align: center;
+    text-align: center;
     color: rgb(95, 3, 3);
     background-color: rgba(246, 86, 86, 0.8);
     border-radius: 5px;
-    
 `;
-export const ShowMonthYearDiv = styled.div`
- /* text-align: center; */
-margin-bottom: 0.5rem;
-/* border: solid 0.1rem #F37037; */
-/* width: 6rem; */
 
+export const ShowMonthYearDiv = styled.div`
+    /* text-align: center; */
+    margin-bottom: 0.5rem;
+    /* border: solid 0.1rem #F37037; */
+    /* width: 6rem; */
 `;
 
 export const PdfParentDiv = styled.div`
@@ -249,30 +230,28 @@ export const DivCloseButtonDiv = styled.div`
 `;
 
 export const TransportDetailsModalDiv = styled.div`
-display: flex;
-justify-content: center;
-  width: 50rem;
-  height: 83vh;
+    display: flex;
+    justify-content: center;
+    width: 50rem;
+    height: 83vh;
 
-  margin: auto;
-  background-color: 'background.paper';
-  border: '2px solid #000';
-  padding: 4rem;
-  &::-webkit-scrollbar {
-    background: transparent;
-    width: 10px;
+    margin: auto;
+    background-color: 'background.paper';
+    border: '2px solid #000';
+    padding: 4rem;
+    &::-webkit-scrollbar {
+        background: transparent;
+        width: 10px;
     };
-
     &::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 5px;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 5px;
     }
-
     @media (max-width: 767px) {
         width: 40rem;
-       
     }
 `;
+
 export const ViewTransportDetailsHeadingDiv = styled.div`
     font-family: Calibri, Arial, sans-serif;
     font-weight: bold;
@@ -281,9 +260,9 @@ export const ViewTransportDetailsHeadingDiv = styled.div`
 `;
 
 export const ViewDetailsSpan = styled.span`
-width: 100%;
-height: 100%;
-z-index: 999;
-background-color: rgba(0, 0, 0, 0.5);
-pointer-events: auto;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: auto;
 `;

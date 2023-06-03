@@ -5,26 +5,6 @@ export default function validationRegister(user){
     const regexPhone = /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/
     const regexDob = /^((0[1-9])|(1[0-2]))\/(\d{4})$/
 
-    //Designation validation Logic
-    // const positions = ['Intern','Associate Software Engineer','Software Engineer','Senior Software Engineer','Manager','HR','Payroll Emp', 'Transport Emp']
-    // var isdesignation = false;
-    // positions.forEach((pos)=> {
-    //     if(pos === designation){
-    //         isdesignation = true;
-    //         return;
-    //     }
-    // })
-
-    //Work Location Logic
-    const locations = ['Nagpur','Noida','Pune','Hyderabad','Banglore']
-    var islocation = false;
-    locations.forEach((loc)=> {
-        if(loc === workLocation){
-            islocation = true;
-            return;
-        }
-    })
-
     if(!fname && !lname && !email && !phone && !address && !gender && !dob && !password && !confirmPass){
         return 'Enter All Mandatory Details*'
     }
@@ -48,18 +28,7 @@ export default function validationRegister(user){
     } else if (!phone.match(regexPhone)){
         return 'Phone is Invalid'
     }
-
     
-    if(!workLocation){
-        return 'Work Location is Required *'
-    }  else if (islocation === false){
-        return 'Work Location is Invalid'
-    }
-
-    if(!address){
-        return 'Address is Required*'
-    }
-
     if(!gender){
         return 'Gender is Required'
     }
@@ -70,16 +39,24 @@ export default function validationRegister(user){
         return 'Date of Birth is Invalid'
     }
 
+    if(!address){
+        return 'Address is Required*'
+    }
+    
+    if(!workLocation){
+        return 'Work Location is Required *'
+    } 
+    
     if(!designation){
         return 'Designation is Required *'
     }  
-
+    
     if(!password){
         return 'Password is Required *'
     } else if(password.length <= 5) {
         return 'Password must be more than 5 Character'
     }
-
+    
     if(!confirmPass){
         return 'Password is Required *'
     }else if(password !== confirmPass){

@@ -18,12 +18,11 @@ import Table from "@mui/material/Table";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import {
+    FormHeading,
     ParentPayslipEmpDiv,
-    HeadingPayslipEmpDiv,
     ComponentsParentPayslipEmpDiv,
     ComponentPayslipEmpDiv1,
     ComponentPayslipEmpDiv2,
-    PayslipHeadingLettersSpan,
     Component1HeadingDiv,
     Component2HeadingDiv,
     Component1BodyDiv,
@@ -45,6 +44,7 @@ import {
     TransportDetailsModalDiv,
     ViewTransportDetailsHeadingDiv,
 } from "./payslip-emp.styled";
+import Navbar from '../../../Navbar/navbar'
 
 
 const PayslipsEmp = () => {
@@ -158,10 +158,6 @@ const PayslipsEmp = () => {
         });
     };
 
-    //----------------------------Heading Object------------------------------------
-    const headingTransportAdmin = ["P", "a", "y", "s", "l", "i", "p", "s", " ", "E", "m", "p", "l", "o", "y", "e", "e",
-    ];
-
     const pdfTable = [
         { Header: "Employee ID", Value: pdfValCondition ? userDetails.empID : previousMonthPayslip.empID },
         { Header: "Name", Value: pdfValCondition ? thisMonthPayslip?.name : previousMonthPayslip.name},
@@ -175,21 +171,14 @@ const PayslipsEmp = () => {
 
     return (
         <>
+            <Navbar/>
             <ParentPayslipEmpDiv>
-                {/* ------------------------------------heading---------------------------- */}
-                <HeadingPayslipEmpDiv>
-                    {headingTransportAdmin.map((letter) => (
-                        <PayslipHeadingLettersSpan>
-                            {letter}
-                        </PayslipHeadingLettersSpan>
-                    ))}
-                </HeadingPayslipEmpDiv>
-
-                {/* --------------------------------Left Component-------------------------- */}
+                <FormHeading> Your Payslips </FormHeading>
+                {/* --------------Left Component--------------- */}
                 <ComponentsParentPayslipEmpDiv>
                     <ComponentPayslipEmpDiv1>
                         <Component1HeadingDiv>This Month</Component1HeadingDiv>
-                        {/* -------------------------------Left component fields------------ */}
+                        {/* -----------Left component fields------------ */}
                         <Component1BodyDiv>
                             <InfoP>
                                 Salary: {"  " + thisMonthPayslip?.salary}

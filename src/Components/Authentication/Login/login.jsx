@@ -31,10 +31,10 @@ const Login = () => {
   const [result, setResult] = useState([]);        
 
   useEffect(() => {
-    fetchdata();
+    fetchData();
   }, [])                          //only once when load
 
-  const fetchdata = async () => {
+  const fetchData = async () => {
     const res = await axios.get(`http://localhost:3003/users`);
     setResult(res.data);
   }
@@ -47,17 +47,12 @@ const Login = () => {
   const { email, password } = user;
 
   var arrUserKeys = Object.keys(user);
-  var arrUservalues = Object.values(user)
-
-  useEffect(() => {
-    arrUservalues = Object.values(user)
-  }, [user])
 
   const onInputChange = (e, n) => {
     setUser({ ...user, [e.target.name]: e.target.value });
 
     for (let i = 0; i < n; i++) {
-      if (arrUservalues[i] === '') {
+      if (Object.values(user)[i] === '') {
         (document.getElementsByName(arrUserKeys[i]))[0].style.color = "red";
         (document.getElementsByName(arrUserKeys[i]))[1].style.borderBottom = "2px solid red";
       }

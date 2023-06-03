@@ -4,15 +4,14 @@ import { Pie } from 'react-chartjs-2';
 import "chart.js/auto";
 import Navbar from '../../../../Navbar/navbar';
 import {
-  CompSurveyHeadingLettersSpan,
-  HeadingCompSurveyEmpDiv,
   ChartParentDiv,
   DisplayOptionsDiv,
   DisplayChartDiv,
   OptionsButton,
-  DisplayValues
+  DisplayValues,
+  ParaCount
 } from "./comp-survey-chart.styled";
-import Footer from '../../../../Footer/footer';
+import { FormHeading } from '../../Feedback-Form/Form/feed-form.style';
 
 function RatingChart() {
   const [ratingsData, setRatingsData] = useState([]);
@@ -91,37 +90,11 @@ function RatingChart() {
     setSelectedQuestion(questionKey);
   };
 
-  //----------------------------Heading Object------------------------------------
-  const headingTransportAdmin = [
-    "C",
-    "o",
-    "m",
-    "p",
-    "a",
-    "n",
-    "y",
-    " ",
-    "S",
-    "u",
-    "r",
-    "v",
-    "e",
-    "y",
-  ];
-
   const ratingsArr = ["Employee Satisfaction", "Training & Development", "Employee Engagement", "Employee Benifits", "Leadership & Management", "Future Planning", "Work Diversity", "Employee Communication"]
   return (
     <>
       <Navbar />
-      {/* ------------------------------------heading---------------------------- */}
-      <HeadingCompSurveyEmpDiv>
-        {headingTransportAdmin.map((letter) => (
-          <CompSurveyHeadingLettersSpan>
-            {letter}
-          </CompSurveyHeadingLettersSpan>
-        ))}
-      </HeadingCompSurveyEmpDiv>
-
+      <FormHeading> Company Survey Analysis </FormHeading>
       <ChartParentDiv className="row">
         <DisplayOptionsDiv className="col-md-4">
           {Object.keys(ratingCountsByQuestion).map((questionKey,ind) => (
@@ -137,14 +110,12 @@ function RatingChart() {
         <DisplayChartDiv className="col-md-4">
           <Pie data={generateChartData(selectedQuestion)} />
         </DisplayChartDiv>
+        
         <DisplayValues className="col-md-2">
-          <div>
             Total Surveys <br />
-            <p style={{ color: '#F37037' }}>{ratingsData.length} </p>
-          </div>
+            <ParaCount> {ratingsData.length} </ParaCount>
         </DisplayValues>
       </ChartParentDiv>
-      <Footer />
     </>
   );
 }

@@ -4,7 +4,6 @@ import Swal from "sweetalert2";
 import { useNavigate, useParams } from 'react-router-dom';
 import Navbar from '../../../Navbar/navbar'
 import CountWeekdays from './count-week-days';
-
 import {
   TranspEmpBody,
   FormContainer,
@@ -15,10 +14,7 @@ import {
   FlexDiv,
   SubmitButton,
   ErrorMessage,
-  // LinksDiv,
-  // FormLinks
 } from './transport-emp.style.js';
-
 import { TextField } from '@mui/material'
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -86,7 +82,6 @@ const TransportEmp = () => {
 
     if (e.target.name === 'pickupLocation') {
       if (e.target.value === 'Home') {
-
         locations.forEach((loc) => {
           if (loc.city === location) {
             setTransRequest({
@@ -116,14 +111,12 @@ const TransportEmp = () => {
   }
 
   const [error, setError] = useState(null);
-
   const onSubmit = (e) => {
     e.preventDefault();
     const transportEmpError = ValidateEmpTranspRequest(transRequest);
 
     if (transportEmpError !== null) {
       setError(transportEmpError);
-      // console.log(transRequest)
       return;
     }
     else {
@@ -138,83 +131,60 @@ const TransportEmp = () => {
 
   const formProps1 = [
     {
-      name: 'empID',
       label: 'Employee ID',
-      placeholder: 'Enter your Employee ID',
+      name: 'empID',
       value: empID,
-      readonly: "readonly"
     },
     {
-      name: 'empName',
       label: 'Employee Name',
+      name: 'empName',
       value: empName,
-      readonly: 'readonly'
     },
     {
-      name: 'location',
       label: 'Work Location',
+      name: 'location',
       value: location
     },
     {
-      name: 'pickupLocation',
       label: 'Pickup Location',
-      // placeholder: 'Enter Pickup Location',
-      onChange: (e) => onInputChange(e),
+      name: 'pickupLocation',
       value: pickupLocation,
+      onChange: (e) => onInputChange(e),
     },
     {
-      name: 'pickupAddress',
       label: 'Pickup Address',
-      placeholder: 'Enter your Pickup Address',
+      name: 'pickupAddress',
+      placeholder: 'Automatically Fetch on Selecting Pickup Location',
       value: pickupAddress
     },
     {
       name: 'dropLocation',
       label: 'Drop Location',
-      placeholder: 'Enter your Drop Location',
+      placeholder: 'Automatically Fetch on Selecting Pickup Location',
       value: dropLocation
     },
     {
-      name: 'dropAddress',
       label: 'Drop Address',
-      placeholder: 'Enter your Drop Address',
+      name: 'dropAddress',
+      placeholder: 'Automatically Fetch on Selecting Pickup Location',
       value: dropAddress
-    },
-
+    }
   ]
 
   const datesData = [
     {
-      name: 'startDate',
       label: 'Start Date',
+      name: 'startDate',
       value: startDate
     },
     {
-      name: 'endDate',
       label: 'End Date',
+      name: 'endDate',
       value: endDate
     }
   ]
-
-  const returnTripProp = [
-    {
-      name: 'returnTrip',
-      label: 'Yes',
-      value: 'Yes',
-      onChange: (e) => onInputChange(e)
-    },
-    {
-      name: 'returnTrip',
-      label: 'No',
-      value: 'No',
-      onChange: (e) => onInputChange(e)
-    }
-  ]
-
-  const pickupLocProps = [
-    { label: 'Home', value: 'Home' },
-    { label: 'Office', value: 'Office' }
-  ]
+  const returnTripProp = ['Yes', 'No'];
+  const pickupLocOpts = [ 'Home', 'Office' ];
 
   useEffect(() => {
     if (startDate && endDate) {
@@ -227,7 +197,6 @@ const TransportEmp = () => {
   const onCancel = () => {
     setTransRequest({
       ...transRequest,
-      location: '',
       pickupLocation: '',
       pickupAddress: '',
       dropLocation: '',
@@ -253,7 +222,7 @@ const TransportEmp = () => {
         <FormContainer>
 
           {formProps1.map((obj, index) => {
-            if (index === 3) {
+            if (obj.name === 'pickupLocation') {
               return (
                 <>
                   <FormLabel name={obj.name} > {obj.label} </FormLabel>
@@ -271,9 +240,9 @@ const TransportEmp = () => {
                       }
                     }}
                   >
-                    {pickupLocProps.map((prop, ind) => (
-                      <MenuItem {...prop} >
-                        {prop.label}
+                    {pickupLocOpts.map((opt, ind) => (
+                      <MenuItem value={opt} >
+                        {opt}
                       </MenuItem>
                     ))}
 
@@ -317,22 +286,23 @@ const TransportEmp = () => {
           ))}
 
           <>
-            <FormLabel name='weekDays'>Week Days</FormLabel>
+            <FormLabel>Week Days</FormLabel>
             <FormAstric>*</FormAstric>
-            <FormInput type="text" placeholder='Week Days Generate Automatically' name='weekDays' value={weekDays} readonly />
+            <FormInput type="text" placeholder='Calculate Automatically' name='weekDays' value={weekDays} />
           </>
 
   {/* ----------------------------------------------------------------------- */}
-          <FormLabel name='returnTrip'>Return Trip</FormLabel>
+          <FormLabel>Return Trip</FormLabel>
           <FormAstric>*</FormAstric> <br />
           <RadioGroup
             row
             name="returnTrip"
             value={returnTrip}
+            onChange= {(e) => onInputChange(e)}
           >
-            {returnTripProp.map((obj) => (
+            {returnTripProp.map((opt) => (
               <FormControlLabel
-                {...obj}
+              label={opt} value={opt}
                 control={<Radio
                   sx={{
                     '&, &.Mui-checked': {

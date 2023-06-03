@@ -15,12 +15,8 @@ import {
   FlexDiv,
   SubmitButton,
   ErrorMessage,
-  // LinksDiv,
-  // FormLinks
+  FormInputArea
 } from '../../Transport/Transport-Employee/transport-emp.style';
-
-import { FormInputArea } from './access-privilege-emp.style.js'
-
 import { TextField } from '@mui/material'
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -52,7 +48,7 @@ const AccessPrivilegeEmp = () => {
 
   useEffect(() => {
     fetchdata();
-  }, [])
+  }, []);
 
   const fetchdata = async () => {
     await axios.get(`http://localhost:3003/users/${id}`)
@@ -100,44 +96,34 @@ const AccessPrivilegeEmp = () => {
 
   const formProps1 = [
     {
-      name: 'empID',
       label: 'Employee ID',
+      name: 'empID',
       value: empID
     },
     {
-      name: 'empName',
       label: 'Employee Name',
+      name: 'empName',
       value: empName
     },
     {
-      name: 'requestFor',
       label: 'Raise Access for Role',
-      placeholder: 'Select the Role',
-      onChange: (e) => onInputChange(e),
-      value: requestFor
+      name: 'requestFor',
+      value: requestFor,
+      options: ['Admin', 'Transport Admin', 'HR Admin', 'Payroll Admin', 'Manager Admin' ],
     },
     {
-      name: 'manager',
       label: 'Select Manager',
-      placeholder: 'Select Manager',
-      onChange: (e) => onInputChange(e),
-      value: manager
+      name: 'manager', 
+      value: manager,
+      options: managerList,
     },
     {
-      name: 'reason',
       label: 'Reason',
+      name: 'reason',
       placeholder: 'Please Fill Reason',
-      onChange: (e) => onInputChange(e),
-      value: reason
+      value: reason,
+      onChange: (e) => onInputChange(e)
     }
-  ]
-
-  const selectRoleProps = [
-    { label: 'Admin', value: 'Admin' },
-    { label: 'Transport Admin', value: 'Transport Admin' },
-    { label: 'HR Admin', value: 'HR Admin' },
-    { label: 'Payroll Admin', value: 'Payroll Admin' },
-    { label: 'Manager Admin', value: 'Manager Admin' }
   ]
 
   const onCancel = () => {
@@ -164,16 +150,17 @@ const AccessPrivilegeEmp = () => {
         <FormContainer>
 
           {formProps1.map((obj, index) => {
-            if (index === 2 || index === 3) {
+            if (obj.name === 'requestFor' || obj.name === 'manager') {
               return (
                 <>
-                  <FormLabel name={obj.name} > {obj.label} </FormLabel>
+                  <FormLabel> {obj.label} </FormLabel>
                   <FormAstric>*</FormAstric> <br />
-                  {index !== 3 ?
+                  {obj.name === 'requestFor' ?
                     <Select
                       value={obj.value}
                       style={{ width: '100%', height: '3rem', marginTop: '0.4rem' }}
-                      name={obj.name} onChange={obj.onChange}
+                      name={obj.name} 
+                      onChange={(e) => onInputChange(e)}
                       sx={{
                         '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
                           borderColor: '#F37037',
@@ -183,9 +170,9 @@ const AccessPrivilegeEmp = () => {
                         }
                       }}
                     >
-                      {selectRoleProps.map((prop, ind) => (
-                        <MenuItem {...prop} >
-                          {prop.label}
+                      {obj.options.map((opt) => (
+                        <MenuItem value={opt} >
+                          {opt}
                         </MenuItem>
                       ))}
                     </Select> :
@@ -193,7 +180,8 @@ const AccessPrivilegeEmp = () => {
                     <Select
                       value={obj.value}
                       style={{ width: '100%', height: '3rem', marginTop: '0.4rem' }}
-                      name={obj.name} onChange={obj.onChange}
+                      name={obj.name} 
+                      onChange={(e) => onInputChange(e)}
                       sx={{
                         '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
                           borderColor: '#F37037',
@@ -203,7 +191,7 @@ const AccessPrivilegeEmp = () => {
                         }
                       }}
                     >
-                      {managerList.map((man, ind) => (
+                      {obj.options.map((man) => (
                         <MenuItem value={`${man.fname} ${man.lname}`} >
                           {man.fname} {man.lname}
                         </MenuItem>
@@ -219,15 +207,12 @@ const AccessPrivilegeEmp = () => {
                 <FormLabel name={obj.name}>{obj.label}</FormLabel>
                 <FormAstric>*</FormAstric>
                 {index !== 4 ?
-                  <FormInput type="text" {...obj} />
-                  :
+                  <FormInput type="text" {...obj} /> :
                   <FormInputArea type="text" {...obj} />
                 }
               </>
-            )
-          }
+            )}
           )}
-
           <FormLabel name='date'>Date</FormLabel>
           <FormAstric>*</FormAstric> <br />
           <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -240,8 +225,6 @@ const AccessPrivilegeEmp = () => {
               slotProps={{ textField: { fullWidth: true } }}
               renderinput={(params) => <TextField {...params} />}
               onChange={(newValue) => {
-                // const myDate = newValue.toISOString().slice(0, 10);
-                // const my2Date = `${myDate.slice(5,7)}-${myDate.slice(8,10)}-${myDate.slice(0,4)}`;
                 setAccessRequest({
                   ...accessRequest, 'date': newValue
                 })

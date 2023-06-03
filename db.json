@@ -6,10 +6,10 @@
       "mname": "",
       "lname": "Chowdary Nalluri",
       "email": "renuka@gmail.com",
-      "phone": "1234567890",
+      "phone": "",
       "workLocation": "Nagpur",
-      "address": "Manish Nagar, Nagpur",
-      "gender": "female",
+      "address": "59, RTO Co-operative Housing Society, New Manish Nagar, Somalwada, Nagpur-441108",
+      "gender": "Female",
       "dob": "05/1993",
       "designation": "Manager",
       "password": "renuka@1993",
@@ -23,10 +23,10 @@
       "email": "prajwal@gmail.com",
       "phone": "9545557083",
       "workLocation": "Nagpur",
-      "address": "Plot No.10, Shivaji Colony,Hudkeshwar Road, Nagpur-440034",
-      "gender": "male",
+      "address": "Plot No.10, Shivaji Colony, Hudkeshwar Road, Nagpur-440034",
+      "gender": "Male",
       "dob": "09/2001",
-      "designation": "Intern",
+      "designation": "Software Engineer",
       "password": "prajwal@2001",
       "empID": 1002,
       "user_type": "employee",
@@ -38,11 +38,11 @@
       "lname": "Gaikwad",
       "email": "rajat@gmail.com",
       "phone": "8888535155",
-      "workLocation": "Nagpur",
-      "address": "Hingna, Nagpur",
-      "gender": "male",
+      "workLocation": "Chennai",
+      "address": "40, Block A, SP Info City, Kandachwadi, Perungudi, Chennai-600096",
+      "gender": "Male",
       "dob": "05/2001",
-      "designation": "Intern",
+      "designation": "Associate Software Engineer",
       "password": "rajat@05",
       "empID": 1003,
       "user_type": "employee",
@@ -55,18 +55,130 @@
       "email": "gaurang@gmail.com",
       "phone": "7083448032",
       "workLocation": "Banglore",
-      "address": "Malleshwaram, Banglore",
-      "gender": "male",
+      "address": "12th Cross Rd, Dollar Layout, 3rd Phase, J. P. Nagar, Bengaluru-560078",
+      "gender": "Male",
       "dob": "08/2001",
       "designation": "Intern",
       "password": "gaurang@08",
       "empID": 1004,
       "user_type": "employee",
       "id": 4
+    },
+    {
+      "fname": "Vishesh",
+      "mname": "",
+      "lname": "Jindal",
+      "email": "vishesh@gmail.com",
+      "phone": "9971793969",
+      "workLocation": "Noida",
+      "address": "181, Block-H, Beta-2, Greater Noida, Uttar Pradesh",
+      "gender": "Male",
+      "dob": "03/2000",
+      "designation": "Transport",
+      "password": "vishesh@12",
+      "empID": 1005,
+      "user_type": "employee",
+      "id": 5
+    },
+    {
+      "fname": "Atharv",
+      "mname": "",
+      "lname": "Deshmukh",
+      "email": "atharv@gmail.com",
+      "phone": "9850066369",
+      "gender": "Male",
+      "dob": "10/2001",
+      "workLocation": "Hyderabad",
+      "address": "414, Street No. 4, Resham Bagh, Banjara Hills, Hyderabad, Telangana-500034",
+      "designation": "Payroll",
+      "password": "123456",
+      "empID": 1006,
+      "user_type": "employee",
+      "id": 6
+    },
+    {
+      "fname": "Himanshu",
+      "mname": "",
+      "lname": "Upase",
+      "email": "himanshu@gmail.com",
+      "phone": "9822226208",
+      "gender": "Male",
+      "dob": "06/2001",
+      "workLocation": "Pune",
+      "address": "47, Rambhau K Kamble Path, Narveer Tanaji Wadi, Shivajinagar, Pune, Maharashtra-411005",
+      "designation": "HR",
+      "password": "123456",
+      "empID": 1007,
+      "user_type": "employee",
+      "id": 7
+    },
+    {
+      "fname": "Mrunal ",
+      "mname": "",
+      "lname": "Sinagade",
+      "email": "mrunal@gmail.com",
+      "phone": "9028844954",
+      "gender": "Male",
+      "dob": "12/2001",
+      "workLocation": "Banglore",
+      "address": "35, Coles Rd, Cleveland Town, Pulikeshi Nagar, Bengaluru, Karnataka 560005",
+      "designation": "Manager",
+      "password": "123456",
+      "empID": 1008,
+      "user_type": "employee",
+      "id": 8
+    },
+    {
+      "fname": "Bhushan ",
+      "mname": "",
+      "lname": "Naidu",
+      "email": "bhushan@gmail.com",
+      "phone": "8788502317",
+      "gender": "Male",
+      "dob": "06/2001",
+      "workLocation": "Hyderabad",
+      "address": "5-8-42, Fateh Sultan Ln, Mahesh Nagar, Abids, Hyderabad, Telangana-500001",
+      "designation": "Payroll",
+      "password": "123456",
+      "empID": 1008,
+      "user_type": "employee",
+      "id": 9
+    },
+    {
+      "fname": "Lakiti",
+      "mname": "",
+      "lname": "Dhakate",
+      "email": "lakiti@gmail.com",
+      "phone": "1234567890",
+      "gender": "Female",
+      "dob": "06/2001",
+      "workLocation": "Pune",
+      "address": "67, Warje Malwadi Rd, Pandurang Colony, Erandwane, Pune-411004",
+      "designation": "HR",
+      "password": "123456",
+      "empID": 1010,
+      "user_type": "employee",
+      "id": 10
+    },
+    {
+      "fname": "Rucha",
+      "mname": "",
+      "lname": "Patil",
+      "email": "rucha@gmail.com",
+      "phone": "1234567890",
+      "gender": "Female",
+      "dob": "04/2001",
+      "workLocation": "Noida",
+      "address": "Stanza Living, Vashishth Rd, Knowledge Park II, Greater Noida-201310",
+      "designation": "HR",
+      "password": "123456",
+      "empID": 1011,
+      "user_type": "employee",
+      "id": 11
     }
   ],
   "total-registrations": {
-    "total_registrations": 4
+    "total_registrations": 11
   },
   "locations": [
     {
@@ -88,48 +200,117 @@
     {
       "city": "Banglore",
       "officeAddress": "Pritech Park SEZ, 4th Floor, Block 12 , RMZ Ecospace, Marathahalli - Sarjapur Outer Ring Rd, Bellandur, Bengaluru, Karnataka 560103"
+    },
+    {
+      "city": "Chennai",
+      "officeAddress": "Kodandarama Nagar, Perungudi, Chennai, Tamil Nadu 600096"
     }
   ],
-  "transport-request": [],
-  "transport-request-approved": [
+  "transport-request": [
     {
       "empName": "Prajwal Chunarkar",
       "empID": 1002,
       "location": "Nagpur",
       "pickupLocation": "Home",
-      "pickupAddress": "Plot No.10, Shivaji Colony,Hudkeshwar Road, Nagpur-440034",
+      "pickupAddress": "Plot No.10, Shivaji Colony, Hudkeshwar Road, Nagpur-440034",
       "dropLocation": "Office",
       "dropAddress": "22XM+FR8, MIHAN, Nagpur, Nagpur, Maharashtra 441108",
-      "startDate": "2023-05-23T18:30:00.000Z",
-      "endDate": "2023-05-24T18:30:00.000Z",
+      "startDate": "2023-06-02T18:30:00.000Z",
+      "endDate": "2023-06-29T18:30:00.000Z",
       "returnTrip": "Yes",
-      "weekDays": 2,
+      "weekDays": 20,
+      "id": 1
+    },
+    {
+      "empName": "Rajat Gaikwad",
+      "empID": 1003,
+      "location": "Chennai",
+      "pickupLocation": "Home",
+      "pickupAddress": "40, Block A, SP Info City, Kandachwadi, Perungudi, Chennai-600096",
+      "dropLocation": "Office",
+      "dropAddress": "Kodandarama Nagar, Perungudi, Chennai, Tamil Nadu 600096",
+      "startDate": "2023-07-04T18:30:00.000Z",
+      "endDate": "2023-07-24T18:30:00.000Z",
+      "returnTrip": "No",
+      "weekDays": 15,
+      "id": 2
+    }
+  ],
+  "transport-request-approved": [
+    {
+      "empName": "Vishesh Jindal",
+      "empID": 1005,
+      "location": "Noida",
+      "pickupLocation": "Home",
+      "pickupAddress": "181, Block-H, Beta-2, Greater Noida, Uttar Pradesh",
+      "dropLocation": "Office",
+      "dropAddress": "Plot No.7, Oxygen Business Park SEZ, Tower, 3, Noida-Greater Noida Expy, Sector 144, Noida, Uttar Pradesh 201304",
+      "startDate": "2023-06-23T18:30:00.000Z",
+      "endDate": "2023-07-30T18:30:00.000Z",
+      "returnTrip": "Yes",
+      "weekDays": 26,
+      "id": 4
+    },
+    {
+      "empName": "Gaurang Kumar",
+      "empID": 1004,
+      "location": "Banglore",
+      "pickupLocation": "Home",
+      "pickupAddress": "12th Cross Rd, Dollar Layout, 3rd Phase, J. P. Nagar, Bengaluru-560078",
+      "dropLocation": "Office",
+      "dropAddress": "Pritech Park SEZ, 4th Floor, Block 12 , RMZ Ecospace, Marathahalli - Sarjapur Outer Ring Rd, Bellandur, Bengaluru, Karnataka 560103",
+      "startDate": "2023-06-06T18:30:00.000Z",
+      "endDate": "2023-07-25T18:30:00.000Z",
+      "returnTrip": "Yes",
+      "weekDays": 36,
+      "id": 3
+    }
+  ],
+  "transport-request-rejected": [
+    {
+      "empID": 1006,
+      "reason": "Any Reason",
       "id": 1
     }
   ],
-  "transport-request-rejected": [],
   "access-previlege-request": [
     {
       "empName": "Prajwal Chunarkar",
       "empID": 1002,
-      "requestFor": "admin",
+      "requestFor": "Admin",
       "manager": "Renuka Chowdary Nalluri",
-      "reason": "I wanted to be Admin",
-      "date": "2023-05-10T18:30:00.000Z",
+      "reason": "I want to work as an Admin",
+      "date": "2023-06-02T18:30:00.000Z",
       "id": 1
     },
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
-      "requestFor": "admin",
-      "manager": "Renuka Chowdary Nalluri",
-      "reason": "aaa",
-      "date": "2023-05-16T18:30:00.000Z",
+      "empName": "Rajat Gaikwad",
+      "empID": 1003,
+      "requestFor": "Payroll Admin",
+      "manager": "Mrunal  Sinagade",
+      "reason": "Any Reason",
+      "date": "2023-06-08T18:30:00.000Z",
       "id": 2
     }
   ],
-  "access-previlege-request-approved": [],
-  "access-previlege-request-rejected": [],
+  "access-previlege-request-approved": [
+    {
+      "empName": "Gaurang Kumar",
+      "empID": 1004,
+      "requestFor": "Manager Admin",
+      "manager": "Renuka Chowdary Nalluri",
+      "reason": "Any Reason",
+      "date": "2023-06-23T18:30:00.000Z",
+      "id": 3
+    }
+  ],
+  "access-previlege-request-rejected": [
+    {
+      "empID": 1006,
+      "reason": "Any Reason",
+      "id": 1
+    }
+  ],
   "leave-requests": [
     {
       "empName": "Prajwal Chunarkar",
@@ -255,17 +436,83 @@
       "sickLeaves": 8,
       "paidLeaves": 10,
       "id": 6
+    },
+    {
+      "empID": 1005,
+      "empName": "Vishesh Jindal",
+      "casualLeaves": 6,
+      "sickLeaves": 8,
+      "paidLeaves": 10,
+      "id": 7
+    },
+    {
+      "empID": 1006,
+      "empName": "Atharv Deshmukh",
+      "casualLeaves": 6,
+      "sickLeaves": 8,
+      "paidLeaves": 10,
+      "id": 8
+    },
+    {
+      "empID": 1007,
+      "empName": "Himanshu Upase",
+      "casualLeaves": 6,
+      "sickLeaves": 8,
+      "paidLeaves": 10,
+      "id": 9
+    },
+    {
+      "empID": 1008,
+      "empName": "Mrunal  Sinagade",
+      "casualLeaves": 6,
+      "sickLeaves": 8,
+      "paidLeaves": 10,
+      "id": 10
+    },
+    {
+      "empID": 1008,
+      "empName": "Bhushan  Naidu",
+      "casualLeaves": 6,
+      "sickLeaves": 8,
+      "paidLeaves": 10,
+      "id": 11
+    },
+    {
+      "empID": 1009,
+      "empName": "Lakiti Dhakate",
+      "casualLeaves": 6,
+      "sickLeaves": 8,
+      "paidLeaves": 10,
+      "id": 12
+    },
+    {
+      "empID": 1010,
+      "empName": "Lakiti Dhakate",
+      "casualLeaves": 6,
+      "sickLeaves": 8,
+      "paidLeaves": 10,
+      "id": 13
     }
   ],
   "payslips": [
     {
       "id": 1,
-      "name": "Renuka Chowdary",
+      "name": "Renuka Chowdary Nalluri",
       "designation": "Manager",
       "empID": 1001,
       "salary": 100000,
       "deduction": 10000,
-      "month": "05",
+      "month": "06",
+      "year": "2023"
+    },
+    {
+      "id": 2,
+      "name": "Prajwal Chunarkar",
+      "designation": "Intern",
+      "empID": 1002,
+      "salary": 50000,
+      "deduction": 5000,
+      "month": "06",
       "year": "2023"
     }
   ],
@@ -365,20 +612,12 @@
       "empFeedName": "j",
       "rating": 50,
       "id": 12
-    },
-    {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
-      "empDept": "Admin",
-      "empFeedName": "Renuka Chowdary Nalluri",
-      "rating": 0,
-      "id": 13
     }
   ],
   "company-survey": [
     {
-      "empName": "Renuka Chowdary Nalluri",
-      "empID": 1001,
+      "empName": "Prajwal Chunarkar",
+      "empID": 1002,
       "empSatisfaction": "5",
       "trainingDev": "5",
       "empEngagement": "5",
@@ -403,8 +642,8 @@
       "id": 2
     },
     {
-      "empName": "Rajat Gaikwad",
-      "empID": 1003,
+      "empName": "Prajwal Chunarkar",
+      "empID": 1002,
       "empSatisfaction": "3",
       "trainingDev": "3",
       "empEngagement": "3",
@@ -416,8 +655,8 @@
       "id": 3
     },
     {
-      "empName": "Gaurang Kumar",
-      "empID": 1004,
+      "empName": "Prajwal Chunarkar",
+      "empID": 1002,
       "empSatisfaction": "2",
       "trainingDev": "2",
       "empEngagement": "2",
@@ -429,8 +668,8 @@
       "id": 4
     },
     {
-      "empName": "Vishesh Jindal",
-      "empID": 1005,
+      "empName": "Prajwal Chunarkar",
+      "empID": 1002,
       "empSatisfaction": "5",
       "trainingDev": "4",
       "empEngagement": "3",
@@ -440,121 +679,97 @@
       "empWorkDiversity": "4",
       "empCommunication": "4",
       "id": 5
-    }
-  ],
-  "tech-survey-data": [
+    },
     {
-      "empName": "Vishesh Jindal",
+      "empName": "Prajwal Chunarkar",
       "empID": 1002,
-      "intech": "Java",
-      "cyber": "Firewall",
-      "id": 1
-    },
-    {
-      "empName": "Renuka Chowdary Nalluri",
-      "empID": 1001,
-      "intech": "DevOps",
-      "cyber": "Firewall",
-      "cbs": "Monthly",
-      "id": 2
-    },
-    {
-      "empName": "Renuka Chowdary Nalluri",
-      "empID": 1001,
-      "intech": "DotNet",
-      "cyber": "VPN",
-      "cbs": "Rarely",
-      "comm": "Microsoft Teams",
-      "id": 3
-    },
-    {
-      "empName": "Renuka Chowdary Nalluri",
-      "empID": 1001,
-      "intech": "DevOps",
-      "cyber": "Firewall",
-      "cbs": "Monthly",
-      "comm": "Microsoft Teams",
-      "newtech": "I am open to change, but it takes some time for me to adapt.",
-      "id": 4
-    },
-    {
-      "empName": "Renuka Chowdary Nalluri",
-      "empID": 1001,
-      "intech": [],
-      "cyber": "Software",
-      "cbs": "Monthly",
-      "comm": "Slack",
-      "newtech": "Yes, I enjoy learning and embracing new technology.",
-      "id": 5
-    },
-    {
-      "empName": "Vishesh Jindal",
-      "empID": 1002,
-      "intech": [],
-      "cyber": [],
-      "cbs": [],
-      "comm": [],
-      "newtech": [],
+      "empSatisfaction": "4",
+      "trainingDev": "4",
+      "empEngagement": "4",
+      "empBenifits": "4",
+      "empLeadership": "3",
+      "empFuturePlanning": "2",
+      "empWorkDiversity": "2",
+      "empCommunication": "3",
       "id": 6
     },
     {
-      "empName": "Vishesh Jindal",
+      "empName": "Prajwal Chunarkar",
       "empID": 1002,
-      "intech": [],
-      "cyber": [],
-      "cbs": [],
-      "comm": [],
-      "newtech": [],
+      "empSatisfaction": "4",
+      "trainingDev": "3",
+      "empEngagement": "3",
+      "empBenifits": "3",
+      "empLeadership": "2",
+      "empFuturePlanning": "2",
+      "empWorkDiversity": "3",
+      "empCommunication": "3",
       "id": 7
-    },
-    {
-      "empName": "Vishesh Jindal",
-      "empID": 1002,
-      "intech": "DevOps",
-      "cyber": "Firewall",
-      "cbs": "Monthly",
-      "comm": "Slack",
-      "newtech": "Yes, I enjoy learning and embracing new technology.",
-      "id": 8
     }
   ],
   "tech-survey": [
     {
-      "Reactjs": 0,
-      "Java": 0,
-      "Dev-Ops": 4,
-      "DotNet": 3,
-      "AI/ML": 1,
+      "empName": "Prajwal Chunarkar",
+      "empID": 1002,
+      "tech": "ReactJS",
+      "cyber": "Anti-Virus",
+      "cloud": "Daily",
+      "commTool": "Email",
       "id": 1
-    }
-  ],
-  "cyber-security": [
+    },
     {
-      "Anti-Virus": 3,
-      "Firewall": 2,
-      "VPN": 1,
-      "Authentication": 5,
-      "Other": 2,
-      "id": 1
-    }
-  ],
-  "cloud-based-services": [
+      "empName": "Prajwal Chunarkar",
+      "empID": 1002,
+      "tech": "JAVA",
+      "cyber": "Firewall",
+      "cloud": "Weekly",
+      "commTool": "Microsoft Teams",
+      "id": 2
+    },
     {
-      "Daily": 3,
-      "Weekly": 2,
-      "Monthly": 1,
-      "Rarely": 5,
-      "id": 1
-    }
-  ],
-  "work-discussion": [
+      "empName": "Prajwal Chunarkar",
+      "empID": 1002,
+      "tech": "DevOps",
+      "cyber": "VPN",
+      "cloud": "Monthly",
+      "commTool": "Slack",
+      "id": 3
+    },
     {
-      "Email": 3,
-      "Microsoft Teams": 2,
-      "Slack": 1,
-      "Zoom": 5,
-      "Other": 3,
-      "id": 1
+      "empName": "Prajwal Chunarkar",
+      "empID": 1002,
+      "tech": "DotNet",
+      "cyber": "2FA",
+      "cloud": "Rarely",
+      "commTool": "Zoom",
+      "id": 4
+    },
+    {
+      "empName": "Prajwal Chunarkar",
+      "empID": 1002,
+      "tech": "AI/ML",
+      "cyber": "Others",
+      "cloud": "Rarely",
+      "commTool": "Others",
+      "id": 5
+    },
+    {
+      "empName": "Prajwal Chunarkar",
+      "empID": 1002,
+      "tech": "JAVA",
+      "cyber": "VPN",
+      "cloud": "Weekly",
+      "commTool": "Zoom",
+      "id": 6
+    },
+    {
+      "empName": "Prajwal Chunarkar",
+      "empID": 1002,
+      "tech": "ReactJS",
+      "cyber": "Others",
+      "cloud": "Weekly",
+      "commTool": "Slack",
+      "id": 7
     }
   ]
 }

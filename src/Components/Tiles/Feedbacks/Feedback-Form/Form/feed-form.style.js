@@ -4,6 +4,7 @@ export const FeedFormBody = styled.div`
     width: 100vw;
     max-height: 90vh;
     display: flex;
+    /* flex-direction: column; */
     align-items: center;
     justify-content: center;
     margin: 1.5rem 0
@@ -11,10 +12,10 @@ export const FeedFormBody = styled.div`
 
 export const FormContainer = styled.div`
     background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
-    width: 55vw;
-    max-height: 65vh;
+    width: 58vw;
+    max-height: 70vh;
     border: 1px solid rgb(227, 224, 229);
-    margin: 0.7vh 2vw;
+    margin: 0 2vw;
     padding: 1.5rem 3rem;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.6);
@@ -34,7 +35,7 @@ export const FormContainer = styled.div`
 `;
 
 export const FormHeading = styled.h1`
-    margin: 1rem 0;
+    margin: 0.5rem 0;
     text-align: center;
     font-size: 2.5rem;
     font-weight: bolder;
@@ -51,23 +52,6 @@ export const FormAstric = styled.span`
     color: red;
     font-weight: bold;
     font-size: 1.1rem;
-`;
-
-export const FormInput = styled.input`
-    background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
-    border: none;
-    border-bottom: 2px solid #6D6E71;
-    margin-bottom: 0.1rem;
-    height: 3rem;
-    padding-left: 0.4rem;
-    width: 97%;
-    border-radius: 5px;
-    margin-bottom: 1.5rem;
-    background: transparent;
-
-    &:focus{
-        outline: none;
-    }
 `;
 
 export const FlexDiv = styled.div`

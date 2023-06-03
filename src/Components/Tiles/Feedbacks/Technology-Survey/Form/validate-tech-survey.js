@@ -1,24 +1,21 @@
-export default function ValidateTechSurvey(techSurveyData) {
-    const {intech,cyber,cbs,comm } = techSurveyData;
+export default function ValidateTechSurvey(techData) {
+    const { tech, cyber, cloud, commTool } = techData;
 
-    if(!intech && !cyber && !cbs && !comm) {
-        return 'Please Select All Mandatory Fields'
-    }
-
-    if(!intech){
-        return 'Please Select the option'
+    if (!tech && !cyber && !cloud && !commTool) {
+        return 'Please Fill All Mandatory Fields';
     }
 
-    if(!cyber){
-        return 'Please Select the option'
+    if (!tech) {
+        return 'Please select the interested Technology';
     }
-    if(!cbs){
-        return 'Please Select the option'
+    if (!cyber) {
+        return 'Please select the cyber-security measure';
     }
-    if(!comm){
-        return 'Please Select the option'
+    if (!cloud) {
+        return 'Please select the cloud-based service';
     }
-   
-
+    if (!commTool) {
+        return 'Please select the communication tool';
+    }
     return null;
 } 

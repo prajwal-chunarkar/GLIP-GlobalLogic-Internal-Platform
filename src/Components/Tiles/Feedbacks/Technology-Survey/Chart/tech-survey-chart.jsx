@@ -4,8 +4,7 @@ import { Pie, Bar, Line, PolarArea } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 import { ArcElement, Tooltip, Legend, RadialLinearScale } from "chart.js";
 import Navbar from "../../../../Navbar/navbar";
-// import { Card } from "react-bootstrap";
-import { FormHeading } from "../Form/tech-survey-styled";
+import { FormHeading } from "../../Feedback-Form/Form/feed-form.style";
 import {
   MainDiv,
   FlexDiv,
@@ -15,38 +14,48 @@ import {
 Chart.register(RadialLinearScale, ArcElement, Tooltip, Legend);
 
 const TechSurveyChart = () => {
-  var [firstData, setFirstData] = useState([]);
-  var [secondData, setSecondData] = useState([]);
-  var [thirdData, setThirdData] = useState([]);
-  var [fourthData, setFourthData] = useState([]);
+  const [techData, setTechData] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:3003/tech-survey/1`)
-      .then((res) => {
-        console.log(res.data);
-        setFirstData(Object.values(res.data));
-      });
-
-    axios.get(`http://localhost:3003/cyber-security/1`)
-      .then((res) => {
-        setSecondData(Object.values(res.data));
-      });
-
-    axios.get(`http://localhost:3003/cloud-based-services/1`)
-      .then((res) => {
-        setThirdData(Object.values(res.data));
-      });
-
-    axios.get(`http://localhost:3003/work-discussion/1`)
-      .then((res) => {
-        setFourthData(Object.values(res.data));
-      });
+    fetchData();
+    countRatingsByQuestion();
   }, []);
 
-  firstData.splice(5, 1);
-  secondData.splice(5, 1);
-  thirdData.splice(4, 1);
-  fourthData.splice(5, 1);
+  const fetchData = () => {
+    axios.get(`http://localhost:3003/tech-survey`)
+      .then((res) => {
+        setTechData(res.data);
+      });
+  }
+
+  const countRatingsByQuestion = () => {
+    const ratingCountsByQuestion = {
+      tech: [0, 0, 0, 0, 0],   // 'ReactJS', 'JAVA', 'DevOps', 'DotNet', 'AI/ML' 
+      cyber: [0, 0, 0, 0, 0], //'Anti-Virus', 'Firewall', 'VPN', '2FA', 'Others'
+      cloud: [0, 0, 0, 0], //'Daily', 'Weekly', 'Monthly', 'Rarely'
+      commTool: [0, 0, 0, 0, 0] //'Email', 'Microsoft Teams', 'Slack', 'Zoom', 'Others'
+    };
+
+    const QuestionOpts = [
+      { tech: ['ReactJS', 'JAVA', 'DevOps', 'DotNet', 'AI/ML'] },
+      { cyber: ['Anti-Virus', 'Firewall', 'VPN', '2FA', 'Others'] },
+      { cloud: ['Daily', 'Weekly', 'Monthly', 'Rarely'] },
+      { commTool: ['Email', 'Microsoft Teams', 'Slack', 'Zoom', 'Others'] }
+    ];
+
+    techData.forEach((ratingObj) => {
+      Object.keys(ratingCountsByQuestion).forEach((questionKey, index) => {
+        QuestionOpts[index][questionKey].forEach((opt, ind) => {
+          if (opt === ratingObj[questionKey]) {
+            ratingCountsByQuestion[questionKey][ind]++;
+          }
+        })
+      });
+    });
+    return ratingCountsByQuestion;
+  };
+
+  const resultData = countRatingsByQuestion();
 
   const data_1 = {
     data: {
@@ -54,7 +63,7 @@ const TechSurveyChart = () => {
       datasets: [
         {
           label: "No. of Votes",
-          data: firstData,
+          data: resultData.tech,
           backgroundColor: [
             '#FF6384',
             '#36A2EB',
@@ -97,7 +106,7 @@ const TechSurveyChart = () => {
           fill: false,
           lineTension: 0.1,
           backgroundColor: '#FF6384',
-          borderColor:  '#FF6384',
+          borderColor: '#FF6384',
           borderCapStyle: "butt",
           borderDash: [],
           borderDashOffset: 0.0,
@@ -111,7 +120,7 @@ const TechSurveyChart = () => {
           pointHoverBorderWidth: 2,
           pointRadius: 1,
           pointHitRadius: 10,
-          data: secondData,
+          data: resultData.cyber,
           tension: 0.1,
         }
       ],
@@ -132,7 +141,7 @@ const TechSurveyChart = () => {
       datasets: [
         {
           label: "No. of Votes",
-          data: thirdData,
+          data: resultData.cloud,
           backgroundColor: [
             '#FF6384',
             '#36A2EB',
@@ -158,14 +167,13 @@ const TechSurveyChart = () => {
     },
   };
 
-
   const data_4 = {
     data: {
       labels: ["Email", "Microsoft Teams", "Slack", "Zoom", "Other"],
       datasets: [
         {
           label: "No. of Votes",
-          data: fourthData,
+          data: resultData.commTool,
           backgroundColor: [
             'rgba(255, 99, 132, 0.85)',
             'rgba(54, 162, 235, 0.85)',

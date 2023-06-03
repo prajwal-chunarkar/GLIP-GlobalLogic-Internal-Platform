@@ -1,24 +1,11 @@
 import styled from "styled-components";
-export const HeadingCompSurveyEmpDiv = styled.div`
-    margin: 0.7rem 0 3rem 0;
-    text-align: center;
-    max-height: 10vh;
-`;
 
-export const CompSurveyHeadingLettersSpan = styled.span`
-    color: #f37037;
-    font-size: 2.5rem;
-    font-weight: bolder;
-    cursor: pointer;
-    &:hover {
-        color: #ee9f41;
-    }
-`;
 export const ChartParentDiv = styled.div`
 margin-bottom: 2rem;
 margin-left: 0;
 margin-right: 0;
 `;
+
 export const DisplayOptionsDiv = styled.div`
   display: flex;
   justify-content: center;
@@ -32,8 +19,8 @@ export const DisplayChartDiv = styled.div`
     align-items: center;
     margin: auto;
     flex-direction: column;
-
 `;
+
 export const OptionsButton = styled.button`
   width: 85%;
   margin: 0.3rem 0;
@@ -70,6 +57,9 @@ export const DisplayValues = styled.div`
   color: #414042;
   font-weight: bold;
   text-align: center;
+`;
 
+export const ParaCount = styled.p`
+  color: #F37037;
 `;
 

@@ -66,7 +66,6 @@ function TransportAdmin() {
 
     const { id } = useParams();              //to navigate approved request page
 
-    //-----calling fetchData()------//
     useEffect(() => {
         fetchData();
     }, []);

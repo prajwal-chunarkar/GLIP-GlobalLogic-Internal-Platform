@@ -1,46 +1,31 @@
 import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios';
 import Swal from "sweetalert2";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Navbar from '../../../../Navbar/navbar'
-
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
-
 import {
   FeedFormBody,
   FormContainer,
   FormHeading,
   FormLabel,
-  FormInput,
   FormAstric,
   FlexDiv,
   SubmitButton,
   ErrorMessage,
-  // LinksDiv,
-  // FormLinks
 } from './feed-form.style.js';
-
-import { TextField } from '@mui/material'
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
-import { DatePicker } from '@mui/x-date-pickers';
 import ValidateFeedForm from './validate-feed-form';
 
-// function valuetext(value) {
-//   return `${value}°C`;
-// }
-
 const FeedForm = () => {
-  const navigate = useNavigate();
   const { id } = useParams();
   const [users, setUsers] = useState([]);
-  const [currUser, setCurrUser] = useState({});             //data of user who give feedback 
+  const [currUser, setCurrUser] = useState({});  //data of user who give feedback 
   const [selects, setSelects] = useState([]);
 
   const [feedData, setFeedData] = useState({
@@ -50,7 +35,6 @@ const FeedForm = () => {
     empFeedName: '',
     rating: ''
   })
-
   const { empDept, empFeedName, rating } = feedData;
 
   useEffect(() => {
@@ -185,46 +169,7 @@ const FeedForm = () => {
       });
   }, [empFeedName])
 
-  const empDeptprops = [
-    {
-      name: 'empDept',
-      label: 'Admin',  
-      value: 'Admin',
-      onChange: (e) => onInputChange(e)
-    },
-    {
-      name: 'empDept',
-      label: 'Developer',
-      value: 'Developer',
-      onChange: (e) => onInputChange(e)
-    },
-    {
-      name: 'empDept',
-      label: 'Manager',
-      value: 'Manager',
-      onChange: (e) => onInputChange(e)
-    },
-
-    {
-      name: 'empDept',
-      label: 'HR',
-      value: 'HR',
-      onChange: (e) => onInputChange(e)
-    },
-    {
-      name: 'empDept',
-      label: 'Payroll',
-      value: 'Payroll Emp',                 //same as designation (for ease of code logic)
-      onChange: (e) => onInputChange(e)
-    },
-    {
-      name: 'empDept',
-      label: 'Transport',
-      value: 'Transport Emp',                  //same as designation (for ease of code logic)
-      onChange: (e) => onInputChange(e)
-    }
-  ];
-
+  const empDeptOpts = [ 'Admin', 'Developer', 'Manager', 'HR', 'Payroll', 'Transport' ]
 
   return (
     <>
@@ -235,12 +180,12 @@ const FeedForm = () => {
           <FormLabel>Please select Team whome you wanted to give feedback</FormLabel>
           <FormAstric>*</FormAstric> <br />
           <RadioGroup style={{ marginBottom: '1rem' }}
-            row
-            name="empDept"
+            row name="empDept"
             value={empDept}
+            onChange= {(e)=> {onInputChange(e)}}
           >
-            {empDeptprops.map((obj) => (
-              <FormControlLabel {...obj}
+            {empDeptOpts.map((dept) => (
+              <FormControlLabel label= {dept} value= {dept}
                 control={<Radio
                   sx={{ '&, &.Mui-checked': { color: '#F37037' } }} />}
               />
@@ -254,6 +199,9 @@ const FeedForm = () => {
             style={{ width: '100%', height: '3rem', marginTop: '0.4rem' }}
             name='empFeedName' onChange={(e) => onInputChange(e)}
             sx={{
+              '.MuiOutlinedInput-notchedOutline': {
+                border: '0.1rem solid #6D6E71',
+              },
               '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
                 borderColor: '#F37037',
               },

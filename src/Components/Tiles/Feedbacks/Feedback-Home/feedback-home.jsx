@@ -14,6 +14,9 @@ const FeedbackHome = () => {
     const {id} = useParams();
     const [currUser, setCurrUser] = useState({});
 
+    const [compSurStat, setCompSurStat] = useState(false);
+    const [techSurStat, setTechSurStat] = useState(false);
+
     useEffect(() => {
         fetchData();
     }, [])
@@ -21,7 +24,27 @@ const FeedbackHome = () => {
     const fetchData = async () => {
         await axios.get(`http://localhost:3003/users/${id}`)
             .then((res) => {
-                setCurrUser(res.data)
+                setCurrUser(res.data);
+
+                axios.get(`http://localhost:3003/company-survey`)
+                .then((res1)=> {
+                    res1.data.forEach((obj)=> {
+                        if(obj.empID === res.data.empID){
+                            setCompSurStat(true);
+                            return;
+                        }
+                    })
+                })
+
+                axios.get(`http://localhost:3003/tech-survey`)
+                .then((res2)=> {
+                    res2.data.forEach((obj)=> {
+                        if(obj.empID === res.data.empID){
+                            setTechSurStat(true);
+                            return;
+                        }
+                    })
+                })
             })
     }
 
@@ -37,14 +60,19 @@ const FeedbackHome = () => {
         {
             label: "Company Survey",
             link: (user_type === 'HR Admin') ?  
-                `/dashboard/company-survey-chart/${id}` : 
-                `/dashboard/company-survey/${id}`
+                `/dashboard/company-survey-chart/${id}` :  
+                (!compSurStat ? `/dashboard/company-survey/${id}` :
+                    `/dashboard/already-filled/${id}`
+                )
+                
         },
         {
             label: "Technology Survey",
             link: (user_type === 'HR Admin') ?  
                 `/dashboard/tech-survey-chart/${id}` :
-                `/dashboard/tech-survey/${id}`
+                (!techSurStat ? `/dashboard/tech-survey/${id}` :
+                    `/dashboard/already-filled/${id}`
+                )
         }
     ];
     

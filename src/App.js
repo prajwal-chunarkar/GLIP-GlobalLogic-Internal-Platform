@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Register from './Components/Authentication/Register/register';
 import Login from './Components/Authentication/Login/login';
 import ForgotPass from './Components/Authentication/Forgot_Password/forgotPass';
+import GenerateOtp from './Components/Authentication/Generate OTP/generate-otp';
 import Deactivate from './Components/Authentication/Deactivate/deactivate';
 import Home from './Components/Home/home'
 import NotFound from './Components/NotFound/NotFound'
@@ -39,6 +40,8 @@ import TechSurvey from './Components/Tiles/Feedbacks/Technology-Survey/Form/tech
 
 import TechSurveyChart from './Components/Tiles/Feedbacks/Technology-Survey/Chart/tech-survey-chart';
 
+import AlreadyFill from './Components/Tiles/Feedbacks/Already-Filled/already-filled';
+
 function App() {
   return (
     <>
@@ -47,7 +50,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/forgotpassword' element={<ForgotPass />} />
+          <Route path='/forgotpassword' element={<GenerateOtp />} />
           <Route path='/deactivate' element={<Deactivate />} />
           <Route path='/dashboard/:id' element={<Dashboard />} />
           <Route path='/resetpassword/:id' element={<ResetPassword />} />
@@ -84,6 +87,8 @@ function App() {
 
           <Route path="/dashboard/tech-survey/:id" element={<TechSurvey />} />
           <Route path="/dashboard/tech-survey-chart/:id" element={<TechSurveyChart />} />
+
+          <Route path="/dashboard/already-filled/:id" element={<AlreadyFill />} />
 
 
         </Routes>

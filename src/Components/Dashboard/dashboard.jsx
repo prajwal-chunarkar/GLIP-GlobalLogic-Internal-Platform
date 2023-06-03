@@ -5,6 +5,7 @@ import axios from "axios";
 import Navbar from "../Navbar/navbar";
 import Footer from "../Footer/footer";
 import NameInitials from "./name-initials";
+import BackToTop from '../Home/back-to-top'
 import {
     UserDetails,
     Quote,
@@ -130,6 +131,7 @@ const Dashboard = () => {
                 </div>
             </DashboardMainDiv>
             <Footer />
+            <BackToTop />
         </>
     );
 };

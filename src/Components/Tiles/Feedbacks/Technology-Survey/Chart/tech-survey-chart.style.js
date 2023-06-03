@@ -15,7 +15,7 @@ export const FlexDiv = styled.div`
 
 export const ChartDiv = styled.div`
     width: 35vw;
-    margin: 0 2rem 2rem 0;
+    margin: 0 1rem 1rem 0;
     padding: 2rem;
 
 `
