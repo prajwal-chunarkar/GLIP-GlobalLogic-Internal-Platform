@@ -54,7 +54,7 @@
       "lname": "Kumar",
       "email": "gaurang@gmail.com",
       "phone": "7083448032",
-      "workLocation": "Banglore",
+      "workLocation": "Bangalore",
       "address": "12th Cross Rd, Dollar Layout, 3rd Phase, J. P. Nagar, Bengaluru-560078",
       "gender": "Male",
       "dob": "08/2001",
@@ -120,7 +120,7 @@
       "phone": "9028844954",
       "gender": "Male",
       "dob": "12/2001",
-      "workLocation": "Banglore",
+      "workLocation": "Bangalore",
       "address": "35, Coles Rd, Cleveland Town, Pulikeshi Nagar, Bengaluru, Karnataka 560005",
       "designation": "Manager",
       "password": "123456",
@@ -198,7 +198,7 @@
       "officeAddress": "Plot No.7, Oxygen Business Park SEZ, Tower, 3, Noida-Greater Noida Expy, Sector 144, Noida, Uttar Pradesh 201304"
     },
     {
-      "city": "Banglore",
+      "city": "Bangalore",
       "officeAddress": "Pritech Park SEZ, 4th Floor, Block 12 , RMZ Ecospace, Marathahalli - Sarjapur Outer Ring Rd, Bellandur, Bengaluru, Karnataka 560103"
     },
     {
@@ -254,7 +254,7 @@
     {
       "empName": "Gaurang Kumar",
       "empID": 1004,
-      "location": "Banglore",
+      "location": "Bangalore",
       "pickupLocation": "Home",
       "pickupAddress": "12th Cross Rd, Dollar Layout, 3rd Phase, J. P. Nagar, Bengaluru-560078",
       "dropLocation": "Office",
@@ -423,27 +423,11 @@
     },
     {
       "empID": 1005,
-      "empName": "jnj cc",
-      "casualLeaves": 6,
-      "sickLeaves": 8,
-      "paidLeaves": 10,
-      "id": 5
-    },
-    {
-      "empID": 1005,
-      "empName": "aa aaaa",
-      "casualLeaves": 6,
-      "sickLeaves": 8,
-      "paidLeaves": 10,
-      "id": 6
-    },
-    {
-      "empID": 1005,
       "empName": "Vishesh Jindal",
       "casualLeaves": 6,
       "sickLeaves": 8,
       "paidLeaves": 10,
-      "id": 7
+      "id": 5
     },
     {
       "empID": 1006,
@@ -451,7 +435,7 @@
       "casualLeaves": 6,
       "sickLeaves": 8,
       "paidLeaves": 10,
-      "id": 8
+      "id": 6
     },
     {
       "empID": 1007,
@@ -459,7 +443,7 @@
       "casualLeaves": 6,
       "sickLeaves": 8,
       "paidLeaves": 10,
-      "id": 9
+      "id": 7
     },
     {
       "empID": 1008,
@@ -467,23 +451,15 @@
       "casualLeaves": 6,
       "sickLeaves": 8,
       "paidLeaves": 10,
-      "id": 10
+      "id": 8
     },
     {
-      "empID": 1008,
+      "empID": 1009,
       "empName": "Bhushan  Naidu",
       "casualLeaves": 6,
       "sickLeaves": 8,
       "paidLeaves": 10,
-      "id": 11
-    },
-    {
-      "empID": 1009,
-      "empName": "Lakiti Dhakate",
-      "casualLeaves": 6,
-      "sickLeaves": 8,
-      "paidLeaves": 10,
-      "id": 12
+      "id": 9
     },
     {
       "empID": 1010,
@@ -491,7 +467,15 @@
       "casualLeaves": 6,
       "sickLeaves": 8,
       "paidLeaves": 10,
-      "id": 13
+      "id": 10
+    },
+    {
+      "empID": 1011,
+      "empName": "Lakiti Dhakate",
+      "casualLeaves": 6,
+      "sickLeaves": 8,
+      "paidLeaves": 10,
+      "id": 11
     }
   ],
   "payslips": [
@@ -518,258 +502,272 @@
   ],
   "feedbacks": [
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
-      "empDept": "Developer",
-      "empFeedName": "Rajat Gaikwad",
-      "rating": 100,
+      "empName": "Rajat Gaikwad",
+      "empID": 1003,
+      "empDept": "Admin",
+      "empFeedName": "Renuka Chowdary Nalluri",
+      "rating": 50,
       "id": 1
     },
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
+      "empName": "Rajat Gaikwad",
+      "empID": 1003,
       "empDept": "Developer",
-      "empFeedName": "Gaurang Kumar",
+      "empFeedName": "Prajwal Chunarkar",
       "rating": 100,
       "id": 2
     },
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
-      "empDept": "Admin",
-      "empFeedName": "a",
-      "rating": 40,
+      "empName": "Rajat Gaikwad",
+      "empID": 1003,
+      "empDept": "Developer",
+      "empFeedName": "Gaurang Kumar",
+      "rating": 60,
       "id": 3
     },
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
-      "empDept": "Admin",
-      "empFeedName": "b",
-      "rating": 20,
+      "empName": "Rajat Gaikwad",
+      "empID": 1003,
+      "empDept": "HR",
+      "empFeedName": "Lakiti Dhakate",
+      "rating": 60,
       "id": 4
     },
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
-      "empDept": "Manager",
-      "empFeedName": "c",
-      "rating": 60,
+      "empName": "Rajat Gaikwad",
+      "empID": 1003,
+      "empDept": "HR",
+      "empFeedName": "Himanshu Upase",
+      "rating": 80,
       "id": 5
     },
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
-      "empDept": "Manager",
-      "empFeedName": "d",
-      "rating": 80,
+      "empName": "Rajat Gaikwad",
+      "empID": 1003,
+      "empDept": "HR",
+      "empFeedName": "Rucha Patil",
+      "rating": 30,
       "id": 6
     },
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
-      "empDept": "HR",
-      "empFeedName": "e",
-      "rating": 40,
+      "empName": "Rajat Gaikwad",
+      "empID": 1003,
+      "empDept": "Payroll",
+      "empFeedName": "Atharv Deshmukh",
+      "rating": 70,
       "id": 7
     },
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
-      "empDept": "HR",
-      "empFeedName": "f",
-      "rating": 70,
+      "empName": "Rajat Gaikwad",
+      "empID": 1003,
+      "empDept": "Payroll",
+      "empFeedName": "Bhushan  Naidu",
+      "rating": 40,
       "id": 8
     },
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
-      "empDept": "Payroll",
-      "empFeedName": "g",
-      "rating": 50,
+      "empName": "Rajat Gaikwad",
+      "empID": 1003,
+      "empDept": "Transport",
+      "empFeedName": "Vishesh Jindal",
+      "rating": 40,
       "id": 9
     },
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
-      "empDept": "Payroll",
-      "empFeedName": "h",
-      "rating": 80,
+      "empName": "Rajat Gaikwad",
+      "empID": 1003,
+      "empDept": "Manager",
+      "empFeedName": "Mrunal  Sinagade",
+      "rating": 30,
       "id": 10
     },
     {
       "empName": "Prajwal Chunarkar",
       "empID": 1002,
-      "empDept": "Transport",
-      "empFeedName": "i",
+      "empDept": "Developer",
+      "empFeedName": "Rajat Gaikwad",
       "rating": 90,
       "id": 11
-    },
-    {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
-      "empDept": "Transport",
-      "empFeedName": "j",
-      "rating": 50,
-      "id": 12
     }
   ],
   "company-survey": [
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
-      "empSatisfaction": "5",
-      "trainingDev": "5",
-      "empEngagement": "5",
-      "empBenifits": "5",
-      "empLeadership": "5",
-      "empFuturePlanning": "5",
-      "empWorkDiversity": "5",
-      "empCommunication": "5",
+      "empName": "Rajat Gaikwad",
+      "empID": 1003,
+      "empSatisfaction": "2",
+      "trainingDev": "3",
+      "empEngagement": "4",
+      "empBenifits": "2",
+      "empLeadership": "2",
+      "empFuturePlanning": "4",
+      "empWorkDiversity": "2",
+      "empCommunication": "4",
       "id": 1
     },
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
-      "empSatisfaction": "4",
-      "trainingDev": "4",
+      "empName": "Gaurang Kumar",
+      "empID": 1004,
+      "empSatisfaction": "5",
+      "trainingDev": "2",
       "empEngagement": "4",
       "empBenifits": "4",
       "empLeadership": "4",
-      "empFuturePlanning": "4",
+      "empFuturePlanning": "2",
       "empWorkDiversity": "4",
-      "empCommunication": "4",
+      "empCommunication": "2",
       "id": 2
     },
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
-      "empSatisfaction": "3",
-      "trainingDev": "3",
-      "empEngagement": "3",
-      "empBenifits": "3",
-      "empLeadership": "3",
-      "empFuturePlanning": "3",
-      "empWorkDiversity": "3",
-      "empCommunication": "3",
+      "empName": "Vishesh Jindal",
+      "empID": 1005,
+      "empSatisfaction": "1",
+      "trainingDev": "4",
+      "empEngagement": "2",
+      "empBenifits": "4",
+      "empLeadership": "1",
+      "empFuturePlanning": "4",
+      "empWorkDiversity": "1",
+      "empCommunication": "4",
       "id": 3
     },
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
-      "empSatisfaction": "2",
+      "empName": "Atharv Deshmukh",
+      "empID": 1006,
+      "empSatisfaction": "5",
       "trainingDev": "2",
-      "empEngagement": "2",
-      "empBenifits": "5",
-      "empLeadership": "2",
-      "empFuturePlanning": "2",
-      "empWorkDiversity": "2",
-      "empCommunication": "2",
+      "empEngagement": "1",
+      "empBenifits": "4",
+      "empLeadership": "1",
+      "empFuturePlanning": "4",
+      "empWorkDiversity": "5",
+      "empCommunication": "1",
       "id": 4
     },
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
-      "empSatisfaction": "5",
-      "trainingDev": "4",
-      "empEngagement": "3",
-      "empBenifits": "5",
-      "empLeadership": "1",
-      "empFuturePlanning": "1",
-      "empWorkDiversity": "4",
-      "empCommunication": "4",
+      "empName": "Himanshu Upase",
+      "empID": 1007,
+      "empSatisfaction": "4",
+      "trainingDev": "1",
+      "empEngagement": "4",
+      "empBenifits": "2",
+      "empLeadership": "4",
+      "empFuturePlanning": "3",
+      "empWorkDiversity": "5",
+      "empCommunication": "1",
       "id": 5
     },
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
-      "empSatisfaction": "4",
-      "trainingDev": "4",
-      "empEngagement": "4",
-      "empBenifits": "4",
-      "empLeadership": "3",
+      "empName": "Mrunal  Sinagade",
+      "empID": 1008,
+      "empSatisfaction": "2",
+      "trainingDev": "5",
+      "empEngagement": "2",
+      "empBenifits": "1",
+      "empLeadership": "5",
       "empFuturePlanning": "2",
-      "empWorkDiversity": "2",
-      "empCommunication": "3",
+      "empWorkDiversity": "4",
+      "empCommunication": "2",
       "id": 6
     },
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
+      "empName": "Lakiti Dhakate",
+      "empID": 1010,
       "empSatisfaction": "4",
-      "trainingDev": "3",
+      "trainingDev": "5",
       "empEngagement": "3",
       "empBenifits": "3",
-      "empLeadership": "2",
-      "empFuturePlanning": "2",
+      "empLeadership": "4",
+      "empFuturePlanning": "1",
       "empWorkDiversity": "3",
-      "empCommunication": "3",
+      "empCommunication": "5",
       "id": 7
+    },
+    {
+      "empName": "Rucha Patil",
+      "empID": 1011,
+      "empSatisfaction": "3",
+      "trainingDev": "5",
+      "empEngagement": "4",
+      "empBenifits": "3",
+      "empLeadership": "2",
+      "empFuturePlanning": "5",
+      "empWorkDiversity": "3",
+      "empCommunication": "4",
+      "id": 8
     }
   ],
   "tech-survey": [
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
-      "tech": "ReactJS",
-      "cyber": "Anti-Virus",
-      "cloud": "Daily",
-      "commTool": "Email",
-      "id": 1
-    },
-    {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
+      "empName": "Rajat Gaikwad",
+      "empID": 1003,
       "tech": "JAVA",
       "cyber": "Firewall",
       "cloud": "Weekly",
       "commTool": "Microsoft Teams",
-      "id": 2
+      "id": 1
     },
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
+      "empName": "Gaurang Kumar",
+      "empID": 1004,
       "tech": "DevOps",
       "cyber": "VPN",
       "cloud": "Monthly",
       "commTool": "Slack",
+      "id": 2
+    },
+    {
+      "empName": "Vishesh Jindal",
+      "empID": 1005,
+      "tech": "AI/ML",
+      "cyber": "2FA",
+      "cloud": "Rarely",
+      "commTool": "Slack",
       "id": 3
     },
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
-      "tech": "DotNet",
-      "cyber": "2FA",
-      "cloud": "Rarely",
-      "commTool": "Zoom",
-      "id": 4
-    },
-    {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
+      "empName": "Atharv Deshmukh",
+      "empID": 1006,
       "tech": "AI/ML",
       "cyber": "Others",
       "cloud": "Rarely",
       "commTool": "Others",
-      "id": 5
+      "id": 4
     },
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
-      "tech": "JAVA",
+      "empName": "Himanshu Upase",
+      "empID": 1007,
+      "tech": "ReactJS",
       "cyber": "VPN",
       "cloud": "Weekly",
       "commTool": "Zoom",
+      "id": 5
+    },
+    {
+      "empName": "Mrunal  Sinagade",
+      "empID": 1008,
+      "tech": "DotNet",
+      "cyber": "Anti-Virus",
+      "cloud": "Rarely",
+      "commTool": "Microsoft Teams",
       "id": 6
     },
     {
-      "empName": "Prajwal Chunarkar",
-      "empID": 1002,
-      "tech": "ReactJS",
-      "cyber": "Others",
-      "cloud": "Weekly",
-      "commTool": "Slack",
+      "empName": "Lakiti Dhakate",
+      "empID": 1010,
+      "tech": "JAVA",
+      "cyber": "Firewall",
+      "cloud": "Rarely",
+      "commTool": "Others",
       "id": 7
+    },
+    {
+      "empName": "Rucha Patil",
+      "empID": 1011,
+      "tech": "AI/ML",
+      "cyber": "VPN",
+      "cloud": "Daily",
+      "commTool": "Slack",
+      "id": 8
     }
   ]
 }

@@ -204,7 +204,7 @@ const TechSurveyChart = () => {
   return (
     <>
       <Navbar />
-      <FormHeading>Technology Survey Chart</FormHeading>
+      <FormHeading>Technology Survey Analysis</FormHeading>
       <MainDiv>
         <FlexDiv>
           <ChartDiv >

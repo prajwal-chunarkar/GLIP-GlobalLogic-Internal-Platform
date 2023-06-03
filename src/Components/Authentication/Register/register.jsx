@@ -218,7 +218,7 @@ const formProp = [
     label: 'Work Location',
     name: 'workLocation',
     value: workLocation,
-    options: ['Nagpur', 'Pune', 'Hyderabad', 'Noida', 'Banglore', 'Chennai'],
+    options: ['Nagpur', 'Pune', 'Hyderabad', 'Noida', 'Bangalore', 'Chennai'],
     ref: workRef
   },
   {

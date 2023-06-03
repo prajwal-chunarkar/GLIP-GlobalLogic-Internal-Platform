@@ -8,7 +8,7 @@ const AlreadyFill = () => {
     <>
     <Navbar/>
     <AlFillDiv>
-        <AlFillMessage>You Have Already Filled the Survey ☹️ </AlFillMessage>
+        <AlFillMessage>You Have Already Filled the Survey </AlFillMessage>
     </AlFillDiv>
     </>
   )
