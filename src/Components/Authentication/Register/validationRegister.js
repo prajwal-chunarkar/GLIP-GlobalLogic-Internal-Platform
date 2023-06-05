@@ -1,5 +1,5 @@
 export default function validationRegister(user){
-    const { fname, lname, email, phone, workLocation, address, gender, dob, password, confirmPass } = user;
+    const { fname, lname, email, phone, workLocation, address, gender, dob, password, designation, confirmPass } = user;
 
     const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     const regexPhone = /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/
@@ -72,9 +72,7 @@ export default function validationRegister(user){
 
     if(!designation){
         return 'Designation is Required *'
-    }  else if (isdesignation === false){
-        return 'Designation is Invalid'
-    }
+    } 
 
     if(!password){
         return 'Password is Required *'
