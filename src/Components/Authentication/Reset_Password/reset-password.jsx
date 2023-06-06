@@ -184,12 +184,12 @@ const ResetPassword = () => {
           </Link>
         </LinksDiv>
 
-        <LinksDiv>
+        {/* <LinksDiv>
           <Link style={{ textDecoration: 'none' }}
             to={`/deactivate`}>
             <FormLinks>Deactivate Account</FormLinks>
           </Link>
-        </LinksDiv>
+        </LinksDiv> */}
 
       </FormContainer>
     </FormBackground>

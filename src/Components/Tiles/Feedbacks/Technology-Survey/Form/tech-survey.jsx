@@ -91,7 +91,7 @@ const TechSurvey = () => {
     },
     {
       name: 'commTool', value: commTool,
-      question: 'Which communication tool do you use the most for work-related discussion ?',
+      question: 'Which communication tool you use the most for work-related discussion ?',
       options: ['Email', 'Microsoft Teams', 'Slack', 'Zoom', 'Others'],
     }
   ]

@@ -14,7 +14,7 @@
       "designation": "Manager",
       "password": "renuka@1993",
       "empID": 1001,
-      "user_type": "HR Admin"
+      "user_type": "Admin"
     },
     {
       "fname": "Prajwal",
@@ -178,7 +178,7 @@
     }
   ],
   "total-registrations": {
-    "total_registrations": 11
+    "total_registrations": 12
   },
   "locations": [
     {
@@ -360,32 +360,17 @@
     {
       "empName": "Prajwal Chunarkar",
       "empID": 1002,
-      "leaveType": "Paid Leave",
-      "startDate": "2023-05-22T18:30:00.000Z",
-      "endDate": "2023-05-24T18:30:00.000Z",
-      "duration": 3,
-      "isHalfDay": "No",
-      "halfDayDate": "",
-      "reason": "hbhb",
-      "actionBy": "Renuka Chowdary Nalluri",
-      "rejectReason": "-",
-      "status": "Approved",
-      "id": 4
-    },
-    {
-      "empName": "Rajat Gaikwad",
-      "empID": 1003,
       "leaveType": "Casual Leave",
-      "startDate": "2023-05-29T18:30:00.000Z",
-      "endDate": "2023-05-30T18:30:00.000Z",
-      "duration": 2.5,
+      "startDate": "2023-06-05T18:30:00.000Z",
+      "endDate": "2023-06-05T18:30:00.000Z",
+      "duration": 1.5,
       "isHalfDay": "Yes",
-      "halfDayDate": "2023-05-28T18:30:00.000Z",
-      "reason": "bkjdsbjkbcdj",
-      "actionBy": "Renuka Chowdary Nalluri",
-      "rejectReason": "-",
-      "status": "Approved",
-      "id": 5
+      "halfDayDate": "2023-06-06T18:30:00.000Z",
+      "reason": "Any Reason",
+      "actionBy": "-",
+      "rejectReason": "",
+      "status": "Pending",
+      "id": 4
     }
   ],
   "leaves-remain": [
@@ -403,7 +388,7 @@
       "empName": "Prajwal Chunarkar",
       "casualLeaves": 6,
       "sickLeaves": 6.5,
-      "paidLeaves": 5
+      "paidLeaves": 8
     },
     {
       "id": 3,
@@ -476,16 +461,24 @@
       "sickLeaves": 8,
       "paidLeaves": 10,
       "id": 11
+    },
+    {
+      "empID": 1012,
+      "empName": "Toshit Kale",
+      "casualLeaves": 6,
+      "sickLeaves": 8,
+      "paidLeaves": 10,
+      "id": 12
     }
   ],
   "payslips": [
     {
       "id": 1,
-      "name": "Renuka Chowdary Nalluri",
-      "designation": "Manager",
-      "empID": 1001,
-      "salary": 100000,
-      "deduction": 10000,
+      "name": "Prajwal Chunarkar",
+      "designation": "Intern",
+      "empID": 1002,
+      "salary": 50000,
+      "deduction": 5000,
       "month": "06",
       "year": "2023"
     },
@@ -494,10 +487,30 @@
       "name": "Prajwal Chunarkar",
       "designation": "Intern",
       "empID": 1002,
-      "salary": 50000,
-      "deduction": 5000,
-      "month": "06",
+      "salary": 40000,
+      "deduction": 3500,
+      "month": "05",
       "year": "2023"
+    },
+    {
+      "id": 3,
+      "name": "Prajwal Chunarkar",
+      "designation": "Intern",
+      "empID": 1002,
+      "salary": 15000,
+      "deduction": 1500,
+      "month": "06",
+      "year": "2022"
+    },
+    {
+      "id": 4,
+      "name": "Prajwal Chunarkar",
+      "designation": "Intern",
+      "empID": 1002,
+      "salary": 10000,
+      "deduction": 1000,
+      "month": "05",
+      "year": "2022"
     }
   ],
   "feedbacks": [
